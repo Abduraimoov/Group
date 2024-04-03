@@ -9,21 +9,31 @@
 /* Begin PBXBuildFile section */
 		850D6CB92BB985B90010DEC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850D6CB82BB985B90010DEC4 /* AppDelegate.swift */; };
 		850D6CBB2BB985B90010DEC4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850D6CBA2BB985B90010DEC4 /* SceneDelegate.swift */; };
-		850D6CBD2BB985B90010DEC4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850D6CBC2BB985B90010DEC4 /* ViewController.swift */; };
-		850D6CC02BB985B90010DEC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 850D6CBE2BB985B90010DEC4 /* Main.storyboard */; };
+		850D6CBD2BB985B90010DEC4 /* StartingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850D6CBC2BB985B90010DEC4 /* StartingViewController.swift */; };
 		850D6CC22BB985BA0010DEC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 850D6CC12BB985BA0010DEC4 /* Assets.xcassets */; };
 		850D6CC52BB985BA0010DEC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 850D6CC32BB985BA0010DEC4 /* LaunchScreen.storyboard */; };
+		850D6CD02BB986200010DEC4 /* Extension + uicolor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850D6CCF2BB986200010DEC4 /* Extension + uicolor.swift */; };
+		850D6CD42BB986D90010DEC4 /* StartingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850D6CD32BB986D90010DEC4 /* StartingView.swift */; };
+		852872B82BBC09DD0062F434 /* AutorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852872B72BBC09DD0062F434 /* AutorizationView.swift */; };
+		852872BA2BBC12260062F434 /* AutorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852872B92BBC12260062F434 /* AutorizationViewController.swift */; };
+		852872BD2BBC18C90062F434 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852872BC2BBC18C90062F434 /* HomeViewController.swift */; };
+		852872C12BBC1D030062F434 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852872C02BBC1D030062F434 /* HomeCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		850D6CB52BB985B90010DEC4 /* myCoffeeHouseProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myCoffeeHouseProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		850D6CB82BB985B90010DEC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		850D6CBA2BB985B90010DEC4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		850D6CBC2BB985B90010DEC4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		850D6CBF2BB985B90010DEC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		850D6CBC2BB985B90010DEC4 /* StartingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingViewController.swift; sourceTree = "<group>"; };
 		850D6CC12BB985BA0010DEC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		850D6CC42BB985BA0010DEC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		850D6CC62BB985BA0010DEC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		850D6CCF2BB986200010DEC4 /* Extension + uicolor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + uicolor.swift"; sourceTree = "<group>"; };
+		850D6CD32BB986D90010DEC4 /* StartingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingView.swift; sourceTree = "<group>"; };
+		852872B72BBC09DD0062F434 /* AutorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizationView.swift; sourceTree = "<group>"; };
+		852872B92BBC12260062F434 /* AutorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizationViewController.swift; sourceTree = "<group>"; };
+		852872BC2BBC18C90062F434 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		852872C02BBC1D030062F434 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +66,68 @@
 		850D6CB72BB985B90010DEC4 /* myCoffeeHouseProject */ = {
 			isa = PBXGroup;
 			children = (
-				850D6CB82BB985B90010DEC4 /* AppDelegate.swift */,
-				850D6CBA2BB985B90010DEC4 /* SceneDelegate.swift */,
-				850D6CBC2BB985B90010DEC4 /* ViewController.swift */,
-				850D6CBE2BB985B90010DEC4 /* Main.storyboard */,
+				850D6CD12BB986510010DEC4 /* Delegates */,
+				850D6CD22BB986860010DEC4 /* Modules */,
 				850D6CC12BB985BA0010DEC4 /* Assets.xcassets */,
+				850D6CCE2BB985FA0010DEC4 /* SupportFiles */,
 				850D6CC32BB985BA0010DEC4 /* LaunchScreen.storyboard */,
 				850D6CC62BB985BA0010DEC4 /* Info.plist */,
 			);
 			path = myCoffeeHouseProject;
+			sourceTree = "<group>";
+		};
+		850D6CCE2BB985FA0010DEC4 /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				850D6CCF2BB986200010DEC4 /* Extension + uicolor.swift */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		850D6CD12BB986510010DEC4 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				850D6CB82BB985B90010DEC4 /* AppDelegate.swift */,
+				850D6CBA2BB985B90010DEC4 /* SceneDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		850D6CD22BB986860010DEC4 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				852872B32BBC07E50062F434 /* Startings */,
+				852872B62BBC08190062F434 /* Autorizations */,
+				852872BB2BBC18870062F434 /* Home */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		852872B32BBC07E50062F434 /* Startings */ = {
+			isa = PBXGroup;
+			children = (
+				850D6CD32BB986D90010DEC4 /* StartingView.swift */,
+				850D6CBC2BB985B90010DEC4 /* StartingViewController.swift */,
+			);
+			path = Startings;
+			sourceTree = "<group>";
+		};
+		852872B62BBC08190062F434 /* Autorizations */ = {
+			isa = PBXGroup;
+			children = (
+				852872B72BBC09DD0062F434 /* AutorizationView.swift */,
+				852872B92BBC12260062F434 /* AutorizationViewController.swift */,
+			);
+			path = Autorizations;
+			sourceTree = "<group>";
+		};
+		852872BB2BBC18870062F434 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				852872BC2BBC18C90062F434 /* HomeViewController.swift */,
+				852872C02BBC1D030062F434 /* HomeCollectionViewCell.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +190,6 @@
 			files = (
 				850D6CC52BB985BA0010DEC4 /* LaunchScreen.storyboard in Resources */,
 				850D6CC22BB985BA0010DEC4 /* Assets.xcassets in Resources */,
-				850D6CC02BB985B90010DEC4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +200,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				850D6CBD2BB985B90010DEC4 /* ViewController.swift in Sources */,
+				850D6CD42BB986D90010DEC4 /* StartingView.swift in Sources */,
+				850D6CBD2BB985B90010DEC4 /* StartingViewController.swift in Sources */,
+				852872B82BBC09DD0062F434 /* AutorizationView.swift in Sources */,
+				852872BD2BBC18C90062F434 /* HomeViewController.swift in Sources */,
+				852872BA2BBC12260062F434 /* AutorizationViewController.swift in Sources */,
+				852872C12BBC1D030062F434 /* HomeCollectionViewCell.swift in Sources */,
 				850D6CB92BB985B90010DEC4 /* AppDelegate.swift in Sources */,
 				850D6CBB2BB985B90010DEC4 /* SceneDelegate.swift in Sources */,
+				850D6CD02BB986200010DEC4 /* Extension + uicolor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		850D6CBE2BB985B90010DEC4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				850D6CBF2BB985B90010DEC4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		850D6CC32BB985BA0010DEC4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -296,7 +356,6 @@
 				INFOPLIST_FILE = myCoffeeHouseProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -323,7 +382,6 @@
 				INFOPLIST_FILE = myCoffeeHouseProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

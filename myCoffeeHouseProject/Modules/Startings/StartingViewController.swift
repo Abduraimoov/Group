@@ -20,11 +20,13 @@ class StartingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         startingView.delegate = self
+        screenTransition()
     }
 
-    func tapped() {
+   private func screenTransition() {
         startingView.screenTransitionTapped = {
-            let vc = 
+            let vc = AutorizationViewController()
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 

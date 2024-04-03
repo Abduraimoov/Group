@@ -27,6 +27,9 @@ class StartignView: UIView {
         view.layer.cornerRadius = 22
         view.backgroundColor = UIColor().rgb(r: 255, g: 139, b: 91, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.addTarget(self,
+                       action: #selector(ViewControllerTapped),
+                       for: .touchUpInside)
         return view
     }()
     
@@ -81,6 +84,7 @@ class StartignView: UIView {
                                                       constant: -16),
             registrationbutton.heightAnchor.constraint(equalToConstant: 50)
         ])
+    
     }
     
     @objc
