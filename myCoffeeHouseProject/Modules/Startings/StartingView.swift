@@ -15,7 +15,7 @@ class StartignView: UIView {
     
     lazy var coffeeImage: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(named: "Image1")
+        view.image = UIImage(named: "Image")
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

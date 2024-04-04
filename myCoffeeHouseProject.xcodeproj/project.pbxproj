@@ -68,9 +68,8 @@
 			children = (
 				850D6CD12BB986510010DEC4 /* Delegates */,
 				850D6CD22BB986860010DEC4 /* Modules */,
-				850D6CC12BB985BA0010DEC4 /* Assets.xcassets */,
 				850D6CCE2BB985FA0010DEC4 /* SupportFiles */,
-				850D6CC32BB985BA0010DEC4 /* LaunchScreen.storyboard */,
+				85246FC62BBEA8F4009B0F41 /* Recourse */,
 				850D6CC62BB985BA0010DEC4 /* Info.plist */,
 			);
 			path = myCoffeeHouseProject;
@@ -101,6 +100,15 @@
 				852872BB2BBC18870062F434 /* Home */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		85246FC62BBEA8F4009B0F41 /* Recourse */ = {
+			isa = PBXGroup;
+			children = (
+				850D6CC12BB985BA0010DEC4 /* Assets.xcassets */,
+				850D6CC32BB985BA0010DEC4 /* LaunchScreen.storyboard */,
+			);
+			path = Recourse;
 			sourceTree = "<group>";
 		};
 		852872B32BBC07E50062F434 /* Startings */ = {

@@ -15,7 +15,7 @@ class AutorizationView: UIView {
   
     lazy var GeeksImage: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(named: "Image1")
+        view.image = UIImage(named: "Image")
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
