@@ -20,7 +20,11 @@ struct Elements {
 
 class HomeCollectionViewCell: UICollectionViewCell {
     
-    private lazy var leftImage = UIImageView()
+    private lazy var leftImage: UIImageView = {
+        let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     private lazy var stackLabels: UIStackView = {
         let view = UIStackView()
@@ -58,7 +62,12 @@ class HomeCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    private lazy var minusButton = UIButton()
+    private lazy var minusButton: UIButton = {
+        let view = UIButton(type: .system)
+        view.backgroundColor = .systemGray4
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     private lazy var counterLabel: UILabel = {
         let view = UILabel()
@@ -68,7 +77,12 @@ class HomeCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    private lazy var plusButton = UIButton()
+    private lazy var plusButton: UIButton = {
+        let view = UIButton(type: .system)
+        view.backgroundColor = UIColor().rgb(r: 255, g: 139, b: 91, alpha: 1)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -79,7 +93,6 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupConstrains() {
-   
         addSubview(leftImage)
         addSubview(stackLabels)
         stackLabels.addArrangedSubview(naminglabels)
