@@ -11,6 +11,8 @@ class HomeViewController: UIViewController {
     
     var elements: [Elements] = []
     
+    var listlabel: [labels] = []
+    
     private lazy var horyzontalCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 72,
@@ -18,8 +20,10 @@ class HomeViewController: UIViewController {
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 10
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 12, bottom: 0, right: 10)
         let view = UICollectionView(frame: .zero,
                                     collectionViewLayout: layout)
+        view.register(TopCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -53,6 +57,7 @@ class HomeViewController: UIViewController {
         setupNavigtionItem()
         setupConstrains()
         elementsCell()
+        topLabels()
     }
 
     private func setupNavigtionItem() {
@@ -66,9 +71,17 @@ class HomeViewController: UIViewController {
     }
     
     private func setupConstrains() {
+        view.addSubview(horyzontalCollectionView)
         view.addSubview(coffeeLabel)
         view.addSubview(verticalCollectionView)
         NSLayoutConstraint.activate([
+            
+            horyzontalCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, 
+                                                          constant: 10),
+            horyzontalCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            horyzontalCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            horyzontalCollectionView.heightAnchor.constraint(equalToConstant: 32),
+            
             coffeeLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
                                              constant: 50),
             coffeeLabel.leftAnchor.constraint(equalTo: view.leftAnchor,
@@ -83,6 +96,7 @@ class HomeViewController: UIViewController {
             verticalCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         verticalCollectionView.dataSource = self
+        horyzontalCollectionView.dataSource = self
     }
     
     private func elementsCell() {
@@ -132,22 +146,44 @@ class HomeViewController: UIViewController {
         ]
     }
     
+    private func topLabels() {
+        listlabel = [
+        labels(label: "Кофе"),
+        labels(label: "Десерт"),
+        labels(label: "Выпечка"),
+        labels(label: "Коктейлы"),
+        ]
+    }
+    
 }
 
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return elements.count
+        if collectionView == verticalCollectionView {
+            return elements.count
+        } else {
+            return listlabel.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard indexPath.row < elements.count else {
-            return UICollectionViewCell()
+        if collectionView == verticalCollectionView {
+            guard indexPath.row < elements.count else {
+                return UICollectionViewCell()
+            }
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! HomeCollectionViewCell
+            let element = elements[indexPath.row]
+            cell.configure(with: element)
+            return cell
+        } else {
+            guard indexPath.row < listlabel.count else {
+                return UICollectionViewCell()
+            }
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! TopCollectionViewCell
+            cell.configure(list: listlabel[indexPath.row])
+            return cell
         }
-
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! HomeCollectionViewCell
-        cell.configure(with: elements[indexPath.row])
-        return cell
     }
-    
-    
 }
+
+

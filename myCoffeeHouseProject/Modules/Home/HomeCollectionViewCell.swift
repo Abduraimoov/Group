@@ -46,7 +46,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     private lazy var drinksLabels: UILabel = {
         let view = UILabel()
-        view.font = .systemFont(ofSize: 16, 
+        view.font = .systemFont(ofSize: 12,
                                 weight: .light)
         view.tintColor = .black
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -55,7 +55,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     private lazy var moneyLabels: UILabel = {
         let view = UILabel()
-        view.font = .systemFont(ofSize: 16, 
+        view.font = .systemFont(ofSize: 14,
                                 weight: .light)
         view.tintColor = UIColor().rgb(r: 255, g: 139, b: 91, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false

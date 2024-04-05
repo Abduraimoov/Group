@@ -18,6 +18,7 @@
 		852872BA2BBC12260062F434 /* AutorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852872B92BBC12260062F434 /* AutorizationViewController.swift */; };
 		852872BD2BBC18C90062F434 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852872BC2BBC18C90062F434 /* HomeViewController.swift */; };
 		852872C12BBC1D030062F434 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852872C02BBC1D030062F434 /* HomeCollectionViewCell.swift */; };
+		85E542D82BBFFFBB0016D47E /* TopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E542D72BBFFFBB0016D47E /* TopCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		852872B92BBC12260062F434 /* AutorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizationViewController.swift; sourceTree = "<group>"; };
 		852872BC2BBC18C90062F434 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		852872C02BBC1D030062F434 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		85E542D72BBFFFBB0016D47E /* TopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 			children = (
 				852872BC2BBC18C90062F434 /* HomeViewController.swift */,
 				852872C02BBC1D030062F434 /* HomeCollectionViewCell.swift */,
+				85E542D72BBFFFBB0016D47E /* TopCollectionViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 			files = (
 				850D6CD42BB986D90010DEC4 /* StartingView.swift in Sources */,
 				850D6CBD2BB985B90010DEC4 /* StartingViewController.swift in Sources */,
+				85E542D82BBFFFBB0016D47E /* TopCollectionViewCell.swift in Sources */,
 				852872B82BBC09DD0062F434 /* AutorizationView.swift in Sources */,
 				852872BD2BBC18C90062F434 /* HomeViewController.swift in Sources */,
 				852872BA2BBC12260062F434 /* AutorizationViewController.swift in Sources */,
