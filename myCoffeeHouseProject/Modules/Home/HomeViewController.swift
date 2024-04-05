@@ -36,7 +36,7 @@ class HomeViewController: UIViewController {
     
     private lazy var verticalCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-      
+        layout.itemSize = CGSize(width: (UIScreen.main.bounds.width), height: 100)
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 10

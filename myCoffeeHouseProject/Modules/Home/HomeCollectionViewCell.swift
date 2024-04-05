@@ -65,6 +65,9 @@ class HomeCollectionViewCell: UICollectionViewCell {
     private lazy var minusButton: UIButton = {
         let view = UIButton(type: .system)
         view.backgroundColor = .systemGray4
+        view.layer.cornerRadius = 14
+        view.titleLabel?.font = UIFont.systemFont(ofSize: 25)
+        view.tintColor = .black
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -73,6 +76,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         let view = UILabel()
         view.font = .systemFont(ofSize: 16,
                                 weight: .bold)
+        view.text = "fkldnvod"
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -80,12 +84,16 @@ class HomeCollectionViewCell: UICollectionViewCell {
     private lazy var plusButton: UIButton = {
         let view = UIButton(type: .system)
         view.backgroundColor = UIColor().rgb(r: 255, g: 139, b: 91, alpha: 1)
+        view.layer.cornerRadius = 14
+        view.titleLabel?.font = UIFont.systemFont(ofSize: 25)
+        view.tintColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupConstrains()
     }
     
     required init?(coder: NSCoder) {
@@ -98,37 +106,36 @@ class HomeCollectionViewCell: UICollectionViewCell {
         stackLabels.addArrangedSubview(naminglabels)
         stackLabels.addArrangedSubview(drinksLabels)
         stackLabels.addArrangedSubview(moneyLabels)
-        addSubview(minusButton)
-        addSubview(counterLabel)
-        addSubview(plusButton)
+        contentView.addSubview(minusButton)
+        contentView.addSubview(counterLabel)
+        contentView.addSubview(plusButton)
         NSLayoutConstraint.activate([
             leftImage.centerYAnchor.constraint(equalTo: centerYAnchor),
-            leftImage.leftAnchor.constraint(equalTo: leftAnchor),
+            leftImage.leftAnchor.constraint(equalTo: leftAnchor, constant: 15),
             leftImage.widthAnchor.constraint(equalToConstant: 89),
             leftImage.heightAnchor.constraint(equalToConstant: 89),
             
             stackLabels.centerYAnchor.constraint(equalTo: centerYAnchor),
             stackLabels.leftAnchor.constraint(equalTo: leftImage.leftAnchor,
-                                              constant: 16),
+                                              constant: 100),
             stackLabels.heightAnchor.constraint(equalToConstant: 63),
             stackLabels.widthAnchor.constraint(equalToConstant: 113),
             
             minusButton.topAnchor.constraint(equalTo: topAnchor,
                                              constant: 53),
             minusButton.leftAnchor.constraint(equalTo: stackLabels.leftAnchor,
-                                              constant: 31),
+                                              constant: 171),
             minusButton.heightAnchor.constraint(equalToConstant: 28),
             minusButton.widthAnchor.constraint(equalToConstant: 28),
             
-            
             counterLabel.topAnchor.constraint(equalTo: topAnchor,
                                               constant: 53),
-            counterLabel.leftAnchor.constraint(equalTo: minusButton.leftAnchor,
-                                               constant: 13),
+            counterLabel.rightAnchor.constraint(equalTo: rightAnchor,
+                                               constant: -40),
             
             plusButton.topAnchor.constraint(equalTo: topAnchor,
                                             constant: 53),
-            plusButton.rightAnchor.constraint(equalTo: rightAnchor),
+            plusButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -20),
             plusButton.heightAnchor.constraint(equalToConstant: 28),
             plusButton.widthAnchor.constraint(equalToConstant: 28)
         ])
