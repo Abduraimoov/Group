@@ -24,7 +24,7 @@ class HomeViewController: UIViewController {
     
     private lazy var horyzontalCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 72,
+        layout.itemSize = CGSize(width: 75,
                                  height: 30)
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 20
@@ -261,6 +261,8 @@ extension HomeViewController: UICollectionViewDataSource {
             cell.configure(list: listlabel[indexPath.row])
             if indexPath == selectedIndexPath {
                 cell.backgroundColor = UIColor().rgb(r: 255, g: 139, b: 91, alpha: 1)
+                cell.layer.cornerRadius = 15 // Устанавливаете корнер-радиус ячейки
+                   cell.layer.masksToBounds = true
             } else {
                 cell.backgroundColor = .clear
             }
