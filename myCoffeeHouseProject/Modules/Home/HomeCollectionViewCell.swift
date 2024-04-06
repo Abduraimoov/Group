@@ -57,7 +57,10 @@ class HomeCollectionViewCell: UICollectionViewCell {
         let view = UILabel()
         view.font = .systemFont(ofSize: 14,
                                 weight: .light)
-        view.tintColor = UIColor().rgb(r: 255, g: 139, b: 91, alpha: 1)
+        view.tintColor = UIColor().rgb(r: 255,
+                                       g: 139,
+                                       b: 91,
+                                       alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -76,14 +79,17 @@ class HomeCollectionViewCell: UICollectionViewCell {
         let view = UILabel()
         view.font = .systemFont(ofSize: 16,
                                 weight: .bold)
-        view.text = "fkldnvod"
+        view.text = "1"
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var plusButton: UIButton = {
         let view = UIButton(type: .system)
-        view.backgroundColor = UIColor().rgb(r: 255, g: 139, b: 91, alpha: 1)
+        view.backgroundColor = UIColor().rgb(r: 255,
+                                             g: 139,
+                                             b: 91,
+                                             alpha: 1)
         view.layer.cornerRadius = 14
         view.titleLabel?.font = UIFont.systemFont(ofSize: 25)
         view.tintColor = .white
@@ -111,7 +117,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(plusButton)
         NSLayoutConstraint.activate([
             leftImage.centerYAnchor.constraint(equalTo: centerYAnchor),
-            leftImage.leftAnchor.constraint(equalTo: leftAnchor, constant: 15),
+            leftImage.leftAnchor.constraint(equalTo: leftAnchor,
+                                            constant: 15),
             leftImage.widthAnchor.constraint(equalToConstant: 89),
             leftImage.heightAnchor.constraint(equalToConstant: 89),
             
@@ -135,7 +142,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
             
             plusButton.topAnchor.constraint(equalTo: topAnchor,
                                             constant: 53),
-            plusButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -20),
+            plusButton.rightAnchor.constraint(equalTo: rightAnchor,
+                                              constant: -20),
             plusButton.heightAnchor.constraint(equalToConstant: 28),
             plusButton.widthAnchor.constraint(equalToConstant: 28)
         ])

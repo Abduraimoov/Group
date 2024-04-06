@@ -22,10 +22,14 @@ class StartignView: UIView {
     
     lazy var toComeInButton: UIButton = {
         let view = UIButton(type: .system)
-        view.setTitle("Войти", for: .normal)
+        view.setTitle("Войти",
+                      for: .normal)
         view.tintColor = .white
         view.layer.cornerRadius = 22
-        view.backgroundColor = UIColor().rgb(r: 255, g: 139, b: 91, alpha: 1)
+        view.backgroundColor = UIColor().rgb(r: 255,
+                                             g: 139,
+                                             b: 91,
+                                             alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addTarget(self,
                        action: #selector(ViewControllerTapped),
@@ -35,7 +39,8 @@ class StartignView: UIView {
     
     lazy var registrationbutton: UIButton = {
         let view = UIButton(type: .system)
-        view.setTitle("Регистрация", for: .normal)
+        view.setTitle("Регистрация", 
+                      for: .normal)
         view.tintColor = .systemGray4
         view.translatesAutoresizingMaskIntoConstraints = false
         return view

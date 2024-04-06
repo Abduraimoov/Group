@@ -26,7 +26,8 @@ class StartingViewController: UIViewController {
    private func screenTransition() {
         startingView.screenTransitionTapped = {
             let vc = AutorizationViewController()
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.navigationController?.pushViewController(vc,
+                                                          animated: true)
         }
     }
 

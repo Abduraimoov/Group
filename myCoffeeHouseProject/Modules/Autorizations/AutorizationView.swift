@@ -12,7 +12,7 @@ protocol AutorizationViewDelegate: AnyObject {
 }
 
 class AutorizationView: UIView {
-  
+    
     lazy var GeeksImage: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "Image")
@@ -24,7 +24,8 @@ class AutorizationView: UIView {
         let view = UILabel()
         view.text = "Вход"
         view.tintColor = .black
-        view.font = .systemFont(ofSize: 34, weight: .bold)
+        view.font = .systemFont(ofSize: 34,
+                                weight: .bold)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -35,10 +36,16 @@ class AutorizationView: UIView {
         tf.backgroundColor = .systemGray5
         tf.layer.cornerRadius = 10
         tf.translatesAutoresizingMaskIntoConstraints = false
-        let leftContainerView = UIView(frame: CGRect(x: 0, y: 0, width: 35 + 8, height: 24))
+        let leftContainerView = UIView(frame: CGRect(x: 0,
+                                                     y: 0,
+                                                     width: 35 + 8,
+                                                     height: 24))
         let iconImageView = UIImageView(image: UIImage(systemName: "phone"))
         iconImageView.tintColor = .label
-        iconImageView.frame = CGRect(x: 8, y: 2, width: 20, height: 20)
+        iconImageView.frame = CGRect(x: 8,
+                                     y: 2,
+                                     width: 20,
+                                     height: 20)
         leftContainerView.addSubview(iconImageView)
         tf.leftView = leftContainerView
         tf.leftViewMode = .always
@@ -47,10 +54,14 @@ class AutorizationView: UIView {
     
     lazy var toComeInButton: UIButton = {
         let view = UIButton(type: .system)
-        view.setTitle("Войти", for: .normal)
+        view.setTitle("Войти",
+                      for: .normal)
         view.tintColor = .white
         view.layer.cornerRadius = 22
-        view.backgroundColor = UIColor().rgb(r: 255, g: 139, b: 91, alpha: 1)
+        view.backgroundColor = UIColor().rgb(r: 255,
+                                             g: 139,
+                                             b: 91,
+                                             alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addTarget(self,
                        action: #selector(homeScreenTransition),

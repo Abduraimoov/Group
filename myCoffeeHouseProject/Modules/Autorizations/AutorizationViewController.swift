@@ -26,7 +26,8 @@ class AutorizationViewController: UIViewController{
     private func homeScreenTapped() {
         autorizationview.screenTransition = {
             let vc = HomeViewController()
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.navigationController?.pushViewController(vc, 
+                                                          animated: true)
         }
     }
 
