@@ -205,7 +205,7 @@ extension HomeViewController: UICollectionViewDelegate {
                                                      g: 139,
                                                      b: 91,
                                                      alpha: 1)
-                selectedIndexPath = indexPath // Сохраняем новый выбранный indexPath
+                selectedIndexPath = indexPath
             }
         }
     }
