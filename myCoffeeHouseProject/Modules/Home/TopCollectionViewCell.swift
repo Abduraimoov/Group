@@ -7,10 +7,6 @@
 
 import UIKit
 
-struct labels {
-    var label: String
-}
-
 class TopCollectionViewCell: UICollectionViewCell {
     
     private lazy var listlabels: UILabel = {

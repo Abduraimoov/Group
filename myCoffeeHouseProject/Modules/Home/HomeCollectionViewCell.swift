@@ -7,18 +7,16 @@
 
 import UIKit
 
-struct Elements {
-    var image: String
-    var naming: String
-    var drink: String
-    var Money: String
-    var minus: String
-    var counter: String
-    var plus: String
+protocol HomeCollectionViewCellDelegate: AnyObject {
+    func didTapPlusButton(at indexPath: IndexPath)
+    func didTapMinusButton(at indexPath: IndexPath)
 }
 
 
 class HomeCollectionViewCell: UICollectionViewCell {
+    
+    weak var delegate: HomeCollectionViewCellDelegate?
+
     
     private lazy var leftImage: UIImageView = {
         let view = UIImageView()
@@ -99,6 +97,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupConstrains()
+        plusButton.addTarget(self, action: #selector(incrementCounter), for: .touchUpInside)
+        minusButton.addTarget(self, action: #selector(decrementCounter), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -159,5 +159,20 @@ class HomeCollectionViewCell: UICollectionViewCell {
         plusButton.setTitle(element.plus,
                             for: .normal)
     }
+    var counter: Int = 0 {
+        didSet {
+            // Обновление UILabel с текущим значением счетчика
+            counterLabel.text = "\(counter)"
+        }
+    }
+
+    @objc func incrementCounter() {
+        counter += 1
+    }
+
+    @objc func decrementCounter() {
+        counter = max(0, counter - 1) // Предотвращаем отрицательные значения
+    }
+
 }
 

@@ -171,8 +171,32 @@ class HomeViewController: UIViewController {
         labels(label: "Машины"),
         ]
     }
+
+    var indexPath: IndexPath?
+
+    @objc func incrementCounter() {
+        guard let indexPath = indexPath else { return }
+        delegate?.didTapPlusButton(at: indexPath)
+    }
+
+    @objc func decrementCounter() {
+        guard let indexPath = indexPath else { return }
+        delegate?.didTapMinusButton(at: indexPath)
+    }
+
     
 }
+
+extension HomeViewController: HomeCollectionViewCellDelegate {
+    func didTapPlusButton(at indexPath: IndexPath) {
+        // Логика обработки нажатия на "+"
+    }
+
+    func didTapMinusButton(at indexPath: IndexPath) {
+        // Логика обработки нажатия на "-"
+    }
+}
+
 
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, 
@@ -194,6 +218,8 @@ extension HomeViewController: UICollectionViewDataSource {
                                                           for: indexPath) as! HomeCollectionViewCell
             let element = elements[indexPath.row]
             cell.configure(with: element)
+            cell.indexPath = indexPath
+            cell.delegate = self
             return cell
         } else {
             guard indexPath.row < listlabel.count else {
@@ -204,6 +230,7 @@ extension HomeViewController: UICollectionViewDataSource {
             cell.configure(list: listlabel[indexPath.row])
             return cell
         }
+        
     }
 }
 
