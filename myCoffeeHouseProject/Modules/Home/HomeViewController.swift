@@ -110,6 +110,8 @@ class HomeViewController: UIViewController {
         ])
         verticalCollectionView.dataSource = self
         horyzontalCollectionView.dataSource = self
+        horyzontalCollectionView.delegate = self
+
     }
     
     private func elementsCell() {
@@ -168,6 +170,8 @@ class HomeViewController: UIViewController {
         labels(label: "Машины"),
         ]
     }
+    
+    var selectedIndexPath: IndexPath?
 
     var counter: Int = 0 {
         didSet {
@@ -187,6 +191,25 @@ extension HomeViewController: HomeCollectionViewCellDelegate {
     }
 }
 
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == horyzontalCollectionView {
+            if let selectedIndexPath = selectedIndexPath,
+               let cell = collectionView.cellForItem(at: selectedIndexPath) as? TopCollectionViewCell {
+                cell.backgroundColor = .clear
+            }
+            
+            
+            if let cell = collectionView.cellForItem(at: indexPath) as? TopCollectionViewCell {
+                cell.backgroundColor = UIColor().rgb(r: 255,
+                                                     g: 139,
+                                                     b: 91,
+                                                     alpha: 1)
+                selectedIndexPath = indexPath // Сохраняем новый выбранный indexPath
+            }
+        }
+    }
+}
 
 
 extension HomeViewController: UICollectionViewDataSource {
@@ -218,8 +241,15 @@ extension HomeViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell",
                                                           for: indexPath) as! TopCollectionViewCell
             cell.configure(list: listlabel[indexPath.row])
+            if indexPath == selectedIndexPath {
+                cell.backgroundColor = UIColor().rgb(r: 255, g: 139, b: 91, alpha: 1)
+            } else {
+                cell.backgroundColor = .clear
+            }
             return cell
+            }
+          
         }
         
     }
-}
+
