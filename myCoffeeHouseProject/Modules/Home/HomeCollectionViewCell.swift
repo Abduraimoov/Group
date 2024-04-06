@@ -8,8 +8,10 @@
 import UIKit
 
 protocol HomeCollectionViewCellDelegate: AnyObject {
+    
     func didTapPlusButton(at indexPath: IndexPath)
     func didTapMinusButton(at indexPath: IndexPath)
+    
 }
 
 
@@ -17,7 +19,6 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     weak var delegate: HomeCollectionViewCellDelegate?
 
-    
     private lazy var leftImage: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -56,9 +57,9 @@ class HomeCollectionViewCell: UICollectionViewCell {
         view.font = .systemFont(ofSize: 14,
                                 weight: .light)
         view.tintColor = UIColor().rgb(r: 255,
-                                       g: 139,
-                                       b: 91,
-                                       alpha: 1)
+                                             g: 139,
+                                             b: 91,
+                                             alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -161,7 +162,6 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
     var counter: Int = 0 {
         didSet {
-            // Обновление UILabel с текущим значением счетчика
             counterLabel.text = "\(counter)"
         }
     }
@@ -171,7 +171,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
 
     @objc func decrementCounter() {
-        counter = max(0, counter - 1) // Предотвращаем отрицательные значения
+        counter = max(0, counter - 1)
     }
 
 }

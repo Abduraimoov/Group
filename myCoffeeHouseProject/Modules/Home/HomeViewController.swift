@@ -59,10 +59,7 @@ class HomeViewController: UIViewController {
     private lazy var counterLabel: UILabel = {
         let view = UILabel()
         view.text = "0"
-        view.tintColor = UIColor().rgb(r: 255,
-                                             g: 139,
-                                             b: 91,
-                                             alpha: 1)
+        view.tintColor = .black
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -172,30 +169,24 @@ class HomeViewController: UIViewController {
         ]
     }
 
-    var indexPath: IndexPath?
-
-    @objc func incrementCounter() {
-        guard let indexPath = indexPath else { return }
-        delegate?.didTapPlusButton(at: indexPath)
+    var counter: Int = 0 {
+        didSet {
+            counterLabel.text = "\(counter)"
+        }
     }
-
-    @objc func decrementCounter() {
-        guard let indexPath = indexPath else { return }
-        delegate?.didTapMinusButton(at: indexPath)
-    }
-
     
 }
 
 extension HomeViewController: HomeCollectionViewCellDelegate {
     func didTapPlusButton(at indexPath: IndexPath) {
-        // Логика обработки нажатия на "+"
+        counter += 1
     }
 
     func didTapMinusButton(at indexPath: IndexPath) {
-        // Логика обработки нажатия на "-"
+        counter = max(0, counter - 1)
     }
 }
+
 
 
 extension HomeViewController: UICollectionViewDataSource {
@@ -218,7 +209,6 @@ extension HomeViewController: UICollectionViewDataSource {
                                                           for: indexPath) as! HomeCollectionViewCell
             let element = elements[indexPath.row]
             cell.configure(with: element)
-            cell.indexPath = indexPath
             cell.delegate = self
             return cell
         } else {
@@ -233,5 +223,3 @@ extension HomeViewController: UICollectionViewDataSource {
         
     }
 }
-
-
