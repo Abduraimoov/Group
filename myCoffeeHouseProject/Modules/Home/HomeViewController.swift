@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
     private lazy var horyzontalCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 72,
-                                 height: 32)
+                                 height: 35)
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 20
         layout.minimumInteritemSpacing = 10
@@ -52,6 +52,17 @@ class HomeViewController: UIViewController {
         let view = UICollectionView(frame: .zero,
                                     collectionViewLayout: layout)
         view.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var counterLabel: UILabel = {
+        let view = UILabel()
+        view.text = "0"
+        view.tintColor = UIColor().rgb(r: 255,
+                                             g: 139,
+                                             b: 91,
+                                             alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -111,42 +122,42 @@ class HomeViewController: UIViewController {
                  drink: "Кофейный напиток",
                  Money: "140 c",
                  minus: "-",
-                 counter: "",
+                 counter: counterLabel.text ?? "",
                  plus: "+"),
         Elements(image: "Coffee1",
                  naming: "Латте",
                  drink: "Кофейный напиток",
                  Money: "140 c",
                  minus: "-",
-                 counter: "",
+                 counter: counterLabel.text ?? "",
                  plus: "+"),
         Elements(image: "Coffee2",
                  naming: "Американо",
                  drink: "Кофейный напиток",
-                 Money: "100 c",
+                 Money: "160 c",
                  minus: "-",
-                 counter: "",
+                 counter: counterLabel.text ?? "",
                  plus: "+"),
         Elements(image: "Coffee3",
                  naming: "Раф",
                  drink: "Кофейный напиток",
-                 Money: "170 c",
-                 minus: "-", 
-                 counter: "",
+                 Money: "189 c",
+                 minus: "-",
+                 counter: counterLabel.text ?? "",
                  plus: "+"),
         Elements(image: "Coffee4",
                  naming: "Экспрессо",
                  drink: "Кофейный напиток",
-                 Money: "100 c",
+                 Money: "140 c",
                  minus: "-",
-                 counter: "",
+                 counter: counterLabel.text ?? "",
                  plus: "+"),
         Elements(image: "Coffee5",
                  naming: "Мокко",
                  drink: "Кофейный напиток",
-                 Money: "150 c",
+                 Money: "240 c",
                  minus: "-",
-                 counter: "",
+                 counter: counterLabel.text ?? "",
                  plus: "+"),
         ]
     }

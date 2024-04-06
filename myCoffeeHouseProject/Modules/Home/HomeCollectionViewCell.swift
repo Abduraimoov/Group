@@ -79,7 +79,6 @@ class HomeCollectionViewCell: UICollectionViewCell {
         let view = UILabel()
         view.font = .systemFont(ofSize: 16,
                                 weight: .bold)
-        view.text = "1"
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -136,9 +135,9 @@ class HomeCollectionViewCell: UICollectionViewCell {
             minusButton.widthAnchor.constraint(equalToConstant: 28),
             
             counterLabel.topAnchor.constraint(equalTo: topAnchor,
-                                              constant: 53),
+                                              constant: 58),
             counterLabel.rightAnchor.constraint(equalTo: rightAnchor,
-                                               constant: -40),
+                                               constant: -58),
             
             plusButton.topAnchor.constraint(equalTo: topAnchor,
                                             constant: 53),
