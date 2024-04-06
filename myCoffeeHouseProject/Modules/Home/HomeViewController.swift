@@ -261,7 +261,7 @@ extension HomeViewController: UICollectionViewDataSource {
             cell.configure(list: listlabel[indexPath.row])
             if indexPath == selectedIndexPath {
                 cell.backgroundColor = UIColor().rgb(r: 255, g: 139, b: 91, alpha: 1)
-                cell.layer.cornerRadius = 15 // Устанавливаете корнер-радиус ячейки
+                cell.layer.cornerRadius = 15
                    cell.layer.masksToBounds = true
             } else {
                 cell.backgroundColor = .clear
