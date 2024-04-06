@@ -33,7 +33,7 @@ class TopCollectionViewCell: UICollectionViewCell {
     private func setupConstrains() {
         addSubview(listlabels)
         NSLayoutConstraint.activate([
-        listlabels.centerYAnchor.constraint(equalTo: centerYAnchor),
+            listlabels.topAnchor.constraint(equalTo: topAnchor, constant: 3),
         listlabels.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }

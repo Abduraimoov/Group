@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
         layout.itemSize = CGSize(width: 72,
                                  height: 32)
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 10
+        layout.minimumLineSpacing = 20
         layout.minimumInteritemSpacing = 10
         layout.sectionInset = UIEdgeInsets(top: 10, left: 12, bottom: 0, right: 10)
         let view = UICollectionView(frame: .zero,
@@ -152,6 +152,7 @@ class HomeViewController: UIViewController {
         labels(label: "Десерт"),
         labels(label: "Выпечка"),
         labels(label: "Коктейлы"),
+        labels(label: "Машины"),
         ]
     }
     
