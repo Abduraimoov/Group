@@ -13,10 +13,19 @@ class HomeViewController: UIViewController {
     
     var listlabel: [labels] = []
     
+    private lazy var searchBar: UISearchBar = {
+        let view = UISearchBar()
+        view.placeholder = "Search"
+        view.backgroundImage = UIImage()
+        view.translatesAutoresizingMaskIntoConstraints = false
+    //    view.searchTextField.addTarget(self, action: #selector(noteSearchBarEditingChanged), for: .editingChanged)
+        return view
+    }()
+    
     private lazy var horyzontalCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 72,
-                                 height: 35)
+                                 height: 30)
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 20
         layout.minimumInteritemSpacing = 10
@@ -84,23 +93,24 @@ class HomeViewController: UIViewController {
     }
     
     private func setupConstrains() {
+        view.addSubview(searchBar)
         view.addSubview(horyzontalCollectionView)
-        view.addSubview(coffeeLabel)
         view.addSubview(verticalCollectionView)
         NSLayoutConstraint.activate([
             
-            horyzontalCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, 
+            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
                                                           constant: 10),
+            searchBar.leftAnchor.constraint(equalTo: view.leftAnchor),
+            searchBar.rightAnchor.constraint(equalTo: view.rightAnchor),
+            searchBar.heightAnchor.constraint(equalToConstant: 45),
+            
+            horyzontalCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
+                                             constant: 60),
             horyzontalCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
             horyzontalCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            horyzontalCollectionView.heightAnchor.constraint(equalToConstant: 32),
-            
-            coffeeLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,
-                                             constant: 50),
-            coffeeLabel.leftAnchor.constraint(equalTo: view.leftAnchor,
-                                              constant: 16),
+            horyzontalCollectionView.heightAnchor.constraint(equalToConstant: 40),
 
-            verticalCollectionView.topAnchor.constraint(equalTo: coffeeLabel.bottomAnchor,
+            verticalCollectionView.topAnchor.constraint(equalTo: horyzontalCollectionView.bottomAnchor,
                                                         constant: 16),
             verticalCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor,
                                                          constant: 16),
@@ -205,6 +215,7 @@ extension HomeViewController: UICollectionViewDelegate {
                                                      g: 139,
                                                      b: 91,
                                                      alpha: 1)
+                cell.layer.cornerRadius = 15
                 selectedIndexPath = indexPath
             }
         }

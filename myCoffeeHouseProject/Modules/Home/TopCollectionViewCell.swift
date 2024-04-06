@@ -12,7 +12,7 @@ class TopCollectionViewCell: UICollectionViewCell {
     private lazy var listlabels: UILabel = {
         let view = UILabel()
         view.tintColor = .systemGray3
-        view.font = .systemFont(ofSize: 17)
+        view.font = .systemFont(ofSize: 16.5)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -30,7 +30,7 @@ class TopCollectionViewCell: UICollectionViewCell {
         addSubview(listlabels)
         NSLayoutConstraint.activate([
             listlabels.topAnchor.constraint(equalTo: topAnchor,
-                                            constant: 3),
+                                            constant: 5),
         listlabels.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }
