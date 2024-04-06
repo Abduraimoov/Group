@@ -72,7 +72,7 @@ class HomeViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -80,6 +80,7 @@ class HomeViewController: UIViewController {
         setupConstrains()
         elementsCell()
         topLabels()
+        selectedIndexPath = IndexPath(item: 0, section: 0)
     }
 
     private func setupNavigtionItem() {
@@ -181,6 +182,12 @@ class HomeViewController: UIViewController {
         ]
     }
     
+    private var selectedIndex: IndexPath? {
+            didSet {
+                horyzontalCollectionView.reloadData()
+            }
+        }
+    
     var selectedIndexPath: IndexPath?
 
     var counter: Int = 0 {
@@ -263,4 +270,3 @@ extension HomeViewController: UICollectionViewDataSource {
         }
         
     }
-
