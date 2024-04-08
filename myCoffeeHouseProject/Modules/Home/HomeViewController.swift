@@ -41,6 +41,7 @@ class HomeViewController: UIViewController {
         return view
     }()
     
+    
     private lazy var coffeeLabel: UILabel = {
         let view = UILabel()
         view.text = "Кофе"
