@@ -14,12 +14,14 @@
 		850D6CC52BB985BA0010DEC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 850D6CC32BB985BA0010DEC4 /* LaunchScreen.storyboard */; };
 		850D6CD02BB986200010DEC4 /* Extension + uicolor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850D6CCF2BB986200010DEC4 /* Extension + uicolor.swift */; };
 		850D6CD42BB986D90010DEC4 /* StartingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850D6CD32BB986D90010DEC4 /* StartingView.swift */; };
-		8511D9692BC1332F004856AC /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8511D9682BC1332F004856AC /* HomeModel.swift */; };
 		852872B82BBC09DD0062F434 /* AutorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852872B72BBC09DD0062F434 /* AutorizationView.swift */; };
 		852872BA2BBC12260062F434 /* AutorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852872B92BBC12260062F434 /* AutorizationViewController.swift */; };
-		852872BD2BBC18C90062F434 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852872BC2BBC18C90062F434 /* HomeViewController.swift */; };
-		852872C12BBC1D030062F434 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852872C02BBC1D030062F434 /* HomeCollectionViewCell.swift */; };
-		85E542D82BBFFFBB0016D47E /* TopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E542D72BBFFFBB0016D47E /* TopCollectionViewCell.swift */; };
+		85E21D162BC56B580011AF5E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85E21D152BC56B580011AF5E /* GoogleService-Info.plist */; };
+		85E21D1E2BC7B3E40011AF5E /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D1D2BC7B3E40011AF5E /* HomeModel.swift */; };
+		85E21D202BC7B41C0011AF5E /* TopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D1F2BC7B41C0011AF5E /* TopCollectionViewCell.swift */; };
+		85E21D222BC7B4540011AF5E /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D212BC7B4540011AF5E /* HomeCollectionViewCell.swift */; };
+		85E21D242BC7B4A00011AF5E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D232BC7B4A00011AF5E /* HomeViewController.swift */; };
+		85E21D272BC7B5910011AF5E /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D262BC7B5910011AF5E /* HomeTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,12 +34,14 @@
 		850D6CC62BB985BA0010DEC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		850D6CCF2BB986200010DEC4 /* Extension + uicolor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + uicolor.swift"; sourceTree = "<group>"; };
 		850D6CD32BB986D90010DEC4 /* StartingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingView.swift; sourceTree = "<group>"; };
-		8511D9682BC1332F004856AC /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		852872B72BBC09DD0062F434 /* AutorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizationView.swift; sourceTree = "<group>"; };
 		852872B92BBC12260062F434 /* AutorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizationViewController.swift; sourceTree = "<group>"; };
-		852872BC2BBC18C90062F434 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		852872C02BBC1D030062F434 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
-		85E542D72BBFFFBB0016D47E /* TopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCollectionViewCell.swift; sourceTree = "<group>"; };
+		85E21D152BC56B580011AF5E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		85E21D1D2BC7B3E40011AF5E /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		85E21D1F2BC7B41C0011AF5E /* TopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCollectionViewCell.swift; sourceTree = "<group>"; };
+		85E21D212BC7B4540011AF5E /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		85E21D232BC7B4A00011AF5E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		85E21D262BC7B5910011AF5E /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,7 @@
 		85246FC62BBEA8F4009B0F41 /* Recourse */ = {
 			isa = PBXGroup;
 			children = (
+				85E21D152BC56B580011AF5E /* GoogleService-Info.plist */,
 				850D6CC12BB985BA0010DEC4 /* Assets.xcassets */,
 				850D6CC32BB985BA0010DEC4 /* LaunchScreen.storyboard */,
 			);
@@ -136,12 +141,21 @@
 		852872BB2BBC18870062F434 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				852872BC2BBC18C90062F434 /* HomeViewController.swift */,
-				852872C02BBC1D030062F434 /* HomeCollectionViewCell.swift */,
-				85E542D72BBFFFBB0016D47E /* TopCollectionViewCell.swift */,
-				8511D9682BC1332F004856AC /* HomeModel.swift */,
+				85E21D1F2BC7B41C0011AF5E /* TopCollectionViewCell.swift */,
+				85E21D212BC7B4540011AF5E /* HomeCollectionViewCell.swift */,
+				85E21D1D2BC7B3E40011AF5E /* HomeModel.swift */,
+				85E21D232BC7B4A00011AF5E /* HomeViewController.swift */,
+				85E21D252BC7B4EB0011AF5E /* tabBar */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		85E21D252BC7B4EB0011AF5E /* tabBar */ = {
+			isa = PBXGroup;
+			children = (
+				85E21D262BC7B5910011AF5E /* HomeTabBarController.swift */,
+			);
+			path = tabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,6 +218,7 @@
 			files = (
 				850D6CC52BB985BA0010DEC4 /* LaunchScreen.storyboard in Resources */,
 				850D6CC22BB985BA0010DEC4 /* Assets.xcassets in Resources */,
+				85E21D162BC56B580011AF5E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,14 +231,15 @@
 			files = (
 				850D6CD42BB986D90010DEC4 /* StartingView.swift in Sources */,
 				850D6CBD2BB985B90010DEC4 /* StartingViewController.swift in Sources */,
-				8511D9692BC1332F004856AC /* HomeModel.swift in Sources */,
-				85E542D82BBFFFBB0016D47E /* TopCollectionViewCell.swift in Sources */,
+				85E21D272BC7B5910011AF5E /* HomeTabBarController.swift in Sources */,
 				852872B82BBC09DD0062F434 /* AutorizationView.swift in Sources */,
-				852872BD2BBC18C90062F434 /* HomeViewController.swift in Sources */,
 				852872BA2BBC12260062F434 /* AutorizationViewController.swift in Sources */,
-				852872C12BBC1D030062F434 /* HomeCollectionViewCell.swift in Sources */,
 				850D6CB92BB985B90010DEC4 /* AppDelegate.swift in Sources */,
+				85E21D222BC7B4540011AF5E /* HomeCollectionViewCell.swift in Sources */,
 				850D6CBB2BB985B90010DEC4 /* SceneDelegate.swift in Sources */,
+				85E21D242BC7B4A00011AF5E /* HomeViewController.swift in Sources */,
+				85E21D1E2BC7B3E40011AF5E /* HomeModel.swift in Sources */,
+				85E21D202BC7B41C0011AF5E /* TopCollectionViewCell.swift in Sources */,
 				850D6CD02BB986200010DEC4 /* Extension + uicolor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
