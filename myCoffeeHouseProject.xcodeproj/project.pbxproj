@@ -125,7 +125,6 @@
 				852872B32BBC07E50062F434 /* Startings */,
 				852872B62BBC08190062F434 /* Autorizations */,
 				852872BB2BBC18870062F434 /* Home */,
-				85E21D492BC7CD830011AF5E /* JSONParser.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -215,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				85E21D4C2BC7CE170011AF5E /* Person.swift */,
+				85E21D492BC7CD830011AF5E /* JSONParser.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
