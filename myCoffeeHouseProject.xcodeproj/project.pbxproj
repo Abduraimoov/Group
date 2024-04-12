@@ -46,8 +46,8 @@
 		850D6CD32BB986D90010DEC4 /* StartingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingView.swift; sourceTree = "<group>"; };
 		852872B72BBC09DD0062F434 /* AutorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizationView.swift; sourceTree = "<group>"; };
 		852872B92BBC12260062F434 /* AutorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizationViewController.swift; sourceTree = "<group>"; };
-		8561BFE42BC91CA200CC8649 /* Person.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Person.json; sourceTree = "<group>"; };
 		8561BFE52BC91DE900CC8649 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		8561BFE72BC9210E00CC8649 /* Product.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Product.json; sourceTree = "<group>"; };
 		85E21D152BC56B580011AF5E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		85E21D2A2BC7B8030011AF5E /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeModel.swift; path = ../../../../../Documents/HomeModel.swift; sourceTree = "<group>"; };
 		85E21D2C2BC7B8160011AF5E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../../../../../Documents/HomeViewController.swift; sourceTree = "<group>"; };
@@ -223,7 +223,7 @@
 			children = (
 				85E21D4C2BC7CE170011AF5E /* Person.swift */,
 				8561BFE52BC91DE900CC8649 /* ProductModel.swift */,
-				8561BFE42BC91CA200CC8649 /* Person.json */,
+				8561BFE72BC9210E00CC8649 /* Product.json */,
 				85E21D492BC7CD830011AF5E /* JSONParser.swift */,
 			);
 			path = DTO;
