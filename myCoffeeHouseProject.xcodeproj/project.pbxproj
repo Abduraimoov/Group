@@ -16,6 +16,7 @@
 		850D6CD42BB986D90010DEC4 /* StartingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850D6CD32BB986D90010DEC4 /* StartingView.swift */; };
 		852872B82BBC09DD0062F434 /* AutorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852872B72BBC09DD0062F434 /* AutorizationView.swift */; };
 		852872BA2BBC12260062F434 /* AutorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852872B92BBC12260062F434 /* AutorizationViewController.swift */; };
+		8561BFE62BC91DE900CC8649 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8561BFE52BC91DE900CC8649 /* ProductModel.swift */; };
 		85E21D162BC56B580011AF5E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85E21D152BC56B580011AF5E /* GoogleService-Info.plist */; };
 		85E21D2B2BC7B8030011AF5E /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D2A2BC7B8030011AF5E /* HomeModel.swift */; };
 		85E21D2D2BC7B8160011AF5E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D2C2BC7B8160011AF5E /* HomeViewController.swift */; };
@@ -45,6 +46,8 @@
 		850D6CD32BB986D90010DEC4 /* StartingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingView.swift; sourceTree = "<group>"; };
 		852872B72BBC09DD0062F434 /* AutorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizationView.swift; sourceTree = "<group>"; };
 		852872B92BBC12260062F434 /* AutorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizationViewController.swift; sourceTree = "<group>"; };
+		8561BFE42BC91CA200CC8649 /* Person.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Person.json; sourceTree = "<group>"; };
+		8561BFE52BC91DE900CC8649 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		85E21D152BC56B580011AF5E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		85E21D2A2BC7B8030011AF5E /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeModel.swift; path = ../../../../../Documents/HomeModel.swift; sourceTree = "<group>"; };
 		85E21D2C2BC7B8160011AF5E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../../../../../Documents/HomeViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +222,8 @@
 			isa = PBXGroup;
 			children = (
 				85E21D4C2BC7CE170011AF5E /* Person.swift */,
+				8561BFE52BC91DE900CC8649 /* ProductModel.swift */,
+				8561BFE42BC91CA200CC8649 /* Person.json */,
 				85E21D492BC7CD830011AF5E /* JSONParser.swift */,
 			);
 			path = DTO;
@@ -311,6 +316,7 @@
 				850D6CBD2BB985B90010DEC4 /* StartingViewController.swift in Sources */,
 				85E21D3B2BC7B9B70011AF5E /* StorageViewController.swift in Sources */,
 				85E21D3E2BC7B9FB0011AF5E /* CompassViewController.swift in Sources */,
+				8561BFE62BC91DE900CC8649 /* ProductModel.swift in Sources */,
 				85E21D382BC7B91B0011AF5E /* HomeTabBarController.swift in Sources */,
 				85E21D632BC832410011AF5E /* SmsViewController.swift in Sources */,
 				852872B82BBC09DD0062F434 /* AutorizationView.swift in Sources */,
