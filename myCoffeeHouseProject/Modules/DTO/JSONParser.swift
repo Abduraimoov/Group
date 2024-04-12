@@ -13,22 +13,11 @@ struct JSONParser {
     
     let encoder = JSONEncoder() // -> struct -> json
     
-    func decode(with data: Data, completion: (Person?, Error?) -> Void) {
+    func decode<T: Codable>(with data: Data, completion: (Result<T, Error>) -> Void) {
         do {
-            let person = try decoder.decode(Person.self, from: data)
-            completion(person, nil)
-        } catch let error {
-            print(error.localizedDescription)
-            completion(nil, error)
-        }
-    }
-    
-    func decode(with data: Data, completion: (Result<Person, Error>) -> Void) {
-        do {
-            let person = try decoder.decode(Person.self, from: data)
+            let person = try decoder.decode(T.self, from: data)
             completion(.success(person))
         } catch let error {
-            print(error.localizedDescription)
             completion(.failure(error))
         }
     }

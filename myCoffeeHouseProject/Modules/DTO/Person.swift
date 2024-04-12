@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Person: Decodable {
+struct Person: Codable {
     
     let productName: String
     let ProductDrink: String
@@ -16,7 +16,7 @@ struct Person: Decodable {
     
 }
 
-let json = """
+let JSONProduct = """
 {
     "productName": "Каупчино",
     "ProductDrink": "Кафейный напиток",
