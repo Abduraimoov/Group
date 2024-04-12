@@ -25,12 +25,11 @@ class HomeTabBarController: UITabBarController {
                    image: UIImage(systemName: "qrcode.viewfinder")),
         generateVC(viewController: CompassViewController(),
                    image: UIImage(systemName: "safari")),
-        generateVC(viewController: MoreViewController(),
+        generateVC(viewController: MenuViewController(),
                    image: UIImage(systemName: "person")),
-       
         ]
     }
-    
+     
     private func generateVC(viewController: UIViewController,
                             image: UIImage?) -> UIViewController {
         viewController.tabBarItem.image = image

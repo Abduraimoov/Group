@@ -15,7 +15,6 @@ protocol HomeCollectionViewCellDelegate: AnyObject {
     
 }
 
-
 class HomeCollectionViewCell: UICollectionViewCell {
     
     weak var delegate: HomeCollectionViewCellDelegate?
@@ -53,7 +52,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    private lazy var moneyLabels: UILabel = {
+    private lazy var priceLabels: UILabel = {
         let view = UILabel()
         view.font = .systemFont(ofSize: 14,
                                 weight: .light)
@@ -68,6 +67,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
     private lazy var minusButton: UIButton = {
         let view = UIButton(type: .system)
         view.backgroundColor = .systemGray4
+        view.setTitle("-",
+                      for: .normal)
         view.layer.cornerRadius = 14
         view.titleLabel?.font = UIFont.systemFont(ofSize: 25)
         view.tintColor = .black
@@ -79,6 +80,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         let view = UILabel()
         view.font = .systemFont(ofSize: 16,
                                 weight: .bold)
+        view.text = "0"
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -89,6 +91,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
                                              g: 139,
                                              b: 91,
                                              alpha: 1)
+        view.setTitle("+",
+                      for: .normal)
         view.layer.cornerRadius = 14
         view.titleLabel?.font = UIFont.systemFont(ofSize: 25)
         view.tintColor = .white
@@ -112,7 +116,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         addSubview(stackLabels)
         stackLabels.addArrangedSubview(naminglabels)
         stackLabels.addArrangedSubview(drinksLabels)
-        stackLabels.addArrangedSubview(moneyLabels)
+        stackLabels.addArrangedSubview(priceLabels)
         contentView.addSubview(minusButton)
         contentView.addSubview(counterLabel)
         contentView.addSubview(plusButton)
@@ -150,17 +154,14 @@ class HomeCollectionViewCell: UICollectionViewCell {
         ])
     }
     
-    func configure(with element: Elements) {
-        leftImage.image = UIImage(named: element.image)
-        naminglabels.text = element.naming
-        drinksLabels.text = element.drink
-        moneyLabels.text = element.Money
-        minusButton.setTitle(element.minus,
-                             for: .normal)
-        counterLabel.text = element.counter
-        plusButton.setTitle(element.plus,
-                            for: .normal)
+    func fill(with model: ProductModel) {
+        leftImage.image = UIImage(named: model.productImage)
+        naminglabels.text = model.productName
+        drinksLabels.text = model.productDescription
+        priceLabels.text = "\(model.productPrice) c"
+        
     }
+    
     var counter: Int = 0 {
         didSet {
             counterLabel.text = "\(counter)"
@@ -172,7 +173,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
 
     @objc func decrementCounter() {
-        counter = max(0, counter - 1)
+        counter = max(0,
+                      counter - 1)
     }
 
 }
