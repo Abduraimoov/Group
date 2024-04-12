@@ -8,16 +8,16 @@
 import UIKit
 
 
-protocol HomeCollectionViewCellDelegate: AnyObject {
-    
-    func didTapPlusButton(at indexPath: IndexPath)
-    func didTapMinusButton(at indexPath: IndexPath)
-    
-}
+//protocol HomeCollectionViewCellDelegate: AnyObject {
+//    
+//    func didTapPlusButton(at indexPath: IndexPath)
+//    func didTapMinusButton(at indexPath: IndexPath)
+//    
+//}
 
 class HomeCollectionViewCell: UICollectionViewCell {
     
-    weak var delegate: HomeCollectionViewCellDelegate?
+   // weak var delegate: HomeCollectionViewCellDelegate?
 
     private lazy var leftImage: UIImageView = {
         let view = UIImageView()

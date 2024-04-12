@@ -11,8 +11,19 @@ class HomeTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigtionItem()
         generateTabBar()
         setTabBarAppearance()
+    }
+    
+    private func setupNavigtionItem() {
+        navigationItem.title = "Меню"
+        let rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "bell"),
+                                                 style: .plain,
+                                                 target: self,
+                                                 action: .none)
+        navigationItem.rightBarButtonItem = rightBarButtonItem
+        navigationController?.navigationBar.tintColor = .black
     }
     
     private func generateTabBar() {
