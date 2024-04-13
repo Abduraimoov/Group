@@ -20,6 +20,9 @@
 		8561BFE92BC9257A00CC8649 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8561BFE82BC9257A00CC8649 /* MenuViewController.swift */; };
 		8561BFEA2BC92A9C00CC8649 /* Product.json in Resources */ = {isa = PBXBuildFile; fileRef = 8561BFE72BC9210E00CC8649 /* Product.json */; };
 		8561BFEB2BC92B8F00CC8649 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D2C2BC7B8160011AF5E /* HomeViewController.swift */; };
+		85805A262BCACF2900F01F01 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85805A252BCACF2900F01F01 /* Constants.swift */; };
+		85805A282BCAD01E00F01F01 /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85805A272BCAD01E00F01F01 /* NetworkLayer.swift */; };
+		85805A2A2BCAD15600F01F01 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85805A292BCAD15600F01F01 /* Products.swift */; };
 		85E21D162BC56B580011AF5E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 85E21D152BC56B580011AF5E /* GoogleService-Info.plist */; };
 		85E21D2B2BC7B8030011AF5E /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D2A2BC7B8030011AF5E /* HomeModel.swift */; };
 		85E21D312BC7B8360011AF5E /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D302BC7B8360011AF5E /* HomeCollectionViewCell.swift */; };
@@ -49,6 +52,9 @@
 		8561BFE52BC91DE900CC8649 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		8561BFE72BC9210E00CC8649 /* Product.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Product.json; sourceTree = "<group>"; };
 		8561BFE82BC9257A00CC8649 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		85805A252BCACF2900F01F01 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		85805A272BCAD01E00F01F01 /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
+		85805A292BCAD15600F01F01 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		85E21D152BC56B580011AF5E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		85E21D2A2BC7B8030011AF5E /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeModel.swift; path = ../../../../../Documents/HomeModel.swift; sourceTree = "<group>"; };
 		85E21D2C2BC7B8160011AF5E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../../../../../Documents/HomeViewController.swift; sourceTree = "<group>"; };
@@ -220,9 +226,12 @@
 		85E21D4B2BC7CE000011AF5E /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				85805A252BCACF2900F01F01 /* Constants.swift */,
+				85805A292BCAD15600F01F01 /* Products.swift */,
 				8561BFE52BC91DE900CC8649 /* ProductModel.swift */,
 				8561BFE72BC9210E00CC8649 /* Product.json */,
 				85E21D492BC7CD830011AF5E /* JSONParser.swift */,
+				85805A272BCAD01E00F01F01 /* NetworkLayer.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -309,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				85E21D462BC7C4AB0011AF5E /* ExtensionUiColorTabBar.swift in Sources */,
+				85805A262BCACF2900F01F01 /* Constants.swift in Sources */,
 				85E21D4A2BC7CD830011AF5E /* JSONParser.swift in Sources */,
 				850D6CD42BB986D90010DEC4 /* StartingView.swift in Sources */,
 				850D6CBD2BB985B90010DEC4 /* StartingViewController.swift in Sources */,
@@ -319,6 +329,7 @@
 				85E21D382BC7B91B0011AF5E /* HomeTabBarController.swift in Sources */,
 				85E21D632BC832410011AF5E /* SmsViewController.swift in Sources */,
 				852872B82BBC09DD0062F434 /* AutorizationView.swift in Sources */,
+				85805A282BCAD01E00F01F01 /* NetworkLayer.swift in Sources */,
 				852872BA2BBC12260062F434 /* AutorizationViewController.swift in Sources */,
 				850D6CB92BB985B90010DEC4 /* AppDelegate.swift in Sources */,
 				85E21D312BC7B8360011AF5E /* HomeCollectionViewCell.swift in Sources */,
@@ -327,6 +338,7 @@
 				85E21D2B2BC7B8030011AF5E /* HomeModel.swift in Sources */,
 				85E21D352BC7B8E60011AF5E /* TopCollectionViewCell.swift in Sources */,
 				850D6CD02BB986200010DEC4 /* Extension + uicolor.swift in Sources */,
+				85805A2A2BCAD15600F01F01 /* Products.swift in Sources */,
 				85E21D442BC7BC3C0011AF5E /* ScannerViewController.swift in Sources */,
 				8561BFE92BC9257A00CC8649 /* MenuViewController.swift in Sources */,
 			);
