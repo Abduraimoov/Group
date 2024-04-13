@@ -13,14 +13,14 @@ protocol StartingViewDelegate: AnyObject {
 
 class StartignView: UIView {
     
-    lazy var coffeeImage: UIImageView = {
+   private lazy var coffeeImage: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "Image")
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var toComeInButton: UIButton = {
+   private lazy var toComeInButton: UIButton = {
         let view = UIButton(type: .system)
         view.setTitle("Войти",
                       for: .normal)
@@ -93,7 +93,7 @@ class StartignView: UIView {
     }
     
     @objc
-    func ViewControllerTapped() {
+   private func ViewControllerTapped() {
         screenTransitionTapped?()
     }
     

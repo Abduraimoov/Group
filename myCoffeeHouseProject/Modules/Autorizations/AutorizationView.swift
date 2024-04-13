@@ -120,7 +120,7 @@ class AutorizationView: UIView {
     }
     
     @objc
-    func homeScreenTransition() {
+    private func homeScreenTransition() {
         screenTransition?()
     }
 }

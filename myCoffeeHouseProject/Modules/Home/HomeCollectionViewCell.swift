@@ -75,7 +75,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-     lazy var counterLabel: UILabel = {
+    private lazy var counterLabel: UILabel = {
         let view = UILabel()
         view.font = .systemFont(ofSize: 16,
                                 weight: .bold)
@@ -167,11 +167,11 @@ class HomeCollectionViewCell: UICollectionViewCell {
         }
     }
 
-    @objc func incrementCounter() {
+    @objc private func incrementCounter() {
         counter += 1
     }
 
-    @objc func decrementCounter() {
+    @objc private func decrementCounter() {
         counter = max(0,
                       counter - 1)
     }
