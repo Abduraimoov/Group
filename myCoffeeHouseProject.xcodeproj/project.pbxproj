@@ -123,6 +123,7 @@
 		850D6CD22BB986860010DEC4 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				85805A232BCAAEBC00F01F01 /* TabBar */,
 				85E21D612BC8322B0011AF5E /* Sms */,
 				85E21D4B2BC7CE000011AF5E /* DTO */,
 				85E21D422BC7BC250011AF5E /* Scanner */,
@@ -171,12 +172,11 @@
 				85E21D302BC7B8360011AF5E /* HomeCollectionViewCell.swift */,
 				85E21D342BC7B8E60011AF5E /* TopCollectionViewCell.swift */,
 				85E21D2A2BC7B8030011AF5E /* HomeModel.swift */,
-				85E21D362BC7B8F90011AF5E /* TabBar */,
 			);
 			path = Home;
 			sourceTree = "<group>";
 		};
-		85E21D362BC7B8F90011AF5E /* TabBar */ = {
+		85805A232BCAAEBC00F01F01 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
 				85E21D372BC7B91B0011AF5E /* HomeTabBarController.swift */,
