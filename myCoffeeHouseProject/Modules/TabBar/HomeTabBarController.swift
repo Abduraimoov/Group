@@ -11,66 +11,56 @@ class HomeTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigtionItem()
         generateTabBar()
         setTabBarAppearance()
     }
     
-    private func setupNavigtionItem() {
-        navigationItem.title = "Меню"
-        let rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "bell"),
-                                                 style: .plain,
-                                                 target: self,
-                                                 action: .none)
-        navigationItem.rightBarButtonItem = rightBarButtonItem
-        navigationController?.navigationBar.tintColor = .black
+    private func generateVC(viewController: UIViewController, title: String, image: UIImage?, rightBarButtonImage: UIImage?) -> UIViewController {
+        let navController = UINavigationController(rootViewController: viewController)
+        
+        viewController.navigationItem.title = title
+        if let rightImage = rightBarButtonImage {
+            let rightBarButtonItem = UIBarButtonItem(image: rightImage, style: .plain, target: viewController, action: .none)
+            viewController.navigationItem.rightBarButtonItem = rightBarButtonItem
+        }
+        viewController.navigationController?.navigationBar.tintColor = .black
+        viewController.tabBarItem.image = image
+        
+        return navController
     }
-    
+
     private func generateTabBar() {
         viewControllers = [
-        generateVC(viewController: HomeViewController(),
-                   image: UIImage(systemName: "house")),
-        generateVC(viewController: StorageViewController(),
-                   image: UIImage(systemName: "cart.badge.questionmark.rtl")),
-        generateVC(viewController: ScannerViewController(),
-                   image: UIImage(systemName: "qrcode.viewfinder")),
-        generateVC(viewController: CompassViewController(),
-                   image: UIImage(systemName: "safari")),
-        generateVC(viewController: MenuViewController(),
-                   image: UIImage(systemName: "person")),
+            generateVC(viewController: HomeViewController(), title: "Дом", image: UIImage(systemName: "house"), rightBarButtonImage: UIImage(systemName: "bell")),
+            generateVC(viewController: StorageViewController(), title: "Склад", image: UIImage(systemName: "cart.badge.questionmark.rtl"), rightBarButtonImage: UIImage(systemName: "paperclip")),
+            generateVC(viewController: ScannerViewController(), title: "Сканер", image: UIImage(systemName: "qrcode.viewfinder"), rightBarButtonImage: UIImage(systemName: "camera")),
+            generateVC(viewController: CompassViewController(), title: "Компас", image: UIImage(systemName: "safari"), rightBarButtonImage: UIImage(systemName: "location")),
+            generateVC(viewController: MenuViewController(), title: "Меню", image: UIImage(systemName: "person"), rightBarButtonImage: UIImage(systemName: "gear"))
         ]
-    }
-     
-    private func generateVC(viewController: UIViewController,
-                            image: UIImage?) -> UIViewController {
-        viewController.tabBarItem.image = image
-        return viewController
     }
     
     private func setTabBarAppearance() {
         let positionOnX: CGFloat = 8
         let positionOnY: CGFloat = 13
-        let widht = tabBar.bounds.width - positionOnX * 2
+        let width = tabBar.bounds.width - positionOnX * 2
         let height = tabBar.bounds.height + positionOnY * 2
         
         let roundLayer = CAShapeLayer()
-        
-        let bezierPath = UIBezierPath(roundedRect: CGRect(x: positionOnX,
-                                                          y: tabBar.bounds.minY - positionOnY,
-                                                          width: widht,
-                                                          height: height),
-                                      cornerRadius: height / 2)
+        let bezierPath = UIBezierPath(roundedRect: CGRect(x: positionOnX, y: tabBar.bounds.minY - positionOnY, width: width, height: height), cornerRadius: height / 2)
         
         roundLayer.path = bezierPath.cgPath
+        roundLayer.fillColor = UIColor.white.cgColor
+        tabBar.layer.insertSublayer(roundLayer, at: 0)
         
-        tabBar.layer.insertSublayer(roundLayer,
-                                    at: 0)
-        
-        tabBar.itemWidth = widht / 5
+        tabBar.itemWidth = width / 5
         tabBar.itemPositioning = .centered
-        
-        roundLayer.fillColor = UIColor.mainWhite.cgColor
-        tabBar.tintColor = .tabbatItemAccent
-        tabBar.unselectedItemTintColor = .tabBarItemLight
+        tabBar.tintColor = UIColor.systemBlue
+        tabBar.unselectedItemTintColor = UIColor.gray
     }
 }
+
+//extension UIViewController {
+//    @objc func performAction() {
+//        // Этот метод должен быть переопределён в каждом контроллере, если нужно обработать действие.
+//    }
+//}
