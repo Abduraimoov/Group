@@ -16,8 +16,6 @@ import UIKit
 
 class HomeCollectionViewCell: UICollectionViewCell {
     
-   // weak var delegate: HomeCollectionViewCellDelegate?
-
     private lazy var leftImage: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -98,6 +96,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    // weak var delegate: HomeCollectionViewCellDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
