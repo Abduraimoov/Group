@@ -7,16 +7,16 @@
 
 import UIKit
 
-protocol HomeCollectionViewCellDelegate: AnyObject {
-    
-    func didTapPlusButton()
-    func didTapMinusButton()
-    
-}
+//protocol HomeCollectionViewCellDelegate: AnyObject {
+//    
+//    func didTapPlusButton()
+//    func didTapMinusButton()
+//    
+//}
 
 class HomeCollectionViewCell: UICollectionViewCell {
     
-    weak var delegate: HomeCollectionViewCellDelegate?
+   // weak var delegate: HomeCollectionViewCellDelegate?
 
     private lazy var leftImage: UIImageView = {
         let view = UIImageView()
@@ -161,18 +161,19 @@ class HomeCollectionViewCell: UICollectionViewCell {
         
     }
     
-//    var counter: Int = 0 {
-//        didSet {
-//            counterLabel.text = "\(counter)"
-//        }
-//    }
+    var counter: Int = 0 {
+        didSet {
+            counterLabel.text = "\(counter)"
+        }
+    }
 
     @objc func incrementCounter() {
-        delegate?.didTapPlusButton()
+        counter += 1
     }
 
     @objc func decrementCounter() {
-        delegate?.didTapMinusButton()
+        counter = max(0,
+                      counter - 1)
     }
 
 }

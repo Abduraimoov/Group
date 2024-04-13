@@ -8,14 +8,17 @@
 import UIKit
 
 class SmsViewController: UIViewController {
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = .systemBackground
         
     }
     
-
+    private func setupConstraints() {
+//        view.addSubview(<#UIView#>)
+    }
    
 
 }
