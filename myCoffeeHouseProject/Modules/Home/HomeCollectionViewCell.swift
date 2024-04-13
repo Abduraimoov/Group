@@ -158,7 +158,6 @@ class HomeCollectionViewCell: UICollectionViewCell {
         naminglabels.text = model.productName
         drinksLabels.text = model.productDescription
         priceLabels.text = "\(model.productPrice) c"
-        
     }
     
     var counter: Int = 0 {
