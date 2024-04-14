@@ -13,51 +13,39 @@ class HomeTabBarController: UITabBarController {
         super.viewDidLoad()
         generateTabBar()
         setTabBarAppearance()
+        setupNavigationItem()
+    }
+    
+    private func setupNavigationItem() {
+        navigationItem.title = "Меню"
+        let rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "bell"),
+                                                 style: .plain,
+                                                 target: self,
+                                                 action: .none)
+        rightBarButtonItem.tintColor = .black
+        navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
     private func generateVC(viewController: UIViewController,
-                            title: String,
-                            image: UIImage?,
-                            rightBarButtonImage: UIImage?) -> UIViewController {
+                            image: UIImage?) -> UIViewController {
         
-        let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.navigationBar.tintColor = .black
+        let navController = UINavigationController(rootViewController: viewController)
         viewController.tabBarItem.image = image
-        
-        viewController.navigationItem.title = title
-        if let Image = rightBarButtonImage {
-            let rightBarButtonItem = UIBarButtonItem(image: Image,
-                                                     style: .plain,
-                                                     target: viewController,
-                                                     action: .none)
-            viewController.navigationItem.rightBarButtonItem = rightBarButtonItem
-        }
-        return navigationController
+        return viewController
     }
-
 
     private func generateTabBar() {
         viewControllers = [
             generateVC(viewController: HomeViewController(),
-                       title: "Дом",
-                       image: UIImage(systemName: "house"),
-                       rightBarButtonImage: UIImage(systemName: "bell")),
+                       image: UIImage(systemName: "house")),
             generateVC(viewController: StorageViewController(),
-                       title: "Склад",
-                       image: UIImage(systemName: "cart.badge.questionmark.rtl"),
-                       rightBarButtonImage: UIImage(systemName: "paperclip")),
+                       image: UIImage(systemName: "cart.badge.questionmark.rtl")),
             generateVC(viewController: ScannerViewController(),
-                       title: "Сканер",
-                       image: UIImage(systemName: "qrcode.viewfinder"),
-                       rightBarButtonImage: UIImage(systemName: "camera")),
-            generateVC(viewController: CompassViewController(), 
-                       title: "Компас",
-                       image: UIImage(systemName: "safari"),
-                       rightBarButtonImage: UIImage(systemName: "location")),
+                       image: UIImage(systemName: "qrcode.viewfinder")),
+            generateVC(viewController: CompassViewController(),
+                       image: UIImage(systemName: "safari")),
             generateVC(viewController: MenuViewController(),
-                       title: "Меню",
-                       image: UIImage(systemName: "person"),
-                       rightBarButtonImage: UIImage(systemName: "gear"))
+                       image: UIImage(systemName: "person"))
         ]
     }
     
@@ -83,6 +71,5 @@ class HomeTabBarController: UITabBarController {
         tabBar.tintColor = UIColor.systemBlue
         tabBar.unselectedItemTintColor = UIColor.gray
     }
-
+    
 }
-

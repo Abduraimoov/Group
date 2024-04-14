@@ -153,11 +153,11 @@ class HomeCollectionViewCell: UICollectionViewCell {
         ])
     }
     
-    func fill(with model: ProductModel) {
-        leftImage.image = UIImage(named: model.productImage)
-        naminglabels.text = model.productName
-        drinksLabels.text = model.productDescription
-        priceLabels.text = "\(model.productPrice) c"
+    func fill(with model: Product) {
+        leftImage.image = UIImage(named: model.image)
+        naminglabels.text = model.title
+        drinksLabels.text = model.description
+        priceLabels.text = "\(model.price) c"
     }
     
     var counter: Int = 0 {

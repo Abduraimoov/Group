@@ -34,7 +34,7 @@ struct NetworkLayer {
                     completion(.failure(error))
                 }
             }
-        }
+        }.resume()
     }
         
 }
