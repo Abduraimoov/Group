@@ -17,15 +17,13 @@ class HomeTabBarController: UITabBarController {
     
     private func generateVC(viewController: UIViewController, title: String, image: UIImage?, rightBarButtonImage: UIImage?) -> UIViewController {
         let navController = UINavigationController(rootViewController: viewController)
-        
         viewController.navigationItem.title = title
         if let rightImage = rightBarButtonImage {
-            let rightBarButtonItem = UIBarButtonItem(image: rightImage, style: .plain, target: viewController, action: .none)
+            let rightBarButtonItem = UIBarButtonItem(image: rightImage, style: .plain, target: viewController, action: #selector(setupNavigationItem))
             viewController.navigationItem.rightBarButtonItem = rightBarButtonItem
         }
         viewController.navigationController?.navigationBar.tintColor = .black
         viewController.tabBarItem.image = image
-        
         return navController
     }
 
@@ -57,10 +55,9 @@ class HomeTabBarController: UITabBarController {
         tabBar.tintColor = UIColor.systemBlue
         tabBar.unselectedItemTintColor = UIColor.gray
     }
+    
+    @objc func setupNavigationItem() {
+        print("работаеть")
+    }
 }
 
-//extension UIViewController {
-//    @objc func performAction() {
-//        // Этот метод должен быть переопределён в каждом контроллере, если нужно обработать действие.
-//    }
-//}
