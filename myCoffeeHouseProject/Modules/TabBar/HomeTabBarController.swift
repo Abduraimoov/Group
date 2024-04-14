@@ -15,25 +15,49 @@ class HomeTabBarController: UITabBarController {
         setTabBarAppearance()
     }
     
-    private func generateVC(viewController: UIViewController, title: String, image: UIImage?, rightBarButtonImage: UIImage?) -> UIViewController {
-        let navController = UINavigationController(rootViewController: viewController)
+    private func generateVC(viewController: UIViewController,
+                            title: String,
+                            image: UIImage?,
+                            rightBarButtonImage: UIImage?) -> UIViewController {
+        
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.navigationBar.tintColor = .black
+        viewController.tabBarItem.image = image
+        
         viewController.navigationItem.title = title
-        if let rightImage = rightBarButtonImage {
-            let rightBarButtonItem = UIBarButtonItem(image: rightImage, style: .plain, target: viewController, action: #selector(setupNavigationItem))
+        if let Image = rightBarButtonImage {
+            let rightBarButtonItem = UIBarButtonItem(image: Image,
+                                                     style: .plain,
+                                                     target: viewController,
+                                                     action: .none)
             viewController.navigationItem.rightBarButtonItem = rightBarButtonItem
         }
-        viewController.navigationController?.navigationBar.tintColor = .black
-        viewController.tabBarItem.image = image
-        return navController
+        return navigationController
     }
+
 
     private func generateTabBar() {
         viewControllers = [
-            generateVC(viewController: HomeViewController(), title: "Дом", image: UIImage(systemName: "house"), rightBarButtonImage: UIImage(systemName: "bell")),
-            generateVC(viewController: StorageViewController(), title: "Склад", image: UIImage(systemName: "cart.badge.questionmark.rtl"), rightBarButtonImage: UIImage(systemName: "paperclip")),
-            generateVC(viewController: ScannerViewController(), title: "Сканер", image: UIImage(systemName: "qrcode.viewfinder"), rightBarButtonImage: UIImage(systemName: "camera")),
-            generateVC(viewController: CompassViewController(), title: "Компас", image: UIImage(systemName: "safari"), rightBarButtonImage: UIImage(systemName: "location")),
-            generateVC(viewController: MenuViewController(), title: "Меню", image: UIImage(systemName: "person"), rightBarButtonImage: UIImage(systemName: "gear"))
+            generateVC(viewController: HomeViewController(),
+                       title: "Дом",
+                       image: UIImage(systemName: "house"),
+                       rightBarButtonImage: UIImage(systemName: "bell")),
+            generateVC(viewController: StorageViewController(),
+                       title: "Склад",
+                       image: UIImage(systemName: "cart.badge.questionmark.rtl"),
+                       rightBarButtonImage: UIImage(systemName: "paperclip")),
+            generateVC(viewController: ScannerViewController(),
+                       title: "Сканер",
+                       image: UIImage(systemName: "qrcode.viewfinder"),
+                       rightBarButtonImage: UIImage(systemName: "camera")),
+            generateVC(viewController: CompassViewController(), 
+                       title: "Компас",
+                       image: UIImage(systemName: "safari"),
+                       rightBarButtonImage: UIImage(systemName: "location")),
+            generateVC(viewController: MenuViewController(),
+                       title: "Меню",
+                       image: UIImage(systemName: "person"),
+                       rightBarButtonImage: UIImage(systemName: "gear"))
         ]
     }
     
@@ -44,7 +68,11 @@ class HomeTabBarController: UITabBarController {
         let height = tabBar.bounds.height + positionOnY * 2
         
         let roundLayer = CAShapeLayer()
-        let bezierPath = UIBezierPath(roundedRect: CGRect(x: positionOnX, y: tabBar.bounds.minY - positionOnY, width: width, height: height), cornerRadius: height / 2)
+        let bezierPath = UIBezierPath(roundedRect: CGRect(x: positionOnX,
+                                                          y: tabBar.bounds.minY - positionOnY,
+                                                          width: width,
+                                                          height: height),
+                                      cornerRadius: height / 2)
         
         roundLayer.path = bezierPath.cgPath
         roundLayer.fillColor = UIColor.white.cgColor
@@ -55,9 +83,6 @@ class HomeTabBarController: UITabBarController {
         tabBar.tintColor = UIColor.systemBlue
         tabBar.unselectedItemTintColor = UIColor.gray
     }
-    
-    @objc func setupNavigationItem() {
-        print("работаеть")
-    }
+
 }
 
