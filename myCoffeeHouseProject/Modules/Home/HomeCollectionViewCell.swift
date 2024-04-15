@@ -11,6 +11,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     private lazy var leftImage: UIImageView = {
         let view = UIImageView()
+        view.layer.cornerRadius = 16
+        view.clipsToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
