@@ -80,8 +80,6 @@ class HomeCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    // weak var delegate: HomeCollectionViewCellDelegate?
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupConstrains()
@@ -145,12 +143,6 @@ class HomeCollectionViewCell: UICollectionViewCell {
             plusButton.widthAnchor.constraint(equalToConstant: 28)
         ])
     }
-    
-//    func fill(with model: Product) {
-//        leftImage.image = UIImage(named: model.strMealThumb)
-//        naminglabels.text = model.strMeal
-//        drinksLabels.text = model.idMeal
-//    }
     
     func setup(product: Product) {
 

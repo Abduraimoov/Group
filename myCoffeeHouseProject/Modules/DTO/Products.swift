@@ -7,6 +7,20 @@
 
 import Foundation
 
+struct Categories: Codable {
+    
+    let categories: [Category]
+}
+
+struct Category: Codable, Equatable {
+    
+    let title: String
+    
+    enum CodingKeys: String, CodingKey {
+        case title = "strCategory"
+    }
+}
+
 struct Products: Codable {
     
     let meals: [Product]
