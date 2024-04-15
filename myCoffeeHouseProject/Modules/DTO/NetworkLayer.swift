@@ -15,26 +15,29 @@ struct NetworkLayer {
     
     func fetchProducts(completion: @escaping (Result<[Product],
                                               Error>) -> Void) {
+        // MARK: - создаём запрос на сервер но не отправляем его (просто собираем данные) --> Get
         let request = URLRequest(url: Constants.baseURL)
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            // data --> Succes (200>)
-            // error --> Failure (100, 300, 400, 500)
-            // response --> default
-            
+        // MARK: - URLSession сессия которая позволяет отправить запрос "request" на сервер
+        URLSession.shared.dataTask(with: request) { data, response, error in // --> получили дата (успех)
+          // error --> ошибка, response --> по умольчанию всегда приходить
             if let error {
+                // MARK: - проверяем ошибку на опцилнальность
                 completion(.failure(error))
             }
-            // распарсить json в структуры
+            
             if let data {
+                // MARK: - проверяем данные на опцилнальность
                 do {
+                    // MARK: - пытаемься распарсить данные
                     let model = try decoder.decode(Products.self,
                                                       from: data)
+                    // MARK: - закидываем данные в замыкании
                     completion(.success(model.products))
                 } catch {
                     completion(.failure(error))
                 }
             }
-        }.resume()
+        }.resume() // --> Отправь запрос на сервер 
     }
         
 }
