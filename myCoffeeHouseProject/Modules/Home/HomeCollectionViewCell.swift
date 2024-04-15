@@ -7,13 +7,6 @@
 
 import UIKit
 
-//protocol HomeCollectionViewCellDelegate: AnyObject {
-//    
-//    func didTapPlusButton()
-//    func didTapMinusButton()
-//    
-//}
-
 class HomeCollectionViewCell: UICollectionViewCell {
     
     private lazy var leftImage: UIImageView = {
@@ -45,18 +38,6 @@ class HomeCollectionViewCell: UICollectionViewCell {
         view.font = .systemFont(ofSize: 12,
                                 weight: .light)
         view.tintColor = .black
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
-    private lazy var priceLabels: UILabel = {
-        let view = UILabel()
-        view.font = .systemFont(ofSize: 14,
-                                weight: .light)
-        view.tintColor = UIColor().rgb(r: 255,
-                                             g: 139,
-                                             b: 91,
-                                             alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -110,12 +91,22 @@ class HomeCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func loadImage(from urlString: String) {
+            guard let url = URL(string: urlString) else { return }
+
+            URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+                guard let data = data, error == nil, let image = UIImage(data: data) else { return }
+                DispatchQueue.main.async {
+                    self?.leftImage.image = image
+                }
+            }.resume()
+        }
+    
     private func setupConstrains() {
         addSubview(leftImage)
         addSubview(stackLabels)
         stackLabels.addArrangedSubview(naminglabels)
         stackLabels.addArrangedSubview(drinksLabels)
-        stackLabels.addArrangedSubview(priceLabels)
         contentView.addSubview(minusButton)
         contentView.addSubview(counterLabel)
         contentView.addSubview(plusButton)
@@ -153,12 +144,18 @@ class HomeCollectionViewCell: UICollectionViewCell {
         ])
     }
     
-    func fill(with model: Product) {
-        leftImage.image = UIImage(named: model.image)
-        naminglabels.text = model.title
-        drinksLabels.text = model.description
-        priceLabels.text = "\(model.price) c"
-    }
+//    func fill(with model: Product) {
+//        leftImage.image = UIImage(named: model.strMealThumb)
+//        naminglabels.text = model.strMeal
+//        drinksLabels.text = model.idMeal
+//    }
+    
+    func setup(product: Product) {
+
+            naminglabels.text = product.strMeal
+        drinksLabels.text = product.idMeal
+            loadImage(from: product.strMealThumb)
+        }
     
     var counter: Int = 0 {
         didSet {

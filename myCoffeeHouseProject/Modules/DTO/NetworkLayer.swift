@@ -13,31 +13,28 @@ struct NetworkLayer {
     
     private let encoder = JSONEncoder()
     
-    func fetchProducts(completion: @escaping (Result<[Product],
-                                              Error>) -> Void) {
-        // MARK: - создаём запрос на сервер но не отправляем его (просто собираем данные) --> Get
-        let request = URLRequest(url: Constants.baseURL)
-        // MARK: - URLSession сессия которая позволяет отправить запрос "request" на сервер
-        URLSession.shared.dataTask(with: request) { data, response, error in // --> получили дата (успех)
-          // error --> ошибка, response --> по умольчанию всегда приходить
-            if let error {
-                // MARK: - проверяем ошибку на опцилнальность
-                completion(.failure(error))
-            }
-            
-            if let data {
-                // MARK: - проверяем данные на опцилнальность
-                do {
-                    // MARK: - пытаемься распарсить данные
-                    let model = try decoder.decode(Products.self,
-                                                      from: data)
-                    // MARK: - закидываем данные в замыкании
-                    completion(.success(model.products))
-                } catch {
+    func fetchProducts(
+            completion: @escaping (Result<[Product],
+                                   Error>) -> Void) {
+            let reguest = URLRequest(url: Constants.baseURL)
+            URLSession.shared.dataTask(with: reguest) { data,
+                                                        response,
+                                                        error in
+                if let error {
                     completion(.failure(error))
                 }
-            }
-        }.resume() // --> Отправь запрос на сервер 
+                
+                if let data {
+                    do {
+                        let model = try decoder.decode(Products.self,
+                                                       from: data)
+                        completion(.success(model.meals))
+                    } catch {
+                        completion(.failure(error))
+                    }
+                }
+            }.resume()
+        }
     }
         
-}
+

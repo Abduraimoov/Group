@@ -16,9 +16,7 @@
 		850D6CD42BB986D90010DEC4 /* StartingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850D6CD32BB986D90010DEC4 /* StartingView.swift */; };
 		852872B82BBC09DD0062F434 /* AutorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852872B72BBC09DD0062F434 /* AutorizationView.swift */; };
 		852872BA2BBC12260062F434 /* AutorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852872B92BBC12260062F434 /* AutorizationViewController.swift */; };
-		8561BFE62BC91DE900CC8649 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8561BFE52BC91DE900CC8649 /* ProductModel.swift */; };
 		8561BFE92BC9257A00CC8649 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8561BFE82BC9257A00CC8649 /* MenuViewController.swift */; };
-		8561BFEA2BC92A9C00CC8649 /* Product.json in Resources */ = {isa = PBXBuildFile; fileRef = 8561BFE72BC9210E00CC8649 /* Product.json */; };
 		8561BFEB2BC92B8F00CC8649 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D2C2BC7B8160011AF5E /* HomeViewController.swift */; };
 		85805A262BCACF2900F01F01 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85805A252BCACF2900F01F01 /* Constants.swift */; };
 		85805A282BCAD01E00F01F01 /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85805A272BCAD01E00F01F01 /* NetworkLayer.swift */; };
@@ -32,7 +30,6 @@
 		85E21D3E2BC7B9FB0011AF5E /* CompassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D3D2BC7B9FB0011AF5E /* CompassViewController.swift */; };
 		85E21D442BC7BC3C0011AF5E /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D432BC7BC3C0011AF5E /* ScannerViewController.swift */; };
 		85E21D462BC7C4AB0011AF5E /* ExtensionUiColorTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D452BC7C4AB0011AF5E /* ExtensionUiColorTabBar.swift */; };
-		85E21D4A2BC7CD830011AF5E /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D492BC7CD830011AF5E /* JSONParser.swift */; };
 		85E21D632BC832410011AF5E /* SmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D622BC832410011AF5E /* SmsViewController.swift */; };
 		85E21D652BC838660011AF5E /* SmsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D642BC838660011AF5E /* SmsView.swift */; };
 /* End PBXBuildFile section */
@@ -49,8 +46,6 @@
 		850D6CD32BB986D90010DEC4 /* StartingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingView.swift; sourceTree = "<group>"; };
 		852872B72BBC09DD0062F434 /* AutorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizationView.swift; sourceTree = "<group>"; };
 		852872B92BBC12260062F434 /* AutorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizationViewController.swift; sourceTree = "<group>"; };
-		8561BFE52BC91DE900CC8649 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
-		8561BFE72BC9210E00CC8649 /* Product.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Product.json; sourceTree = "<group>"; };
 		8561BFE82BC9257A00CC8649 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		85805A252BCACF2900F01F01 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		85805A272BCAD01E00F01F01 /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
@@ -65,7 +60,6 @@
 		85E21D3D2BC7B9FB0011AF5E /* CompassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassViewController.swift; sourceTree = "<group>"; };
 		85E21D432BC7BC3C0011AF5E /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		85E21D452BC7C4AB0011AF5E /* ExtensionUiColorTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUiColorTabBar.swift; sourceTree = "<group>"; };
-		85E21D492BC7CD830011AF5E /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		85E21D622BC832410011AF5E /* SmsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmsViewController.swift; sourceTree = "<group>"; };
 		85E21D642BC838660011AF5E /* SmsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -228,9 +222,6 @@
 			children = (
 				85805A252BCACF2900F01F01 /* Constants.swift */,
 				85805A292BCAD15600F01F01 /* Products.swift */,
-				8561BFE52BC91DE900CC8649 /* ProductModel.swift */,
-				8561BFE72BC9210E00CC8649 /* Product.json */,
-				85E21D492BC7CD830011AF5E /* JSONParser.swift */,
 				85805A272BCAD01E00F01F01 /* NetworkLayer.swift */,
 			);
 			path = DTO;
@@ -304,7 +295,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				850D6CC52BB985BA0010DEC4 /* LaunchScreen.storyboard in Resources */,
-				8561BFEA2BC92A9C00CC8649 /* Product.json in Resources */,
 				850D6CC22BB985BA0010DEC4 /* Assets.xcassets in Resources */,
 				85E21D162BC56B580011AF5E /* GoogleService-Info.plist in Resources */,
 			);
@@ -319,12 +309,10 @@
 			files = (
 				85E21D462BC7C4AB0011AF5E /* ExtensionUiColorTabBar.swift in Sources */,
 				85805A262BCACF2900F01F01 /* Constants.swift in Sources */,
-				85E21D4A2BC7CD830011AF5E /* JSONParser.swift in Sources */,
 				850D6CD42BB986D90010DEC4 /* StartingView.swift in Sources */,
 				850D6CBD2BB985B90010DEC4 /* StartingViewController.swift in Sources */,
 				85E21D3B2BC7B9B70011AF5E /* StorageViewController.swift in Sources */,
 				85E21D3E2BC7B9FB0011AF5E /* CompassViewController.swift in Sources */,
-				8561BFE62BC91DE900CC8649 /* ProductModel.swift in Sources */,
 				8561BFEB2BC92B8F00CC8649 /* HomeViewController.swift in Sources */,
 				85E21D382BC7B91B0011AF5E /* HomeTabBarController.swift in Sources */,
 				85E21D632BC832410011AF5E /* SmsViewController.swift in Sources */,
