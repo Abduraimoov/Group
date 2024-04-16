@@ -25,7 +25,7 @@
 		85E21D2B2BC7B8030011AF5E /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D2A2BC7B8030011AF5E /* HomeModel.swift */; };
 		85E21D312BC7B8360011AF5E /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D302BC7B8360011AF5E /* HomeCollectionViewCell.swift */; };
 		85E21D352BC7B8E60011AF5E /* TopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D342BC7B8E60011AF5E /* TopCollectionViewCell.swift */; };
-		85E21D382BC7B91B0011AF5E /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D372BC7B91B0011AF5E /* HomeTabBarController.swift */; };
+		85E21D382BC7B91B0011AF5E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D372BC7B91B0011AF5E /* TabBarController.swift */; };
 		85E21D3B2BC7B9B70011AF5E /* StorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D3A2BC7B9B70011AF5E /* StorageViewController.swift */; };
 		85E21D3E2BC7B9FB0011AF5E /* CompassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D3D2BC7B9FB0011AF5E /* CompassViewController.swift */; };
 		85E21D442BC7BC3C0011AF5E /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D432BC7BC3C0011AF5E /* ScannerViewController.swift */; };
@@ -55,7 +55,7 @@
 		85E21D2C2BC7B8160011AF5E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../../../../../Documents/HomeViewController.swift; sourceTree = "<group>"; };
 		85E21D302BC7B8360011AF5E /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		85E21D342BC7B8E60011AF5E /* TopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCollectionViewCell.swift; sourceTree = "<group>"; };
-		85E21D372BC7B91B0011AF5E /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
+		85E21D372BC7B91B0011AF5E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		85E21D3A2BC7B9B70011AF5E /* StorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageViewController.swift; sourceTree = "<group>"; };
 		85E21D3D2BC7B9FB0011AF5E /* CompassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassViewController.swift; sourceTree = "<group>"; };
 		85E21D432BC7BC3C0011AF5E /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
@@ -179,7 +179,7 @@
 		85805A232BCAAEBC00F01F01 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
-				85E21D372BC7B91B0011AF5E /* HomeTabBarController.swift */,
+				85E21D372BC7B91B0011AF5E /* TabBarController.swift */,
 				85E21D452BC7C4AB0011AF5E /* ExtensionUiColorTabBar.swift */,
 			);
 			path = TabBar;
@@ -314,7 +314,7 @@
 				85E21D3B2BC7B9B70011AF5E /* StorageViewController.swift in Sources */,
 				85E21D3E2BC7B9FB0011AF5E /* CompassViewController.swift in Sources */,
 				8561BFEB2BC92B8F00CC8649 /* HomeViewController.swift in Sources */,
-				85E21D382BC7B91B0011AF5E /* HomeTabBarController.swift in Sources */,
+				85E21D382BC7B91B0011AF5E /* TabBarController.swift in Sources */,
 				85E21D632BC832410011AF5E /* SmsViewController.swift in Sources */,
 				852872B82BBC09DD0062F434 /* AutorizationView.swift in Sources */,
 				85805A282BCAD01E00F01F01 /* NetworkLayer.swift in Sources */,

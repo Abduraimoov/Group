@@ -21,6 +21,8 @@ class StartingViewController: UIViewController {
         super.viewDidLoad()
         startingView.delegate = self
         screenTransition()
+        navigationItem.backButtonTitle = ""
+        self.navigationController?.navigationBar.tintColor = .black
     }
 
    private func screenTransition() {

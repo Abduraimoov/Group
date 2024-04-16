@@ -35,7 +35,7 @@ class TopCollectionViewCell: UICollectionViewCell {
         ])
     }
     
-    func configure(list: namings) {
-        listlabels.text = list.label
+    func configure(list: Category) {
+        listlabels.text = list.title
     }
 }

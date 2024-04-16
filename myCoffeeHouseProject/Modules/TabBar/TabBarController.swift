@@ -7,12 +7,12 @@
 
 import UIKit
 
-class HomeTabBarController: UITabBarController {
+class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        generateTabBar()
         setTabBarAppearance()
+        generateTabBar()
         setupNavigationItem()
     }
     
@@ -29,7 +29,7 @@ class HomeTabBarController: UITabBarController {
     private func generateVC(viewController: UIViewController,
                             image: UIImage?) -> UIViewController {
         
-        let navController = UINavigationController(rootViewController: viewController)
+        var navController = UINavigationController(rootViewController: viewController)
         viewController.tabBarItem.image = image
         return viewController
     }

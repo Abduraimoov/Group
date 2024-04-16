@@ -92,15 +92,15 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
     
     func loadImage(from urlString: String) {
-            guard let url = URL(string: urlString) else { return }
-
-            URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
-                guard let data = data, error == nil, let image = UIImage(data: data) else { return }
-                DispatchQueue.main.async {
-                    self?.leftImage.image = image
-                }
-            }.resume()
-        }
+        guard let url = URL(string: urlString) else { return }
+        
+        URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+            guard let data = data, error == nil, let image = UIImage(data: data) else { return }
+            DispatchQueue.main.async {
+                self?.leftImage.image = image
+            }
+        }.resume()
+    }
     
     private func setupConstrains() {
         addSubview(leftImage)
@@ -133,7 +133,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
             counterLabel.topAnchor.constraint(equalTo: topAnchor,
                                               constant: 58),
             counterLabel.rightAnchor.constraint(equalTo: rightAnchor,
-                                               constant: -58),
+                                                constant: -58),
             
             plusButton.topAnchor.constraint(equalTo: topAnchor,
                                             constant: 53),
@@ -145,25 +145,24 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
     
     func setup(product: Product) {
-
-            naminglabels.text = product.strMeal
+        naminglabels.text = product.strMeal
         drinksLabels.text = product.idMeal
-            loadImage(from: product.strMealThumb)
-        }
+        loadImage(from: product.strMealThumb)
+    }
     
     var counter: Int = 0 {
         didSet {
             counterLabel.text = "\(counter)"
         }
     }
-
+    
     @objc private func incrementCounter() {
         counter += 1
     }
-
+    
     @objc private func decrementCounter() {
         counter = max(0,
                       counter - 1)
     }
-
+    
 }

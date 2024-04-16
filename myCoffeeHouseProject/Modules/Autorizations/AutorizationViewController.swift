@@ -21,11 +21,12 @@ class AutorizationViewController: UIViewController{
         super.viewDidLoad()
         autorizationview.delegate = self
         homeScreenTapped()
+        navigationItem.backButtonTitle = ""
     }
     
     private func homeScreenTapped() {
         autorizationview.screenTransition = {
-            let vc = HomeViewController()
+            let vc = TabBarController()
             self.navigationController?.pushViewController(vc, 
                                                           animated: true)
         }
