@@ -13,14 +13,14 @@ protocol AutorizationViewDelegate: AnyObject {
 
 class AutorizationView: UIView {
     
-    lazy var GeeksImage: UIImageView = {
+    private lazy var GeeksImage: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "Image")
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    lazy var entranceTitle: UILabel = {
+    private lazy var entranceTitle: UILabel = {
         let view = UILabel()
         view.text = "Вход"
         view.tintColor = .black
@@ -30,9 +30,9 @@ class AutorizationView: UIView {
         return view
     }()
     
-    lazy var numberTextFeild: UITextField = {
+    private lazy var numberTextFeild: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "709 104 783"
+        tf.placeholder = "999 999 999"
         tf.backgroundColor = .systemGray5
         tf.layer.cornerRadius = 10
         tf.translatesAutoresizingMaskIntoConstraints = false
@@ -52,7 +52,7 @@ class AutorizationView: UIView {
         return tf
     }()
     
-    lazy var toComeInButton: UIButton = {
+    private lazy var toComeInButton: UIButton = {
         let view = UIButton(type: .system)
         view.setTitle("Войти",
                       for: .normal)
@@ -89,9 +89,9 @@ class AutorizationView: UIView {
         addSubview(numberTextFeild)
         addSubview(toComeInButton)
         NSLayoutConstraint.activate([
-            GeeksImage.topAnchor.constraint(equalTo: topAnchor, 
+            GeeksImage.topAnchor.constraint(equalTo: topAnchor,
                                             constant: 155),
-            GeeksImage.leftAnchor.constraint(equalTo: leftAnchor, 
+            GeeksImage.leftAnchor.constraint(equalTo: leftAnchor,
                                              constant: 103),
             GeeksImage.rightAnchor.constraint(equalTo: rightAnchor,
                                               constant: -103),

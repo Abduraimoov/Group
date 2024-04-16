@@ -37,12 +37,16 @@ struct NetworkLayer {
     }
     
     func fetchProducts(
+        by cotegoryName: String,
         completion: @escaping (Result<[Product],
                                Error>) -> Void) {
-        let reguest = URLRequest(url: Constants.baseURL)
-        URLSession.shared.dataTask(with: reguest) { data,
-            response,
-            error in
+        let url = Constants.baseURL.appendingPathComponent("filter.php")
+        var components = URLComponents(url: url,
+                                       resolvingAgainstBaseURL: true)
+        components?.queryItems = [.init(name: "c", value: cotegoryName)]
+        guard let url = components?.url else { return }
+        let reguest = URLRequest(url: url)
+        URLSession.shared.dataTask(with: reguest) { data, response, error in
             if let error {
                 completion(.failure(error))
             }

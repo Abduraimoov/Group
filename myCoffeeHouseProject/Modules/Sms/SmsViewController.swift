@@ -9,16 +9,29 @@ import UIKit
 
 class SmsViewController: UIViewController {
     
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        
+    private lazy var smsView = SmsView(frame: .zero)
+    
+    override func loadView() {
+        super.loadView()
+        view = smsView
     }
     
-    private func setupConstraints() {
-//        view.addSubview(<#UIView#>)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        smsView.delegate = self
+        nextTapped()
+        navigationItem.backButtonTitle = ""
+    }
+    
+    private func nextTapped() {
+        smsView.screenTransition = {
+            let vc = TabBarController()
+            self.navigationController?.pushViewController(vc,
+                                                     animated: true)
+        }
     }
    
-
+}
+extension SmsViewController: SmsViewDelegate {
+    
 }

@@ -13,14 +13,14 @@ protocol StartingViewDelegate: AnyObject {
 
 class StartignView: UIView {
     
-   private lazy var coffeeImage: UIImageView = {
+    private lazy var coffeeImage: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "Image")
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-   private lazy var toComeInButton: UIButton = {
+    private lazy var toComeInButton: UIButton = {
         let view = UIButton(type: .system)
         view.setTitle("Войти",
                       for: .normal)
@@ -37,9 +37,9 @@ class StartignView: UIView {
         return view
     }()
     
-    lazy var registrationbutton: UIButton = {
+    private lazy var registrationbutton: UIButton = {
         let view = UIButton(type: .system)
-        view.setTitle("Регистрация", 
+        view.setTitle("Регистрация",
                       for: .normal)
         view.tintColor = .systemGray4
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -89,11 +89,11 @@ class StartignView: UIView {
                                                       constant: -16),
             registrationbutton.heightAnchor.constraint(equalToConstant: 50)
         ])
-    
+        
     }
     
     @objc
-   private func ViewControllerTapped() {
+    private func ViewControllerTapped() {
         screenTransitionTapped?()
     }
     
