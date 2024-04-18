@@ -11,14 +11,14 @@ class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTabBarAppearance()
         generateTabBar()
+        setTabBarAppearance()
         setupNavigationItem()
     }
     
     private func setupNavigationItem() {
         navigationItem.title = "Меню"
-        let rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "bell"),
+        let rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "bell"), 
                                                  style: .plain,
                                                  target: self,
                                                  action: .none)
@@ -28,8 +28,7 @@ class TabBarController: UITabBarController {
     
     private func generateVC(viewController: UIViewController,
                             image: UIImage?) -> UIViewController {
-        
-        var navController = UINavigationController(rootViewController: viewController)
+        let navController = UINavigationController(rootViewController: viewController)
         viewController.tabBarItem.image = image
         return viewController
     }

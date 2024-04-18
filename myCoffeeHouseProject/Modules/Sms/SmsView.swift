@@ -47,6 +47,7 @@ class SmsView: UIView {
         return view
     }()
     
+    
     weak var delegate: SmsViewDelegate?
     
     var screenTransition: (() -> Void)?
