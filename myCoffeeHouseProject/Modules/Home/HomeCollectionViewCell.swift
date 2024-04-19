@@ -50,7 +50,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         view.setTitle("-",
                       for: .normal)
         view.layer.cornerRadius = 14
-        view.titleLabel?.font = UIFont.systemFont(ofSize: 25)
+        view.titleLabel?.font = .systemFont(ofSize: 25)
         view.tintColor = .black
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -74,7 +74,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         view.setTitle("+",
                       for: .normal)
         view.layer.cornerRadius = 14
-        view.titleLabel?.font = UIFont.systemFont(ofSize: 25)
+        view.titleLabel?.font = .systemFont(ofSize: 25)
         view.tintColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         return view

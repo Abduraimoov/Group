@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import FirebaseAuth
 
-class AutorizationViewController: UIViewController{
+class AutorizationViewController: UIViewController {
     
     private lazy var autorizationview = AutorizationView(frame: .zero)
-
+    
+    private let authService = AuthService()
     
     override func loadView() {
         super.loadView()
@@ -20,20 +22,32 @@ class AutorizationViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         autorizationview.delegate = self
-        homeScreenTapped()
         navigationItem.backButtonTitle = ""
     }
     
-    private func homeScreenTapped() {
-        autorizationview.screenTransition = {
-            let vc = SmsViewController()
-            self.navigationController?.pushViewController(vc, 
-                                                          animated: true)
-        }
+    private func smsCode() {
+        let vc = SmsViewController()
+        self.navigationController?.pushViewController(vc, 
+                                                      animated: true)
     }
-
+    
 }
 
 extension AutorizationViewController: AutorizationViewDelegate  {
-
+    func didLoginBtn(with number: String) {
+        guard let text = autorizationview.numberTextFeild.text else { return }
+        authService.sendSmsCode(with: number) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let success):
+                    self.smsCode()
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    
+                }
+                
+            }
+        }
+    }
+    
 }

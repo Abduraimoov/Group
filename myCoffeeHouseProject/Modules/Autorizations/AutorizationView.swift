@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AutorizationViewDelegate: AnyObject {
-    
+    func didLoginBtn(with number: String)
 }
 
 class AutorizationView: UIView {
@@ -30,7 +30,7 @@ class AutorizationView: UIView {
         return view
     }()
     
-    private lazy var numberTextFeild: UITextField = {
+     lazy var numberTextFeild: UITextField = {
         let tf = UITextField()
         tf.placeholder = "999 999 999"
         tf.backgroundColor = .systemGray5
@@ -47,9 +47,11 @@ class AutorizationView: UIView {
                                      width: 20,
                                      height: 20)
         leftContainerView.addSubview(iconImageView)
-        tf.leftView = leftContainerView
-        tf.leftViewMode = .always
-        return tf
+         tf.leftView = leftContainerView
+         tf.addTarget(self, action: #selector(smsCodeService),
+                      for: .valueChanged)
+         tf.leftViewMode = .always
+         return tf
     }()
     
     private lazy var toComeInButton: UIButton = {
@@ -64,7 +66,7 @@ class AutorizationView: UIView {
                                              alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addTarget(self,
-                       action: #selector(homeScreenTransition),
+                       action: #selector(smsCodeService),
                        for: .touchUpInside)
         return view
     }()
@@ -120,7 +122,9 @@ class AutorizationView: UIView {
     }
     
     @objc
-    private func homeScreenTransition() {
-        screenTransition?()
+    private func smsCodeService() {
+        delegate?.didLoginBtn(with: numberTextFeild.text ?? "")
     }
 }
+    
+

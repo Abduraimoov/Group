@@ -30,6 +30,19 @@ class SmsView: UIView {
         return view
     }()
     
+    private lazy var numberTextFeild: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "Enter a sms code"
+        tf.backgroundColor = .systemGray5
+        tf.layer.cornerRadius = 10
+        tf.translatesAutoresizingMaskIntoConstraints = false
+        let leftContainerView = UIView(frame: CGRect(x: 0,
+                                                     y: 0,
+                                                     width: 35 + 8,
+                                                     height: 24))
+        return tf
+    }()
+    
     private lazy var nextButton: UIButton = {
         let view = UIButton(type: .system)
         view.setTitle("Войти",
@@ -66,6 +79,7 @@ class SmsView: UIView {
         addSubview(coffeeImage)
         addSubview(smsTitle)
         addSubview(nextButton)
+        addSubview(numberTextFeild)
         NSLayoutConstraint.activate([
         
             coffeeImage.topAnchor.constraint(equalTo: topAnchor,
@@ -79,6 +93,14 @@ class SmsView: UIView {
             smsTitle.topAnchor.constraint(equalTo: coffeeImage.bottomAnchor,
                                                constant: 40),
             smsTitle.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
+            
+            numberTextFeild.topAnchor.constraint(equalTo: smsTitle.bottomAnchor,
+                                                 constant: 20),
+            numberTextFeild.leftAnchor.constraint(equalTo: leftAnchor,
+                                                  constant: 16),
+            numberTextFeild.rightAnchor.constraint(equalTo: rightAnchor,
+                                                   constant: -16),
+            numberTextFeild.heightAnchor.constraint(equalToConstant: 50),
             
             nextButton.topAnchor.constraint(equalTo: smsTitle.bottomAnchor,
                                                 constant: 90),

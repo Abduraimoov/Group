@@ -18,33 +18,41 @@ class TabBarController: UITabBarController {
     
     private func setupNavigationItem() {
         navigationItem.title = "Меню"
-        let rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "bell"), 
-                                                 style: .plain,
-                                                 target: self,
-                                                 action: .none)
+        let rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(systemName: "bell"),
+            style: .plain,
+            target: self,
+            action: .none)
         rightBarButtonItem.tintColor = .black
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
-    private func generateVC(viewController: UIViewController,
-                            image: UIImage?) -> UIViewController {
-        let navController = UINavigationController(rootViewController: viewController)
-        viewController.tabBarItem.image = image
-        return viewController
-    }
-
+    private func generateVC(
+        viewController: UIViewController,
+        image: UIImage?) -> UIViewController {
+            let navController = UINavigationController(
+                rootViewController: viewController)
+            viewController.tabBarItem.image = image
+            return viewController
+        }
+    
     private func generateTabBar() {
         viewControllers = [
-            generateVC(viewController: HomeViewController(),
-                       image: UIImage(systemName: "house")),
-            generateVC(viewController: StorageViewController(),
-                       image: UIImage(systemName: "cart.badge.questionmark.rtl")),
-            generateVC(viewController: ScannerViewController(),
-                       image: UIImage(systemName: "qrcode.viewfinder")),
-            generateVC(viewController: CompassViewController(),
-                       image: UIImage(systemName: "safari")),
-            generateVC(viewController: MenuViewController(),
-                       image: UIImage(systemName: "person"))
+            generateVC(
+                viewController: HomeViewController(),
+                image: UIImage(systemName: "house")),
+            generateVC(
+                viewController: StorageViewController(),
+                image: UIImage(systemName: "cart.badge.questionmark.rtl")),
+            generateVC(
+                viewController: ScannerViewController(),
+                image: UIImage(systemName: "qrcode.viewfinder")),
+            generateVC(
+                viewController: CompassViewController(),
+                image: UIImage(systemName: "safari")),
+            generateVC(
+                viewController: MenuViewController(),
+                image: UIImage(systemName: "person"))
         ]
     }
     
@@ -55,11 +63,13 @@ class TabBarController: UITabBarController {
         let height = tabBar.bounds.height + positionOnY * 2
         
         let roundLayer = CAShapeLayer()
-        let bezierPath = UIBezierPath(roundedRect: CGRect(x: positionOnX,
-                                                          y: tabBar.bounds.minY - positionOnY,
-                                                          width: width,
-                                                          height: height),
-                                      cornerRadius: height / 2)
+        let bezierPath = UIBezierPath(
+            roundedRect: CGRect(
+                x: positionOnX,
+                y: tabBar.bounds.minY - positionOnY,
+                width: width,
+                height: height),
+            cornerRadius: height / 2)
         
         roundLayer.path = bezierPath.cgPath
         roundLayer.fillColor = UIColor.white.cgColor
@@ -70,5 +80,4 @@ class TabBarController: UITabBarController {
         tabBar.tintColor = UIColor.systemBlue
         tabBar.unselectedItemTintColor = UIColor.gray
     }
-    
 }
