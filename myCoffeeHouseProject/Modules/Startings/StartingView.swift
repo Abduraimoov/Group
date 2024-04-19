@@ -20,6 +20,20 @@ class StartignView: UIView {
         return view
     }()
     
+    private let welcomeLabel: UILabel = {
+        let view = UILabel()
+        view.text = "Welcome to Super Foodo"
+        view.font = .systemFont(ofSize: 24,
+                                weight: .semibold)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private let deckriptionlabel: UILabel = {
+        let view = UILabel()
+        view.text = "Lorem ipsum dolor sit amet consectetur. Ut cras pellentesque "
+    }()
+    
     private lazy var toComeInButton: UIButton = {
         let view = UIButton(type: .system)
         view.setTitle("Войти",
@@ -62,32 +76,37 @@ class StartignView: UIView {
     
     private func setupConstrains() {
         addSubview(coffeeImage)
-        addSubview(toComeInButton)
-        addSubview(registrationbutton)
+        addSubview(welcomeLabel)
+//        addSubview(toComeInButton)
+//        addSubview(registrationbutton)
         NSLayoutConstraint.activate([
             coffeeImage.topAnchor.constraint(equalTo: topAnchor,
-                                             constant: 234),
+                                             constant: 85),
             coffeeImage.leftAnchor.constraint(equalTo: leftAnchor,
-                                              constant: 102),
+                                              constant: 33),
             coffeeImage.rightAnchor.constraint(equalTo: rightAnchor,
-                                               constant: -102),
-            coffeeImage.heightAnchor.constraint(equalToConstant: 80),
+                                               constant: -33),
+            coffeeImage.heightAnchor.constraint(equalToConstant: 327),
             
-            toComeInButton.topAnchor.constraint(equalTo: coffeeImage.bottomAnchor,
-                                                constant: 98),
-            toComeInButton.leftAnchor.constraint(equalTo: leftAnchor,
-                                                 constant: 15),
-            toComeInButton.rightAnchor.constraint(equalTo: rightAnchor,
-                                                  constant: -15),
-            toComeInButton.heightAnchor.constraint(equalToConstant: 50),
+            welcomeLabel.topAnchor.constraint(equalTo: coffeeImage.bottomAnchor,
+                                              constant: 48),
+            welcomeLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             
-            registrationbutton.topAnchor.constraint(equalTo: toComeInButton.bottomAnchor,
-                                                    constant: 16),
-            registrationbutton.leftAnchor.constraint(equalTo: leftAnchor,
-                                                     constant: 16),
-            registrationbutton.rightAnchor.constraint(equalTo: rightAnchor,
-                                                      constant: -16),
-            registrationbutton.heightAnchor.constraint(equalToConstant: 50)
+//            toComeInButton.topAnchor.constraint(equalTo: coffeeImage.bottomAnchor,
+//                                                constant: 98),
+//            toComeInButton.leftAnchor.constraint(equalTo: leftAnchor,
+//                                                 constant: 15),
+//            toComeInButton.rightAnchor.constraint(equalTo: rightAnchor,
+//                                                  constant: -15),
+//            toComeInButton.heightAnchor.constraint(equalToConstant: 50),
+//            
+//            registrationbutton.topAnchor.constraint(equalTo: toComeInButton.bottomAnchor,
+//                                                    constant: 16),
+//            registrationbutton.leftAnchor.constraint(equalTo: leftAnchor,
+//                                                     constant: 16),
+//            registrationbutton.rightAnchor.constraint(equalTo: rightAnchor,
+//                                                      constant: -16),
+//            registrationbutton.heightAnchor.constraint(equalToConstant: 50)
         ])
         
     }
