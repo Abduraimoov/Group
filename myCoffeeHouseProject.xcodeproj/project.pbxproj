@@ -133,6 +133,7 @@
 		850D6CD22BB986860010DEC4 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				852872B62BBC08190062F434 /* Autorizations */,
 				85805A232BCAAEBC00F01F01 /* TabBar */,
 				85E21D612BC8322B0011AF5E /* Sms */,
 				85E21D4B2BC7CE000011AF5E /* DTO */,
@@ -141,7 +142,6 @@
 				85E21D3C2BC7B9ED0011AF5E /* Compass */,
 				85E21D392BC7B9710011AF5E /* Storage */,
 				852872B32BBC07E50062F434 /* Startings */,
-				852872B62BBC08190062F434 /* Autorizations */,
 				852872BB2BBC18870062F434 /* Home */,
 			);
 			path = Modules;
@@ -169,8 +169,7 @@
 		852872B62BBC08190062F434 /* Autorizations */ = {
 			isa = PBXGroup;
 			children = (
-				852872B72BBC09DD0062F434 /* AutorizationView.swift */,
-				852872B92BBC12260062F434 /* AutorizationViewController.swift */,
+				857C18C42BD2AD690044FB65 /* PhoneNumber */,
 			);
 			path = Autorizations;
 			sourceTree = "<group>";
@@ -193,6 +192,15 @@
 				85805A272BCAD01E00F01F01 /* NetworkLayer.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		857C18C42BD2AD690044FB65 /* PhoneNumber */ = {
+			isa = PBXGroup;
+			children = (
+				852872B92BBC12260062F434 /* AutorizationViewController.swift */,
+				852872B72BBC09DD0062F434 /* AutorizationView.swift */,
+			);
+			path = PhoneNumber;
 			sourceTree = "<group>";
 		};
 		85805A232BCAAEBC00F01F01 /* TabBar */ = {

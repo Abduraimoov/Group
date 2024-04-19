@@ -7,5 +7,6 @@ target 'myCoffeeHouseProject' do
   # Pods for myCoffeeHouseProject
 pod 'SnapKit', '~> 5.7.0'
 pod 'FirebaseAuth'
+pod 'OTPFieldView'
 end
 
