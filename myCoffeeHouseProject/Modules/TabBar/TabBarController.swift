@@ -14,6 +14,7 @@ class TabBarController: UITabBarController {
         generateTabBar()
         setTabBarAppearance()
         setupNavigationItem()
+        navigationItem.hidesBackButton = true
     }
     
     private func setupNavigationItem() {

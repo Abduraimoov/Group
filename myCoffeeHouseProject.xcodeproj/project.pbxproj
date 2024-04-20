@@ -23,6 +23,14 @@
 		85805A262BCACF2900F01F01 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85805A252BCACF2900F01F01 /* Constants.swift */; };
 		85805A282BCAD01E00F01F01 /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85805A272BCAD01E00F01F01 /* NetworkLayer.swift */; };
 		85805A2A2BCAD15600F01F01 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85805A292BCAD15600F01F01 /* Products.swift */; };
+		85B6ED8D2BD3CEF9008F5798 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B6ED8C2BD3CEF9008F5798 /* LoginView.swift */; };
+		85B6ED8F2BD3CF09008F5798 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B6ED8E2BD3CF09008F5798 /* LoginViewController.swift */; };
+		85B6ED912BD3D66B008F5798 /* Helper to textFiled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B6ED902BD3D66B008F5798 /* Helper to textFiled.swift */; };
+		85B6ED952BD406A1008F5798 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B6ED942BD406A0008F5798 /* RegisterView.swift */; };
+		85B6ED972BD406BD008F5798 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B6ED962BD406BD008F5798 /* RegisterViewController.swift */; };
+		85B6ED9A2BD41425008F5798 /* OnBoardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B6ED992BD41425008F5798 /* OnBoardingModel.swift */; };
+		85B6ED9C2BD4143F008F5798 /* OnBoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B6ED9B2BD4143F008F5798 /* OnBoardCell.swift */; };
+		85B6ED9E2BD414BC008F5798 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B6ED9D2BD414BC008F5798 /* OnBoardingView.swift */; };
 		85E21D2B2BC7B8030011AF5E /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D2A2BC7B8030011AF5E /* HomeModel.swift */; };
 		85E21D312BC7B8360011AF5E /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D302BC7B8360011AF5E /* HomeCollectionViewCell.swift */; };
 		85E21D352BC7B8E60011AF5E /* TopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D342BC7B8E60011AF5E /* TopCollectionViewCell.swift */; };
@@ -55,6 +63,14 @@
 		85805A252BCACF2900F01F01 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		85805A272BCAD01E00F01F01 /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
 		85805A292BCAD15600F01F01 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
+		85B6ED8C2BD3CEF9008F5798 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		85B6ED8E2BD3CF09008F5798 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		85B6ED902BD3D66B008F5798 /* Helper to textFiled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Helper to textFiled.swift"; sourceTree = "<group>"; };
+		85B6ED942BD406A0008F5798 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		85B6ED962BD406BD008F5798 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		85B6ED992BD41425008F5798 /* OnBoardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingModel.swift; sourceTree = "<group>"; };
+		85B6ED9B2BD4143F008F5798 /* OnBoardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardCell.swift; sourceTree = "<group>"; };
+		85B6ED9D2BD414BC008F5798 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		85E21D2A2BC7B8030011AF5E /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeModel.swift; path = ../../../../../Documents/HomeModel.swift; sourceTree = "<group>"; };
 		85E21D2C2BC7B8160011AF5E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../../../../../Documents/HomeViewController.swift; sourceTree = "<group>"; };
 		85E21D302BC7B8360011AF5E /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -133,6 +149,7 @@
 		850D6CD22BB986860010DEC4 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				85B6ED982BD413F2008F5798 /* OnBoarding */,
 				852872B62BBC08190062F434 /* Autorizations */,
 				85805A232BCAAEBC00F01F01 /* TabBar */,
 				85E21D612BC8322B0011AF5E /* Sms */,
@@ -141,8 +158,8 @@
 				85E21D3F2BC7BA870011AF5E /* Menu */,
 				85E21D3C2BC7B9ED0011AF5E /* Compass */,
 				85E21D392BC7B9710011AF5E /* Storage */,
-				852872B32BBC07E50062F434 /* Startings */,
 				852872BB2BBC18870062F434 /* Home */,
+				85B6ED922BD3D673008F5798 /* Helpers */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -157,18 +174,12 @@
 			path = Recourse;
 			sourceTree = "<group>";
 		};
-		852872B32BBC07E50062F434 /* Startings */ = {
-			isa = PBXGroup;
-			children = (
-				850D6CD32BB986D90010DEC4 /* StartingView.swift */,
-				850D6CBC2BB985B90010DEC4 /* StartingViewController.swift */,
-			);
-			path = Startings;
-			sourceTree = "<group>";
-		};
 		852872B62BBC08190062F434 /* Autorizations */ = {
 			isa = PBXGroup;
 			children = (
+				85B6ED932BD4067D008F5798 /* Register google */,
+				85B6ED8B2BD3CECA008F5798 /* Login */,
+				85B6ED8A2BD3CDD8008F5798 /* Startings */,
 				857C18C42BD2AD690044FB65 /* PhoneNumber */,
 			);
 			path = Autorizations;
@@ -210,6 +221,51 @@
 				85E21D452BC7C4AB0011AF5E /* ExtensionUiColorTabBar.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		85B6ED8A2BD3CDD8008F5798 /* Startings */ = {
+			isa = PBXGroup;
+			children = (
+				850D6CBC2BB985B90010DEC4 /* StartingViewController.swift */,
+				850D6CD32BB986D90010DEC4 /* StartingView.swift */,
+			);
+			path = Startings;
+			sourceTree = "<group>";
+		};
+		85B6ED8B2BD3CECA008F5798 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				85B6ED8E2BD3CF09008F5798 /* LoginViewController.swift */,
+				85B6ED8C2BD3CEF9008F5798 /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		85B6ED922BD3D673008F5798 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				85B6ED902BD3D66B008F5798 /* Helper to textFiled.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		85B6ED932BD4067D008F5798 /* Register google */ = {
+			isa = PBXGroup;
+			children = (
+				85B6ED962BD406BD008F5798 /* RegisterViewController.swift */,
+				85B6ED942BD406A0008F5798 /* RegisterView.swift */,
+			);
+			path = "Register google";
+			sourceTree = "<group>";
+		};
+		85B6ED982BD413F2008F5798 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				85B6ED9D2BD414BC008F5798 /* OnBoardingView.swift */,
+				85B6ED9B2BD4143F008F5798 /* OnBoardCell.swift */,
+				85B6ED992BD41425008F5798 /* OnBoardingModel.swift */,
+			);
+			path = OnBoarding;
 			sourceTree = "<group>";
 		};
 		85E21D392BC7B9710011AF5E /* Storage */ = {
@@ -396,25 +452,33 @@
 			files = (
 				85E21D462BC7C4AB0011AF5E /* ExtensionUiColorTabBar.swift in Sources */,
 				857C18C12BD25A120044FB65 /* AuthService.swift in Sources */,
+				85B6ED912BD3D66B008F5798 /* Helper to textFiled.swift in Sources */,
 				85805A262BCACF2900F01F01 /* Constants.swift in Sources */,
 				850D6CD42BB986D90010DEC4 /* StartingView.swift in Sources */,
 				850D6CBD2BB985B90010DEC4 /* StartingViewController.swift in Sources */,
 				85E21D3B2BC7B9B70011AF5E /* StorageViewController.swift in Sources */,
+				85B6ED8D2BD3CEF9008F5798 /* LoginView.swift in Sources */,
 				85E21D3E2BC7B9FB0011AF5E /* CompassViewController.swift in Sources */,
+				85B6ED952BD406A1008F5798 /* RegisterView.swift in Sources */,
 				8561BFEB2BC92B8F00CC8649 /* HomeViewController.swift in Sources */,
 				85E21D382BC7B91B0011AF5E /* TabBarController.swift in Sources */,
 				85E21D632BC832410011AF5E /* SmsViewController.swift in Sources */,
 				852872B82BBC09DD0062F434 /* AutorizationView.swift in Sources */,
 				85805A282BCAD01E00F01F01 /* NetworkLayer.swift in Sources */,
+				85B6ED8F2BD3CF09008F5798 /* LoginViewController.swift in Sources */,
 				852872BA2BBC12260062F434 /* AutorizationViewController.swift in Sources */,
 				850D6CB92BB985B90010DEC4 /* AppDelegate.swift in Sources */,
 				85E21D312BC7B8360011AF5E /* HomeCollectionViewCell.swift in Sources */,
 				850D6CBB2BB985B90010DEC4 /* SceneDelegate.swift in Sources */,
 				85E21D652BC838660011AF5E /* SmsView.swift in Sources */,
 				85E21D2B2BC7B8030011AF5E /* HomeModel.swift in Sources */,
+				85B6ED9A2BD41425008F5798 /* OnBoardingModel.swift in Sources */,
 				85E21D352BC7B8E60011AF5E /* TopCollectionViewCell.swift in Sources */,
+				85B6ED972BD406BD008F5798 /* RegisterViewController.swift in Sources */,
 				850D6CD02BB986200010DEC4 /* Extension + uicolor.swift in Sources */,
+				85B6ED9E2BD414BC008F5798 /* OnBoardingView.swift in Sources */,
 				85805A2A2BCAD15600F01F01 /* Products.swift in Sources */,
+				85B6ED9C2BD4143F008F5798 /* OnBoardCell.swift in Sources */,
 				85E21D442BC7BC3C0011AF5E /* ScannerViewController.swift in Sources */,
 				8561BFE92BC9257A00CC8649 /* MenuViewController.swift in Sources */,
 			);

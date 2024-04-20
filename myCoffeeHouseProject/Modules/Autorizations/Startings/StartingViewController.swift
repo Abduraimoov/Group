@@ -21,13 +21,23 @@ class StartingViewController: UIViewController {
         super.viewDidLoad()
         startingView.delegate = self
         screenTransition()
+        registerScreens()
+        navigationItem.hidesBackButton = true
         navigationItem.backButtonTitle = ""
         self.navigationController?.navigationBar.tintColor = .black
     }
 
    private func screenTransition() {
         startingView.screenTransitionTapped = {
-            let vc = AutorizationViewController()
+            let vc = LoginViewController()
+            self.navigationController?.pushViewController(vc,
+                                                          animated: true)
+        }
+    }
+    
+    private func registerScreens() {
+        startingView.registerScreen = {
+            let vc = RegisterViewController()
             self.navigationController?.pushViewController(vc,
                                                           animated: true)
         }
