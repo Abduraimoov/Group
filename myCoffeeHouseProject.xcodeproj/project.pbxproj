@@ -31,6 +31,14 @@
 		85B6ED9A2BD41425008F5798 /* OnBoardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B6ED992BD41425008F5798 /* OnBoardingModel.swift */; };
 		85B6ED9C2BD4143F008F5798 /* OnBoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B6ED9B2BD4143F008F5798 /* OnBoardCell.swift */; };
 		85B6ED9E2BD414BC008F5798 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B6ED9D2BD414BC008F5798 /* OnBoardingView.swift */; };
+		85B6EDA22BD4FC4D008F5798 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B6EDA12BD4FC4D008F5798 /* ForgotPasswordView.swift */; };
+		85B6EDA42BD4FC6B008F5798 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B6EDA32BD4FC6B008F5798 /* ForgotPasswordViewController.swift */; };
+		85B6EDA72BD502DB008F5798 /* CheckEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B6EDA62BD502DB008F5798 /* CheckEmailView.swift */; };
+		85B6EDA92BD50369008F5798 /* CheckEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B6EDA82BD50369008F5798 /* CheckEmailViewController.swift */; };
+		85B6EDAC2BD523A8008F5798 /* ResetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B6EDAB2BD523A8008F5798 /* ResetView.swift */; };
+		85B6EDAE2BD523B2008F5798 /* ResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B6EDAD2BD523B2008F5798 /* ResetViewController.swift */; };
+		85B6EDB12BD52E21008F5798 /* UpdatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B6EDB02BD52E21008F5798 /* UpdatedView.swift */; };
+		85B6EDB32BD52E43008F5798 /* UpdatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B6EDB22BD52E43008F5798 /* UpdatedViewController.swift */; };
 		85E21D2B2BC7B8030011AF5E /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D2A2BC7B8030011AF5E /* HomeModel.swift */; };
 		85E21D312BC7B8360011AF5E /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D302BC7B8360011AF5E /* HomeCollectionViewCell.swift */; };
 		85E21D352BC7B8E60011AF5E /* TopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D342BC7B8E60011AF5E /* TopCollectionViewCell.swift */; };
@@ -71,6 +79,14 @@
 		85B6ED992BD41425008F5798 /* OnBoardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingModel.swift; sourceTree = "<group>"; };
 		85B6ED9B2BD4143F008F5798 /* OnBoardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardCell.swift; sourceTree = "<group>"; };
 		85B6ED9D2BD414BC008F5798 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
+		85B6EDA12BD4FC4D008F5798 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		85B6EDA32BD4FC6B008F5798 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		85B6EDA62BD502DB008F5798 /* CheckEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmailView.swift; sourceTree = "<group>"; };
+		85B6EDA82BD50369008F5798 /* CheckEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckEmailViewController.swift; sourceTree = "<group>"; };
+		85B6EDAB2BD523A8008F5798 /* ResetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetView.swift; sourceTree = "<group>"; };
+		85B6EDAD2BD523B2008F5798 /* ResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetViewController.swift; sourceTree = "<group>"; };
+		85B6EDB02BD52E21008F5798 /* UpdatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedView.swift; sourceTree = "<group>"; };
+		85B6EDB22BD52E43008F5798 /* UpdatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedViewController.swift; sourceTree = "<group>"; };
 		85E21D2A2BC7B8030011AF5E /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeModel.swift; path = ../../../../../Documents/HomeModel.swift; sourceTree = "<group>"; };
 		85E21D2C2BC7B8160011AF5E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../../../../../Documents/HomeViewController.swift; sourceTree = "<group>"; };
 		85E21D302BC7B8360011AF5E /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -177,7 +193,8 @@
 		852872B62BBC08190062F434 /* Autorizations */ = {
 			isa = PBXGroup;
 			children = (
-				85B6ED932BD4067D008F5798 /* Register google */,
+				85B6ED9F2BD4FBE6008F5798 /* Sms Google */,
+				85B6ED932BD4067D008F5798 /* Register Google */,
 				85B6ED8B2BD3CECA008F5798 /* Login */,
 				85B6ED8A2BD3CDD8008F5798 /* Startings */,
 				857C18C42BD2AD690044FB65 /* PhoneNumber */,
@@ -249,13 +266,13 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
-		85B6ED932BD4067D008F5798 /* Register google */ = {
+		85B6ED932BD4067D008F5798 /* Register Google */ = {
 			isa = PBXGroup;
 			children = (
 				85B6ED962BD406BD008F5798 /* RegisterViewController.swift */,
 				85B6ED942BD406A0008F5798 /* RegisterView.swift */,
 			);
-			path = "Register google";
+			path = "Register Google";
 			sourceTree = "<group>";
 		};
 		85B6ED982BD413F2008F5798 /* OnBoarding */ = {
@@ -266,6 +283,53 @@
 				85B6ED992BD41425008F5798 /* OnBoardingModel.swift */,
 			);
 			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		85B6ED9F2BD4FBE6008F5798 /* Sms Google */ = {
+			isa = PBXGroup;
+			children = (
+				85B6EDAF2BD52E0F008F5798 /* updated password */,
+				85B6EDAA2BD5239A008F5798 /* Reset password */,
+				85B6EDA52BD502B7008F5798 /* Check email */,
+				85B6EDA02BD4FC23008F5798 /* ForgotPaswword */,
+			);
+			path = "Sms Google";
+			sourceTree = "<group>";
+		};
+		85B6EDA02BD4FC23008F5798 /* ForgotPaswword */ = {
+			isa = PBXGroup;
+			children = (
+				85B6EDA32BD4FC6B008F5798 /* ForgotPasswordViewController.swift */,
+				85B6EDA12BD4FC4D008F5798 /* ForgotPasswordView.swift */,
+			);
+			path = ForgotPaswword;
+			sourceTree = "<group>";
+		};
+		85B6EDA52BD502B7008F5798 /* Check email */ = {
+			isa = PBXGroup;
+			children = (
+				85B6EDA82BD50369008F5798 /* CheckEmailViewController.swift */,
+				85B6EDA62BD502DB008F5798 /* CheckEmailView.swift */,
+			);
+			path = "Check email";
+			sourceTree = "<group>";
+		};
+		85B6EDAA2BD5239A008F5798 /* Reset password */ = {
+			isa = PBXGroup;
+			children = (
+				85B6EDAD2BD523B2008F5798 /* ResetViewController.swift */,
+				85B6EDAB2BD523A8008F5798 /* ResetView.swift */,
+			);
+			path = "Reset password";
+			sourceTree = "<group>";
+		};
+		85B6EDAF2BD52E0F008F5798 /* updated password */ = {
+			isa = PBXGroup;
+			children = (
+				85B6EDB22BD52E43008F5798 /* UpdatedViewController.swift */,
+				85B6EDB02BD52E21008F5798 /* UpdatedView.swift */,
+			);
+			path = "updated password";
 			sourceTree = "<group>";
 		};
 		85E21D392BC7B9710011AF5E /* Storage */ = {
@@ -450,13 +514,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85B6EDAC2BD523A8008F5798 /* ResetView.swift in Sources */,
 				85E21D462BC7C4AB0011AF5E /* ExtensionUiColorTabBar.swift in Sources */,
+				85B6EDB12BD52E21008F5798 /* UpdatedView.swift in Sources */,
 				857C18C12BD25A120044FB65 /* AuthService.swift in Sources */,
+				85B6EDA42BD4FC6B008F5798 /* ForgotPasswordViewController.swift in Sources */,
 				85B6ED912BD3D66B008F5798 /* Helper to textFiled.swift in Sources */,
 				85805A262BCACF2900F01F01 /* Constants.swift in Sources */,
 				850D6CD42BB986D90010DEC4 /* StartingView.swift in Sources */,
+				85B6EDAE2BD523B2008F5798 /* ResetViewController.swift in Sources */,
 				850D6CBD2BB985B90010DEC4 /* StartingViewController.swift in Sources */,
 				85E21D3B2BC7B9B70011AF5E /* StorageViewController.swift in Sources */,
+				85B6EDA92BD50369008F5798 /* CheckEmailViewController.swift in Sources */,
 				85B6ED8D2BD3CEF9008F5798 /* LoginView.swift in Sources */,
 				85E21D3E2BC7B9FB0011AF5E /* CompassViewController.swift in Sources */,
 				85B6ED952BD406A1008F5798 /* RegisterView.swift in Sources */,
@@ -468,6 +537,8 @@
 				85B6ED8F2BD3CF09008F5798 /* LoginViewController.swift in Sources */,
 				852872BA2BBC12260062F434 /* AutorizationViewController.swift in Sources */,
 				850D6CB92BB985B90010DEC4 /* AppDelegate.swift in Sources */,
+				85B6EDA22BD4FC4D008F5798 /* ForgotPasswordView.swift in Sources */,
+				85B6EDA72BD502DB008F5798 /* CheckEmailView.swift in Sources */,
 				85E21D312BC7B8360011AF5E /* HomeCollectionViewCell.swift in Sources */,
 				850D6CBB2BB985B90010DEC4 /* SceneDelegate.swift in Sources */,
 				85E21D652BC838660011AF5E /* SmsView.swift in Sources */,
@@ -479,6 +550,7 @@
 				85B6ED9E2BD414BC008F5798 /* OnBoardingView.swift in Sources */,
 				85805A2A2BCAD15600F01F01 /* Products.swift in Sources */,
 				85B6ED9C2BD4143F008F5798 /* OnBoardCell.swift in Sources */,
+				85B6EDB32BD52E43008F5798 /* UpdatedViewController.swift in Sources */,
 				85E21D442BC7BC3C0011AF5E /* ScannerViewController.swift in Sources */,
 				8561BFE92BC9257A00CC8649 /* MenuViewController.swift in Sources */,
 			);

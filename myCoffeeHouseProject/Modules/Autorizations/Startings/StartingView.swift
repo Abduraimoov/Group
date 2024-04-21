@@ -136,7 +136,7 @@ class StartignView: UIView {
                                                      constant: 26),
             registrationbutton.rightAnchor.constraint(equalTo: rightAnchor,
                                                       constant: -26),
-            registrationbutton.heightAnchor.constraint(equalToConstant: 55),
+            registrationbutton.heightAnchor.constraint(equalToConstant: 50),
             
             LoginButton.topAnchor.constraint(equalTo: registrationbutton.bottomAnchor,
                                              constant: 13),
@@ -144,7 +144,7 @@ class StartignView: UIView {
                                               constant: 26),
             LoginButton.rightAnchor.constraint(equalTo: rightAnchor,
                                                constant: -26),
-            LoginButton.heightAnchor.constraint(equalToConstant: 55),
+            LoginButton.heightAnchor.constraint(equalToConstant: 50),
             
             bottomLabel.topAnchor.constraint(equalTo: LoginButton.bottomAnchor,
                                              constant: 48),

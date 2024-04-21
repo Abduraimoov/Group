@@ -133,6 +133,8 @@ class LoginView: UIView {
 
     var homeTransilation: (() -> Void)?
     
+    var resetTransilation: (() -> Void)?
+    
     weak var delegate: LoginViewDelegate?
     
     override init(frame: CGRect) {
@@ -242,6 +244,7 @@ class LoginView: UIView {
             passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
         }
     }
+    
     
     @objc private func homeScreen() {
         homeTransilation?()
