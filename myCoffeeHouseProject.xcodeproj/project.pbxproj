@@ -288,10 +288,10 @@
 		85B6ED9F2BD4FBE6008F5798 /* Sms Google */ = {
 			isa = PBXGroup;
 			children = (
-				85B6EDAF2BD52E0F008F5798 /* updated password */,
-				85B6EDAA2BD5239A008F5798 /* Reset password */,
-				85B6EDA52BD502B7008F5798 /* Check email */,
 				85B6EDA02BD4FC23008F5798 /* ForgotPaswword */,
+				85B6EDA52BD502B7008F5798 /* Check email */,
+				85B6EDAA2BD5239A008F5798 /* Reset password */,
+				85B6EDAF2BD52E0F008F5798 /* updated password */,
 			);
 			path = "Sms Google";
 			sourceTree = "<group>";

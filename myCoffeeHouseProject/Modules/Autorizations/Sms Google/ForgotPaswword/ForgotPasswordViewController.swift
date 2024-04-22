@@ -20,6 +20,7 @@ class ForgotPasswordViewController: UIViewController {
         navigationItem.backButtonTitle = ""
         self.navigationController?.navigationBar.tintColor = .black
         screenTransilation()
+        transilationLoginScreen()
     }
     
     private func screenTransilation() {
@@ -30,5 +31,9 @@ class ForgotPasswordViewController: UIViewController {
         }
     }
     
-
+    private func transilationLoginScreen() {
+        forgotView.loginScreenTransilation = {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
 }

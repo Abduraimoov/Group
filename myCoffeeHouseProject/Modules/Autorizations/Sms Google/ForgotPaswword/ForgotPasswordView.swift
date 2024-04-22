@@ -70,6 +70,9 @@ class ForgotPasswordView: UIView {
                            for: UIControl.State.normal)
         view.titleLabel?.font = UIFont.systemFont(ofSize: 13,
                                                   weight: .semibold)
+        view.addTarget(self,
+                       action: #selector(loginScreen),
+                       for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -93,6 +96,8 @@ class ForgotPasswordView: UIView {
     }()
     
     var screenTransilation: (() -> Void)?
+    
+    var loginScreenTransilation: (() -> Void)?
     
     weak var delegate: ForgotPasswordDelegate?
     
@@ -157,5 +162,9 @@ class ForgotPasswordView: UIView {
     
     @objc private func ScreenTapped() {
         screenTransilation?()
+    }
+    
+    @objc private func loginScreen() {
+        loginScreenTransilation?()
     }
 }

@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol LoginViewControllerDelegate {
+    
+}
+
 class LoginViewController: UIViewController {
     
     private lazy var loginview = LoginView(frame: .zero)
@@ -18,9 +22,10 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        homeScreenTapped()
         navigationItem.backButtonTitle = ""
         self.navigationController?.navigationBar.tintColor = .black
+        homeScreenTapped()
+        transilationResetScreens()
     }
     
     private func homeScreenTapped() {
@@ -29,8 +34,13 @@ class LoginViewController: UIViewController {
             self.navigationController?.pushViewController(vc,
                                                           animated: true)
         }
-        
-  
     }
     
+    private func transilationResetScreens() {
+        loginview.resetTransilation = {
+            let vc = ForgotPasswordViewController()
+            self.navigationController?.pushViewController(vc,
+                                                          animated: true)
+        }
+    }
 }

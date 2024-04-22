@@ -15,20 +15,12 @@ class RegisterViewController: UIViewController {
         super.loadView()
         view = registerview
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
         navigationItem.backButtonTitle = ""
-        transilarion()
+        
     }
-    
-    private func transilarion() {
-        registerview.screenTransition = {
-            let vc = TabBarController()
-                self.navigationController?.pushViewController(vc,
-                                                     animated: true)
-        }
-    }
-    
-
 }
+

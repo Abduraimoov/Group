@@ -97,6 +97,9 @@ class LoginView: UIView {
         view.setTitle("Forget password?",
                       for: .normal)
         view.tintColor = .label
+        view.addTarget(self,
+                       action: #selector(ResetScreen),
+                       for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -220,7 +223,7 @@ class LoginView: UIView {
             rightLine.widthAnchor.constraint(equalToConstant: 125),
             rightLine.heightAnchor.constraint(equalToConstant: 1),
             
-            googleButton.topAnchor.constraint(equalTo: OrLabel.bottomAnchor,
+            googleButton.topAnchor.constraint(equalTo: OrLabel.topAnchor,
                                               constant: 33),
             googleButton.leftAnchor.constraint(equalTo: leftAnchor,
                                                constant: 26),
@@ -234,7 +237,8 @@ class LoginView: UIView {
                                                  constant: 26),
             facebookButton.rightAnchor.constraint(equalTo: rightAnchor,
                                                   constant: -26),
-            facebookButton.heightAnchor.constraint(equalToConstant: 50)
+            facebookButton.heightAnchor.constraint(equalToConstant: 50),
+            facebookButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -20)
             
         ])
     }
@@ -250,4 +254,7 @@ class LoginView: UIView {
         homeTransilation?()
     }
     
+    @objc private func ResetScreen() {
+        resetTransilation?()
+    }
 }
