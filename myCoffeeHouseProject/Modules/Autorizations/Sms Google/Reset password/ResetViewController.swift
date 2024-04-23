@@ -6,34 +6,39 @@
 //
 
 import UIKit
+import SnapKit
+
+protocol ResetViewControllerDelegate: AnyObject {
+    func didResetButton()
+}
 
 class ResetViewController: UIViewController {
     
     private var resetScreen = ResetView(frame: .zero)
     
-    override func loadView() {
-        super.loadView()
-        view = resetScreen
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         navigationItem.backButtonTitle = ""
-        self.navigationController?.navigationBar.tintColor = .black
-        setupTransilation()
+        navigationController?.navigationBar.tintColor = .black
+        resetScreen.delegate = self
+        setupConstraints()
     }
     
-    
-    private func setupTransilation() {
-        resetScreen.screenTransilation = {
-            let vc = UpdatedViewController()
-            self.navigationController?.pushViewController(vc,
-                                                          animated: true)
+    private func setupConstraints() {
+        view.addSubview(resetScreen)
+        resetScreen.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(175)
+            make.horizontalEdges.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-121)
         }
     }
-    
 }
 
-
-
+extension ResetViewController: ResetViewControllerDelegate {
+    func didResetButton() {
+        let vc = UpdatedViewController()
+        navigationController?.pushViewController(vc,
+                                                 animated: true)
+    }
+}

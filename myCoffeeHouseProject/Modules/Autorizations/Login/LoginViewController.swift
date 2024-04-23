@@ -6,41 +6,43 @@
 //
 
 import UIKit
+import SnapKit
 
-protocol LoginViewControllerDelegate {
-    
+protocol LoginViewControllerDelegate: AnyObject {
+    func didLoginButton()
+    func didForgotButton()
 }
 
 class LoginViewController: UIViewController {
     
-    private lazy var loginview = LoginView(frame: .zero)
-    
-    override func loadView() {
-        super.loadView()
-        view = loginview
-    }
+    private lazy var loginView = LoginView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backButtonTitle = ""
         self.navigationController?.navigationBar.tintColor = .black
-        homeScreenTapped()
-        transilationResetScreens()
+        loginView.delegate = self
+        setupConstrains()
     }
     
-    private func homeScreenTapped() {
-        loginview.homeTransilation = {
-            let vc = TabBarController()
-            self.navigationController?.pushViewController(vc,
-                                                          animated: true)
+    private func setupConstrains() {
+        view.addSubview(loginView)
+        loginView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
     
-    private func transilationResetScreens() {
-        loginview.resetTransilation = {
-            let vc = ForgotPasswordViewController()
-            self.navigationController?.pushViewController(vc,
-                                                          animated: true)
-        }
+}
+
+extension LoginViewController: LoginViewControllerDelegate {
+    func didForgotButton() {
+        let vc = ForgotPasswordViewController()
+        navigationController?.pushViewController(vc,
+                                                 animated: true)
+    }
+    
+    func didLoginButton() {
+        let vc = TabBarController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

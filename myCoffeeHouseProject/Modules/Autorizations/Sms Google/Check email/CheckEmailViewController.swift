@@ -6,37 +6,44 @@
 //
 
 import UIKit
+import SnapKit
+
+protocol CheckEmailViewControllerDelegate: AnyObject {
+    func didResumbitButton()
+    func didContinueButton()
+}
 
 class CheckEmailViewController: UIViewController {
     
     private var chekEmail = CheckEmailView(frame: .zero)
     
-    override func loadView() {
-        super.loadView()
-        view = chekEmail
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         navigationItem.backButtonTitle = ""
-        self.navigationController?.navigationBar.tintColor = .black
-        setupResetScreen()
-        setupPopToview()
+        navigationController?.navigationBar.tintColor = .black
+        chekEmail.delegate = self
+        setupConstraints()
     }
     
-    private func setupResetScreen() {
-        chekEmail.resetScreenTransilation = {
-            let vc = ResetViewController()
-            self.navigationController?.pushViewController(vc,
-                                                          animated: true)
-        }
-    }
-    
-    private func setupPopToview() {
-        chekEmail.popToViewTransilation = {
-            self.navigationController?.popViewController(animated: true)
+    private func setupConstraints() {
+        view.addSubview(chekEmail)
+        chekEmail.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(229)
+            make.horizontalEdges.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-121)
         }
     }
 }
 
+extension CheckEmailViewController: CheckEmailViewControllerDelegate {
+    func didResumbitButton() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func didContinueButton() {
+        let vc = ResetViewController()
+        navigationController?.pushViewController(vc,
+                                                 animated: true)
+    }
+}

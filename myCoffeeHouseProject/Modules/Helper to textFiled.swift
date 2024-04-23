@@ -9,6 +9,7 @@ import UIKit
 
 class PaddedTextField: UITextField {
     
+    
     var textInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 30)
 
     override func textRect(forBounds bounds: CGRect) -> CGRect {
@@ -24,4 +25,10 @@ class PaddedTextField: UITextField {
         rect.origin.x -= 10
         return rect
     }
+    
+    override func layoutSubviews() {
+           super.layoutSubviews()
+           layer.cornerRadius = 16
+           layer.masksToBounds = true
+       }
 }

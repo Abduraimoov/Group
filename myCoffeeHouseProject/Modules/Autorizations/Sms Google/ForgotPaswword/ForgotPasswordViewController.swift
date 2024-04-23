@@ -7,33 +7,43 @@
 
 import UIKit
 
+protocol ForgotPasswordViewControllerDelegate: AnyObject {
+    func didLoginButton()
+    func didsumbitButton()
+}
+
 class ForgotPasswordViewController: UIViewController {
     
-    let forgotView = ForgotPasswordView(frame: .zero)
+    let forgotView = ForgotPasswordView()
     
-    override func loadView() {
-        view = forgotView
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backButtonTitle = ""
-        self.navigationController?.navigationBar.tintColor = .black
-        screenTransilation()
-        transilationLoginScreen()
+        navigationController?.navigationBar.tintColor = .black
+        setupConstraints()
+        forgotView.delegate = self
+        view.backgroundColor = .systemBackground
     }
     
-    private func screenTransilation() {
-        forgotView.screenTransilation = {
-            let vc = CheckEmailViewController()
-            self.navigationController?.pushViewController(vc,
-                                                     animated: true)
+    private func setupConstraints() {
+        view.addSubview(forgotView)
+        forgotView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(175)
+            make.horizontalEdges.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-121)
         }
     }
+}
+
+extension ForgotPasswordViewController: ForgotPasswordViewControllerDelegate {
     
-    private func transilationLoginScreen() {
-        forgotView.loginScreenTransilation = {
-            self.navigationController?.popViewController(animated: true)
-        }
+    func didLoginButton() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func didsumbitButton() {
+        let vc = CheckEmailViewController()
+        navigationController?.pushViewController(vc,
+                                                 animated: true)
     }
 }

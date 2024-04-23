@@ -7,20 +7,36 @@
 
 import UIKit
 
+protocol RegisterViewControllerDelegate: AnyObject {
+    func didSingupbutton()
+}
+
 class RegisterViewController: UIViewController {
     
     private lazy var registerview = RegisterView(frame: .zero)
-    
-    override func loadView() {
-        super.loadView()
-        view = registerview
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         navigationItem.backButtonTitle = ""
-        
+        registerview.delegate = self
+        setupConstraints()
+    }
+    
+    private func setupConstraints() {
+        view.addSubview(registerview)
+        registerview.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(62)
+            make.horizontalEdges.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-106)
+        }
     }
 }
 
+extension RegisterViewController: RegisterViewControllerDelegate {
+    func didSingupbutton() {
+        let vc = TabBarController()
+        navigationController?.pushViewController(vc,
+                                                 animated: true)
+    }
+}

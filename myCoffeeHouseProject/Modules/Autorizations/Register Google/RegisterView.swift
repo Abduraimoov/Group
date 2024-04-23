@@ -6,10 +6,7 @@
 //
 
 import UIKit
-
-protocol RegisterViewDelegate: AnyObject {
-    
-}
+import SnapKit
 
 class RegisterView: UIView {
     
@@ -22,8 +19,6 @@ class RegisterView: UIView {
     
      private let emailTextField: PaddedTextField = {
         let view = PaddedTextField()
-        view.layer.cornerRadius = 16
-//          view.returnKeyType = .done
         view.layer.borderColor = UIColor.label.cgColor
         view.layer.borderWidth = 1
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -33,12 +28,10 @@ class RegisterView: UIView {
     private let emailLabel: UILabel = {
         let view = UILabel()
         view.tintColor = .systemGray5
-        view.text = "Email"
+        view.text = " Email "
         view.font = .systemFont(ofSize: 16,
                                 weight: .regular)
         view.backgroundColor = .white
-//        view.anchorPoint = CGPoint(x: 0,
-//                                   y: 0)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -47,7 +40,6 @@ class RegisterView: UIView {
       let view = PaddedTextField()
       view.placeholder = "Name"
       view.tintColor = .label
-      view.layer.cornerRadius = 26
       view.layer.borderColor = UIColor.label.cgColor
       view.layer.borderWidth = 1
       view.translatesAutoresizingMaskIntoConstraints = false
@@ -58,7 +50,6 @@ class RegisterView: UIView {
       let view = PaddedTextField()
       view.placeholder = "Number"
       view.tintColor = .label
-      view.layer.cornerRadius = 26
       view.layer.borderColor = UIColor.label.cgColor
       view.layer.borderWidth = 1
       view.translatesAutoresizingMaskIntoConstraints = false
@@ -70,7 +61,6 @@ class RegisterView: UIView {
         view.placeholder = "Password"
         view.translatesAutoresizingMaskIntoConstraints = false
         view.isSecureTextEntry = true
-        view.layer.cornerRadius = 26
         view.layer.borderColor = UIColor.label.cgColor
         view.layer.borderWidth = 1
         let rightView = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
@@ -89,7 +79,6 @@ class RegisterView: UIView {
         view.placeholder = "confirm password"
         view.translatesAutoresizingMaskIntoConstraints = false
         view.isSecureTextEntry = true
-        view.layer.cornerRadius = 26
         view.layer.borderColor = UIColor.label.cgColor
         view.layer.borderWidth = 1
         let rightView = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
@@ -113,7 +102,9 @@ class RegisterView: UIView {
                                              g: 222,
                                              b: 63,
                                              alpha: 100)
-        view.layer.cornerRadius = 26
+        view.addTarget(self,
+                       action: #selector(SingupTapped)
+                       , for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -146,7 +137,7 @@ class RegisterView: UIView {
         let view = UIButton(type: .custom)
         view.setTitle("Login with Google", for: .normal)
         view.setTitleColor(UIColor.label, for: .normal)
-        view.layer.cornerRadius = 26
+        view.layer.cornerRadius = 16
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         view.setImage(UIImage(named: "google"), for: .normal)
         view.titleEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
@@ -161,7 +152,7 @@ class RegisterView: UIView {
         let view = UIButton(type: .custom)
         view.setTitle("Login with Facebook", for: .normal)
         view.setTitleColor(UIColor.label, for: .normal)
-        view.layer.cornerRadius = 26
+        view.layer.cornerRadius = 16
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         view.setImage(UIImage(named: "facebook"), for: .normal)
         view.titleEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
@@ -172,11 +163,12 @@ class RegisterView: UIView {
         return view
     }()
     
-    weak var delegate: RegisterViewDelegate?
+    weak var delegate: RegisterViewControllerDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupAdd()
+        setupConstraints()
         emailTextField.delegate = self
     }
     
@@ -198,103 +190,98 @@ class RegisterView: UIView {
         addSubview(rightLine)
         addSubview(googleButton)
         addSubview(facebookButton)
-            NSLayoutConstraint.activate([
-                LogoIcon.topAnchor.constraint(equalTo: topAnchor,
-                                              constant: 69),
-                LogoIcon.leftAnchor.constraint(equalTo: leftAnchor,
-                                               constant: 121),
-                LogoIcon.rightAnchor.constraint(equalTo: rightAnchor,
-                                                constant: -121),
-                LogoIcon.heightAnchor.constraint(equalToConstant: 110),
-                
-                emailTextField.topAnchor.constraint(equalTo: LogoIcon.bottomAnchor,
-                                                    constant: 47),
-                emailTextField.leftAnchor.constraint(equalTo: leftAnchor,
-                                                     constant: 26),
-                emailTextField.rightAnchor.constraint(equalTo: rightAnchor,
-                                                      constant: -26),
-                emailTextField.heightAnchor.constraint(equalToConstant: 50),
-                
-                emailLabel.leftAnchor.constraint(equalTo: emailTextField.leftAnchor,
-                                                 constant: 15),
-                
-                emailLabel.centerYAnchor.constraint(equalTo: emailTextField.centerYAnchor),
-                
-                nameTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor,
-                                                   constant: 12),
-                nameTextField.leftAnchor.constraint(equalTo: leftAnchor,
-                                                    constant: 26),
-                nameTextField.rightAnchor.constraint(equalTo: rightAnchor,
-                                                     constant: -26),
-                nameTextField.heightAnchor.constraint(equalToConstant: 50),
-                
-                numberTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor,
-                                                     constant: 12),
-                numberTextField.leftAnchor.constraint(equalTo: leftAnchor,
-                                                      constant: 26),
-                numberTextField.rightAnchor.constraint(equalTo: rightAnchor,
-                                                       constant: -26),
-                numberTextField.heightAnchor.constraint(equalToConstant: 50),
-                
-                passwordTextField.topAnchor.constraint(equalTo: numberTextField.bottomAnchor,
-                                                       constant: 12),
-                passwordTextField.leftAnchor.constraint(equalTo: leftAnchor,
-                                                        constant: 26),
-                passwordTextField.rightAnchor.constraint(equalTo: rightAnchor,
-                                                         constant: -26),
-                passwordTextField.heightAnchor.constraint(equalToConstant: 50),
-                
-                confirmTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor,
-                                                      constant: 12),
-                confirmTextField.leftAnchor.constraint(equalTo: leftAnchor,
-                                                       constant: 26),
-                confirmTextField.rightAnchor.constraint(equalTo: rightAnchor,
-                                                        constant: -26),
-                confirmTextField.heightAnchor.constraint(equalToConstant: 50),
-                
-                SingupButton.topAnchor.constraint(equalTo: confirmTextField.bottomAnchor,
-                                                  constant: 30),
-                SingupButton.leftAnchor.constraint(equalTo: leftAnchor,
-                                                   constant: 26),
-                SingupButton.rightAnchor.constraint(equalTo: rightAnchor,
-                                                    constant: -26),
-                SingupButton.heightAnchor.constraint(equalToConstant: 50),
-                
-                leftLine.topAnchor.constraint(equalTo: SingupButton.bottomAnchor,
-                                              constant: 45),
-                leftLine.leftAnchor.constraint(equalTo: leftAnchor,
-                                               constant: 43),
-                leftLine.widthAnchor.constraint(equalToConstant: 125),
-                leftLine.heightAnchor.constraint(equalToConstant: 1),
-                
-                OrLabel.topAnchor.constraint(equalTo: SingupButton.bottomAnchor,
-                                             constant: 33),
-                OrLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-                
-                rightLine.topAnchor.constraint(equalTo: SingupButton.bottomAnchor,
-                                               constant: 45),
-                rightLine.rightAnchor.constraint(equalTo: rightAnchor,
-                                                 constant: -43),
-                rightLine.widthAnchor.constraint(equalToConstant: 125),
-                rightLine.heightAnchor.constraint(equalToConstant: 1),
-                
-                googleButton.topAnchor.constraint(equalTo: OrLabel.bottomAnchor,
-                                                  constant: 33),
-                googleButton.leftAnchor.constraint(equalTo: leftAnchor,
-                                                   constant: 26),
-                googleButton.rightAnchor.constraint(equalTo: rightAnchor,
-                                                    constant: -26),
-                googleButton.heightAnchor.constraint(equalToConstant: 50),
-                
-                facebookButton.topAnchor.constraint(equalTo: googleButton.bottomAnchor,
-                                                    constant: 21),
-                facebookButton.leftAnchor.constraint(equalTo: leftAnchor,
-                                                     constant: 26),
-                facebookButton.rightAnchor.constraint(equalTo: rightAnchor,
-                                                      constant: -26),
-                facebookButton.heightAnchor.constraint(equalToConstant: 50)
-            ])
     }
+    
+   private func setupConstraints() {
+        LogoIcon.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.left.equalToSuperview().offset(125)
+            make.right.equalToSuperview().offset(-125)
+            make.height.equalTo(150)
+        }
+
+        emailTextField.snp.makeConstraints { make in
+            make.top.equalTo(LogoIcon.snp.bottom).offset(30)
+            make.left.equalToSuperview().offset(26)
+            make.right.equalToSuperview().offset(-26)
+            make.height.equalTo(50)
+        }
+
+        emailLabel.snp.makeConstraints { make in
+            make.left.equalTo(emailTextField).offset(15)
+            make.centerY.equalTo(emailTextField)
+        }
+
+        nameTextField.snp.makeConstraints { make in
+            make.top.equalTo(emailTextField.snp.bottom).offset(12)
+            make.left.equalToSuperview().offset(26)
+            make.right.equalToSuperview().offset(-26)
+            make.height.equalTo(50)
+        }
+
+        numberTextField.snp.makeConstraints { make in
+            make.top.equalTo(nameTextField.snp.bottom).offset(12)
+            make.left.equalToSuperview().offset(26)
+            make.right.equalToSuperview().offset(-26)
+            make.height.equalTo(50)
+        }
+
+        passwordTextField.snp.makeConstraints { make in
+            make.top.equalTo(numberTextField.snp.bottom).offset(12)
+            make.left.equalToSuperview().offset(26)
+            make.right.equalToSuperview().offset(-26)
+            make.height.equalTo(50)
+        }
+
+        confirmTextField.snp.makeConstraints { make in
+            make.top.equalTo(passwordTextField.snp.bottom).offset(12)
+            make.left.equalToSuperview().offset(26)
+            make.right.equalToSuperview().offset(-26)
+            make.height.equalTo(50)
+        }
+
+        SingupButton.snp.makeConstraints { make in
+            make.top.equalTo(confirmTextField.snp.bottom).offset(30)
+            make.left.equalToSuperview().offset(26)
+            make.right.equalToSuperview().offset(-26)
+            make.height.equalTo(50)
+        }
+
+        leftLine.snp.makeConstraints { make in
+            make.top.equalTo(SingupButton.snp.bottom).offset(45)
+            make.left.equalToSuperview().offset(43)
+            make.width.equalTo(125)
+            make.height.equalTo(1)
+        }
+
+        OrLabel.snp.makeConstraints { make in
+            make.top.equalTo(SingupButton.snp.bottom).offset(33)
+            make.centerX.equalToSuperview()
+        }
+
+        rightLine.snp.makeConstraints { make in
+            make.top.equalTo(SingupButton.snp.bottom).offset(45)
+            make.right.equalToSuperview().offset(-43)
+            make.width.equalTo(125)
+            make.height.equalTo(1)
+        }
+
+        googleButton.snp.makeConstraints { make in
+            make.top.equalTo(OrLabel.snp.top).offset(33)
+            make.left.equalToSuperview().offset(26)
+            make.right.equalToSuperview().offset(-26)
+            make.height.equalTo(50)
+        }
+
+        facebookButton.snp.makeConstraints { make in
+            make.top.equalTo(googleButton.snp.bottom).offset(21)
+            make.left.equalToSuperview().offset(26)
+            make.right.equalToSuperview().offset(-26)
+            make.height.equalTo(50)
+            make.bottom.equalToSuperview()
+        }
+    }
+
     
     @objc func hideText(_ sender: UIButton) {
         
@@ -307,6 +294,11 @@ class RegisterView: UIView {
             break
         }
     }
+    
+    @objc 
+    private func SingupTapped() {
+        delegate?.didSingupbutton()
+    }
 }
 
 extension RegisterView: UITextFieldDelegate {
@@ -318,18 +310,4 @@ extension RegisterView: UITextFieldDelegate {
         }
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        UIView.animate(withDuration: 0.1) {
-            self.emailLabel.transform = .identity
-            self.emailLabel.frame.origin = CGPoint(x: self.emailTextField.frame.origin.x + 15,
-                                                   y: self.emailTextField.frame.minY - self.emailLabel.frame.height / 5)
-        }
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
 }
-
-

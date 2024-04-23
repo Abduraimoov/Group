@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         var rootViewController: UIViewController?
         if UserDefaults.standard.bool(forKey: "One_Board_cell") == true {
-            rootViewController = RegisterViewController()
+            rootViewController = SplashViewController()
         } else {
             rootViewController = OnBoardingView()
         }

@@ -6,10 +6,7 @@
 //
 
 import UIKit
-
-protocol LoginViewDelegate: AnyObject {
-    
-}
+import SnapKit
 
 class LoginView: UIView {
     
@@ -24,7 +21,6 @@ class LoginView: UIView {
         let view = PaddedTextField()
         view.placeholder = "Emial"
         view.tintColor = .label
-        view.layer.cornerRadius = 26
         view.layer.borderColor = UIColor.label.cgColor
         view.layer.borderWidth = 1
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -36,7 +32,6 @@ class LoginView: UIView {
         view.placeholder = "Password"
         view.translatesAutoresizingMaskIntoConstraints = false
         view.isSecureTextEntry = true
-        view.layer.cornerRadius = 26
         view.layer.borderColor = UIColor.label.cgColor
         view.layer.borderWidth = 1
         let rightView = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
@@ -55,14 +50,14 @@ class LoginView: UIView {
         view.setTitle("Login",
                       for: .normal)
         view.tintColor = .black
+        view.layer.cornerRadius = 16
         view.backgroundColor = UIColor().rgb(r: 251,
                                              g: 222,
                                              b: 63,
                                              alpha: 100)
-        view.layer.cornerRadius = 26
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addTarget(self,
-                       action: #selector(homeScreen),
+                       action: #selector(loginButtonTapped),
                        for: .touchUpInside)
         return view
     }()
@@ -94,11 +89,11 @@ class LoginView: UIView {
     
     private let forgetButton: UIButton = {
         let view = UIButton(type: .system)
-        view.setTitle("Forget password?",
+        view.setTitle("Forgot password?",
                       for: .normal)
         view.tintColor = .label
         view.addTarget(self,
-                       action: #selector(ResetScreen),
+                       action: #selector(forgotButtonTapped),
                        for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -108,7 +103,7 @@ class LoginView: UIView {
         let view = UIButton(type: .custom)
         view.setTitle("Login with Google", for: .normal)
         view.setTitleColor(UIColor.label, for: .normal)
-        view.layer.cornerRadius = 26
+        view.layer.cornerRadius = 16
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         view.setImage(UIImage(named: "google"), for: .normal)
         view.titleEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
@@ -123,7 +118,7 @@ class LoginView: UIView {
         let view = UIButton(type: .custom)
         view.setTitle("Login with Facebook", for: .normal)
         view.setTitleColor(UIColor.label, for: .normal)
-        view.layer.cornerRadius = 26
+        view.layer.cornerRadius = 16
         view.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         view.setImage(UIImage(named: "facebook"), for: .normal)
         view.titleEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
@@ -133,12 +128,8 @@ class LoginView: UIView {
         view.contentHorizontalAlignment = .center
         return view
     }()
-
-    var homeTransilation: (() -> Void)?
     
-    var resetTransilation: (() -> Void)?
-    
-    weak var delegate: LoginViewDelegate?
+    weak var delegate: LoginViewControllerDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -163,98 +154,93 @@ class LoginView: UIView {
         addSubview(googleButton)
         addSubview(facebookButton)
     }
-    
+
     private func setupConstrains() {
-        NSLayoutConstraint.activate([
-            LogoIcon.topAnchor.constraint(equalTo: topAnchor,
-                                          constant: 69),
-            LogoIcon.leftAnchor.constraint(equalTo: leftAnchor,
-                                           constant: 121),
-            LogoIcon.rightAnchor.constraint(equalTo: rightAnchor,
-                                            constant: -121),
-            LogoIcon.heightAnchor.constraint(equalToConstant: 110),
-            
-            emailTextField.topAnchor.constraint(equalTo: LogoIcon.bottomAnchor,
-                                                constant: 47),
-            emailTextField.leftAnchor.constraint(equalTo: leftAnchor,
-                                                 constant: 26),
-            emailTextField.rightAnchor.constraint(equalTo: rightAnchor,
-                                                  constant: -26),
-            emailTextField.heightAnchor.constraint(equalToConstant: 50),
-            
-            passwordTextField.topAnchor.constraint(equalTo: emailTextField.bottomAnchor,
-                                                   constant: 28),
-            passwordTextField.leftAnchor.constraint(equalTo: leftAnchor,
-                                                    constant: 26),
-            passwordTextField.rightAnchor.constraint(equalTo: rightAnchor,
-                                                     constant: -26),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 50),
-            
-            forgetButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor,
-                                              constant: 21),
-            forgetButton.rightAnchor.constraint(equalTo: rightAnchor,
-                                                constant: -31),
-            forgetButton.heightAnchor.constraint(equalToConstant: 23),
-            forgetButton.widthAnchor.constraint(equalToConstant: 127),
-            
-            LoginButton.topAnchor.constraint(equalTo: forgetButton.bottomAnchor,
-                                             constant: 21),
-            LoginButton.leftAnchor.constraint(equalTo: leftAnchor,
-                                              constant: 26),
-            LoginButton.rightAnchor.constraint(equalTo: rightAnchor,
-                                               constant: -26),
-            LoginButton.heightAnchor.constraint(equalToConstant: 50),
-            
-            leftLine.topAnchor.constraint(equalTo: LoginButton.bottomAnchor,
-                                          constant: 45),
-            leftLine.leftAnchor.constraint(equalTo: leftAnchor,
-                                           constant: 43),
-            leftLine.widthAnchor.constraint(equalToConstant: 125),
-            leftLine.heightAnchor.constraint(equalToConstant: 1),
-            
-            OrLabel.topAnchor.constraint(equalTo: LoginButton.bottomAnchor,
-                                         constant: 35),
-            OrLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            
-            rightLine.topAnchor.constraint(equalTo: LoginButton.bottomAnchor,
-                                          constant: 45),
-            rightLine.rightAnchor.constraint(equalTo: rightAnchor,
-                                           constant: -43),
-            rightLine.widthAnchor.constraint(equalToConstant: 125),
-            rightLine.heightAnchor.constraint(equalToConstant: 1),
-            
-            googleButton.topAnchor.constraint(equalTo: OrLabel.topAnchor,
-                                              constant: 33),
-            googleButton.leftAnchor.constraint(equalTo: leftAnchor,
-                                               constant: 26),
-            googleButton.rightAnchor.constraint(equalTo: rightAnchor,
-                                                constant: -26),
-            googleButton.heightAnchor.constraint(equalToConstant: 50),
-            
-            facebookButton.topAnchor.constraint(equalTo: googleButton.bottomAnchor,
-                                                constant: 21),
-            facebookButton.leftAnchor.constraint(equalTo: leftAnchor,
-                                                 constant: 26),
-            facebookButton.rightAnchor.constraint(equalTo: rightAnchor,
-                                                  constant: -26),
-            facebookButton.heightAnchor.constraint(equalToConstant: 50),
-            facebookButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -20)
-            
-        ])
+        LogoIcon.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(69)
+            make.left.equalToSuperview().offset(121)
+            make.right.equalToSuperview().offset(-121)
+            make.height.equalTo(110)
+        }
+        
+        emailTextField.snp.makeConstraints { make in
+            make.top.equalTo(LogoIcon.snp.bottom).offset(47)
+            make.left.equalToSuperview().offset(26)
+            make.right.equalToSuperview().offset(-26)
+            make.height.equalTo(50)
+        }
+        
+        passwordTextField.snp.makeConstraints { make in
+            make.top.equalTo(emailTextField.snp.bottom).offset(28)
+            make.left.equalToSuperview().offset(26)
+            make.right.equalToSuperview().offset(-26)
+            make.height.equalTo(50)
+        }
+        
+        forgetButton.snp.makeConstraints { make in
+            make.top.equalTo(passwordTextField.snp.bottom).offset(21)
+            make.right.equalToSuperview().offset(-31)
+            make.height.equalTo(23)
+            make.width.equalTo(127)
+        }
+        
+        LoginButton.snp.makeConstraints { make in
+            make.top.equalTo(forgetButton.snp.bottom).offset(21)
+            make.left.equalToSuperview().offset(26)
+            make.right.equalToSuperview().offset(-26)
+            make.height.equalTo(50)
+        }
+        
+        leftLine.snp.makeConstraints { make in
+            make.top.equalTo(LoginButton.snp.bottom).offset(45)
+            make.left.equalToSuperview().offset(43)
+            make.width.equalTo(125)
+            make.height.equalTo(1)
+        }
+        
+        OrLabel.snp.makeConstraints { make in
+            make.top.equalTo(LoginButton.snp.bottom).offset(35)
+            make.centerX.equalToSuperview()
+        }
+        
+        rightLine.snp.makeConstraints { make in
+            make.top.equalTo(LoginButton.snp.bottom).offset(45)
+            make.right.equalToSuperview().offset(-43)
+            make.width.equalTo(125)
+            make.height.equalTo(1)
+        }
+        
+        googleButton.snp.makeConstraints { make in
+            make.top.equalTo(OrLabel.snp.bottom).offset(33)
+            make.left.equalToSuperview().offset(26)
+            make.right.equalToSuperview().offset(-26)
+            make.height.equalTo(50)
+        }
+        
+        facebookButton.snp.makeConstraints { make in
+            make.top.equalTo(googleButton.snp.bottom).offset(21)
+            make.left.equalToSuperview().offset(26)
+            make.right.equalToSuperview().offset(-26)
+            make.height.equalTo(50)
+            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-147)
+        }
     }
+
     
-    @objc func hideText(_ sender: UIButton) {
+    @objc 
+    private func hideText(_ sender: UIButton) {
         if sender.tag == 1 {
             passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
         }
     }
     
+    @objc
+    private func loginButtonTapped() {
+        delegate?.didLoginButton()
+      }
     
-    @objc private func homeScreen() {
-        homeTransilation?()
-    }
-    
-    @objc private func ResetScreen() {
-        resetTransilation?()
+    @objc
+    private func forgotButtonTapped() {
+        delegate?.didForgotButton()
     }
 }

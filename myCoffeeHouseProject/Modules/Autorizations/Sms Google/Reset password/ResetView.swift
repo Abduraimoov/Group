@@ -6,10 +6,7 @@
 //
 
 import UIKit
-
-protocol ResetViewDelegate: AnyObject {
-    
-}
+import SnapKit
 
 class ResetView: UIView {
     
@@ -38,13 +35,11 @@ class ResetView: UIView {
         view.placeholder = "Password"
         view.translatesAutoresizingMaskIntoConstraints = false
         view.isSecureTextEntry = true
-        view.layer.cornerRadius = 26
         view.layer.borderColor = UIColor.label.cgColor
         view.layer.borderWidth = 1
         let rightView = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
         rightView.setBackgroundImage(UIImage(systemName: "eye.slash"), for: .normal)
         rightView.tintColor = .label
-        //rightView.addTarget(self, action: #selector(hideText), for: .touchUpInside)
         rightView.tag = 1
         view.rightView = rightView
         view.rightViewMode = .always
@@ -57,13 +52,11 @@ class ResetView: UIView {
         view.placeholder = "confirm password"
         view.translatesAutoresizingMaskIntoConstraints = false
         view.isSecureTextEntry = true
-        view.layer.cornerRadius = 26
         view.layer.borderColor = UIColor.label.cgColor
         view.layer.borderWidth = 1
         let rightView = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
         rightView.setBackgroundImage(UIImage(systemName: "eye.slash"), for: .normal)
         rightView.tintColor = .label
-        //   rightView.addTarget(self, action: #selector(hideText), for: .touchUpInside)
         rightView.tag = 1
         view.rightView = rightView
         view.rightViewMode = .always
@@ -80,7 +73,7 @@ class ResetView: UIView {
                                              g: 222,
                                              b: 63,
                                              alpha: 100)
-        view.layer.cornerRadius = 26
+        view.layer.cornerRadius = 16
         view.addTarget(self,
                        action: #selector(transilation),
                        for: .touchUpInside)
@@ -88,13 +81,14 @@ class ResetView: UIView {
         return view
     }()
     
-    weak var delegate: ResetViewDelegate?
+    weak var delegate: ResetViewControllerDelegate?
     
     var screenTransilation: (()-> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupAddSubviews()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -107,45 +101,43 @@ class ResetView: UIView {
         addSubview(passwordTextField)
         addSubview(confirmTextField)
         addSubview(ResetPasswordButton)
-        NSLayoutConstraint.activate([
-            resetLabel.topAnchor.constraint(equalTo: topAnchor,
-                                            constant: 80),
-            resetLabel.leftAnchor.constraint(equalTo: leftAnchor,
-                                             constant: 43),
-            
-            deckriptionLabel.topAnchor.constraint(equalTo: resetLabel.bottomAnchor,
-                                                  constant: 15),
-            deckriptionLabel.leftAnchor.constraint(equalTo: leftAnchor,
-                                                   constant: 37),
-            
-            passwordTextField.topAnchor.constraint(equalTo: deckriptionLabel.bottomAnchor,
-                                                   constant: 84),
-            passwordTextField.leftAnchor.constraint(equalTo: leftAnchor,
-                                                    constant: 26),
-            passwordTextField.rightAnchor.constraint(equalTo: rightAnchor,
-                                                     constant: -26),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 50),
-            
-            confirmTextField.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor,
-                                                  constant: 25),
-            confirmTextField.leftAnchor.constraint(equalTo: leftAnchor,
-                                                   constant: 26),
-            confirmTextField.rightAnchor.constraint(equalTo: rightAnchor,
-                                                    constant: -26),
-            confirmTextField.heightAnchor.constraint(equalToConstant: 50),
-            
-            ResetPasswordButton.topAnchor.constraint(equalTo: confirmTextField.bottomAnchor,
-                                                     constant: 226),
-            ResetPasswordButton.leftAnchor.constraint(equalTo: leftAnchor,
-                                                      constant: 26),
-            ResetPasswordButton.rightAnchor.constraint(equalTo: rightAnchor,
-                                                       constant: -26),
-            ResetPasswordButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
+    }
+    
+    private func setupConstraints() {
+        resetLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.left.equalToSuperview().offset(43)
+        }
+        
+        deckriptionLabel.snp.makeConstraints { make in
+            make.top.equalTo(resetLabel.snp.bottom).offset(15)
+            make.left.equalToSuperview().offset(37)
+        }
+        
+        passwordTextField.snp.makeConstraints { make in
+            make.top.equalTo(deckriptionLabel.snp.bottom).offset(84)
+            make.left.equalToSuperview().offset(26)
+            make.right.equalToSuperview().offset(-26)
+            make.height.equalTo(50)
+        }
+        
+        confirmTextField.snp.makeConstraints { make in
+            make.top.equalTo(passwordTextField.snp.bottom).offset(25)
+            make.left.equalToSuperview().offset(26)
+            make.right.equalToSuperview().offset(-26)
+            make.height.equalTo(50)
+        }
+        
+        ResetPasswordButton.snp.makeConstraints { make in
+            make.top.equalTo(confirmTextField.snp.bottom).offset(226)
+            make.left.equalToSuperview().offset(26)
+            make.right.equalToSuperview().offset(-26)
+            make.height.equalTo(50)
+            make.bottom.equalToSuperview()
+        }
     }
     
     @objc private func transilation() {
-        screenTransilation?()
+        delegate?.didResetButton()
     }
-    
 }

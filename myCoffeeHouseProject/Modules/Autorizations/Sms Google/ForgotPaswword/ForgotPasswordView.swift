@@ -6,10 +6,7 @@
 //
 
 import UIKit
-
-protocol ForgotPasswordDelegate: AnyObject {
-    
-}
+import SnapKit
 
 class ForgotPasswordView: UIView {
     
@@ -37,7 +34,6 @@ class ForgotPasswordView: UIView {
         let view = PaddedTextField()
         view.placeholder = "Emial"
         view.tintColor = .label
-        view.layer.cornerRadius = 26
         view.layer.borderColor = UIColor.label.cgColor
         view.layer.borderWidth = 1
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -87,7 +83,7 @@ class ForgotPasswordView: UIView {
                                              g: 222,
                                              b: 63,
                                              alpha: 100)
-        view.layer.cornerRadius = 26
+        view.layer.cornerRadius = 16
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addTarget(self,
                        action: #selector(ScreenTapped),
@@ -95,17 +91,13 @@ class ForgotPasswordView: UIView {
         return view
     }()
     
-    var screenTransilation: (() -> Void)?
-    
-    var loginScreenTransilation: (() -> Void)?
-    
-    weak var delegate: ForgotPasswordDelegate?
+    weak var delegate: ForgotPasswordViewControllerDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .systemBackground
         setupAddSubview()
-        setupConstrains()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -122,49 +114,45 @@ class ForgotPasswordView: UIView {
         addSubview(sumbitButton)
     }
     
-    private func setupConstrains() {
-        NSLayoutConstraint.activate([
-            passwordLabel.topAnchor.constraint(equalTo: topAnchor,
-                                               constant: 175),
-            passwordLabel.leftAnchor.constraint(equalTo: leftAnchor,
-                                                constant: 43),
-            
-            deckriptionLabel.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor,
-                                                  constant: 18),
-            deckriptionLabel.leftAnchor.constraint(equalTo: leftAnchor,
-                                                   constant: 27),
-            
-            emailTextField.topAnchor.constraint(equalTo: deckriptionLabel.bottomAnchor,
-                                                constant: 81),
-            emailTextField.leftAnchor.constraint(equalTo: leftAnchor,
-                                                 constant: 26),
-            emailTextField.rightAnchor.constraint(equalTo: rightAnchor,
-                                                  constant: -26),
-            emailTextField.heightAnchor.constraint(equalToConstant: 50),
-            
-            stackLabels.topAnchor.constraint(equalTo: emailTextField.bottomAnchor,
-                                             constant: 26),
-            stackLabels.leftAnchor.constraint(equalTo: leftAnchor,
-                                              constant: 76),
-            stackLabels.rightAnchor.constraint(equalTo: rightAnchor,
-                                               constant: -122),
-            stackLabels.heightAnchor.constraint(equalToConstant: 20),
-            
-            sumbitButton.topAnchor.constraint(equalTo: stackLabels.bottomAnchor,
-                                              constant: 265),
-            sumbitButton.leftAnchor.constraint(equalTo: leftAnchor,
-                                               constant: 26),
-            sumbitButton.rightAnchor.constraint(equalTo: rightAnchor,
-                                                constant: -26),
-            sumbitButton.heightAnchor.constraint(equalToConstant: 50),
-        ])
+    func setupConstraints() {
+        passwordLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.left.equalToSuperview().offset(43)
+        }
+        
+        deckriptionLabel.snp.makeConstraints { make in
+            make.top.equalTo(passwordLabel.snp.bottom).offset(18)
+            make.left.equalToSuperview().offset(27)
+        }
+        
+        emailTextField.snp.makeConstraints { make in
+            make.top.equalTo(deckriptionLabel.snp.bottom).offset(81)
+            make.left.equalToSuperview().offset(26)
+            make.right.equalToSuperview().offset(-26)
+            make.height.equalTo(50)
+        }
+        
+        stackLabels.snp.makeConstraints { make in
+            make.top.equalTo(emailTextField.snp.bottom).offset(26)
+            make.left.equalToSuperview().offset(76)
+            make.right.equalToSuperview().offset(-122)
+            make.height.equalTo(20)
+        }
+        
+        sumbitButton.snp.makeConstraints { make in
+            make.top.equalTo(stackLabels.snp.bottom).offset(247)
+            make.left.equalToSuperview().offset(26)
+            make.right.equalToSuperview().offset(-26)
+            make.height.equalTo(50)
+            make.bottom.equalToSuperview()
+        }
     }
     
     @objc private func ScreenTapped() {
-        screenTransilation?()
+        delegate?.didsumbitButton()
     }
     
     @objc private func loginScreen() {
-        loginScreenTransilation?()
+        delegate?.didLoginButton()
     }
 }

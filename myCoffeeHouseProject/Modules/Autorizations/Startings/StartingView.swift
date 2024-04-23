@@ -49,7 +49,7 @@ class StartignView: UIView {
                                              g: 222,
                                              b: 63,
                                              alpha: 100)
-        view.layer.cornerRadius = 26
+        view.layer.cornerRadius = 16
         view.addTarget(self,
                        action: #selector(RegisterscreensTapped),
                        for: .touchUpInside)
@@ -62,7 +62,7 @@ class StartignView: UIView {
         view.setTitle("Login",
                       for: .normal)
         view.tintColor = .label
-        view.layer.cornerRadius = 26
+        view.layer.cornerRadius = 16
         view.layer.borderColor = UIColor.black.cgColor
         view.layer.borderWidth = 1
         view.translatesAutoresizingMaskIntoConstraints = false

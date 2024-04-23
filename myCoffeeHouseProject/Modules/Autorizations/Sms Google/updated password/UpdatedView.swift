@@ -6,10 +6,7 @@
 //
 
 import UIKit
-
-protocol UpdatedViewDelegate: AnyObject {
-    
-}
+import SnapKit
 
 class UpdatedView: UIView {
     
@@ -58,13 +55,12 @@ class UpdatedView: UIView {
         return view
     }()
     
-    weak var delegate: UpdatedViewDelegate?
-    
-    var screenTransilation: (() -> Void)?
+    weak var delegate: UpdatedViewControllerDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupAddSubview()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -76,34 +72,35 @@ class UpdatedView: UIView {
         addSubview(emaillabel)
         addSubview(deckriptionlabel)
         addSubview(ContinueButton)
-        NSLayoutConstraint.activate([
-            emailIcon.topAnchor.constraint(equalTo: topAnchor,
-                                           constant: 160),
-            emailIcon.centerXAnchor.constraint(equalTo: centerXAnchor),
-            emailIcon.heightAnchor.constraint(equalToConstant: 81),
-            emailIcon.widthAnchor.constraint(equalToConstant: 81),
-            
-            emaillabel.topAnchor.constraint(equalTo: emailIcon.bottomAnchor,
-                                            constant: 24),
-            emaillabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            
-            deckriptionlabel.topAnchor.constraint(equalTo: emaillabel.bottomAnchor,
-                                                  constant: 16),
-            deckriptionlabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            deckriptionlabel.widthAnchor.constraint(equalToConstant: 240),
-            
-            ContinueButton.topAnchor.constraint(equalTo: deckriptionlabel.topAnchor, constant: 260),
-            ContinueButton.leftAnchor.constraint(equalTo: leftAnchor,
-                                                 constant: 26),
-            ContinueButton.rightAnchor.constraint(equalTo: rightAnchor,
-                                                  constant: -26),
-            ContinueButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
     }
     
+    private func setupConstraints() {
+        emailIcon.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.width.height.equalTo(81)
+        }
+        
+        emaillabel.snp.makeConstraints { make in
+            make.top.equalTo(emailIcon.snp.bottom).offset(24)
+            make.centerX.equalToSuperview()
+        }
+        
+        deckriptionlabel.snp.makeConstraints { make in
+            make.top.equalTo(emaillabel.snp.bottom).offset(16)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(240)
+        }
+        
+        ContinueButton.snp.makeConstraints { make in
+            make.top.equalTo(deckriptionlabel.snp.top).offset(250)
+            make.left.equalToSuperview().offset(26)
+            make.right.equalToSuperview().offset(-26)
+            make.height.equalTo(50)
+            make.bottom.equalToSuperview()
+        }
+    }
     @objc private func transilation() {
-        screenTransilation?()
+        delegate?.didContinueButton()
     }
-    
 }
-

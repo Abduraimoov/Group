@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol AutorizationViewDelegate: AnyObject {
-    func didLoginBtn(with number: String)
-}
-
 class AutorizationView: UIView {
     
     private lazy var GeeksImage: UIImageView = {
@@ -34,7 +30,7 @@ class AutorizationView: UIView {
         let tf = UITextField()
         tf.placeholder = "999 999 999"
         tf.backgroundColor = .systemGray5
-        tf.layer.cornerRadius = 10
+        tf.layer.cornerRadius = 16
         tf.translatesAutoresizingMaskIntoConstraints = false
         let leftContainerView = UIView(frame: CGRect(x: 0,
                                                      y: 0,
@@ -48,7 +44,7 @@ class AutorizationView: UIView {
                                      height: 20)
         leftContainerView.addSubview(iconImageView)
          tf.leftView = leftContainerView
-         tf.addTarget(self, action: #selector(smsCodeService),
+         tf.addTarget(self, action: #selector(loginButton),
                       for: .valueChanged)
          tf.leftViewMode = .always
          return tf
@@ -59,21 +55,19 @@ class AutorizationView: UIView {
         view.setTitle("Войти",
                       for: .normal)
         view.tintColor = .white
-        view.layer.cornerRadius = 22
+        view.layer.cornerRadius = 16
         view.backgroundColor = UIColor().rgb(r: 255,
                                              g: 139,
                                              b: 91,
                                              alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.addTarget(self,
-                       action: #selector(smsCodeService),
+                       action: #selector(loginButton),
                        for: .touchUpInside)
         return view
     }()
     
-    weak var delegate: AutorizationViewDelegate?
-    
-    var screenTransition: (() -> Void)?
+    weak var delegate: AutorizationViewControllerDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -91,16 +85,15 @@ class AutorizationView: UIView {
         addSubview(numberTextFeild)
         addSubview(toComeInButton)
         NSLayoutConstraint.activate([
-            GeeksImage.topAnchor.constraint(equalTo: topAnchor,
-                                            constant: 155),
+            GeeksImage.topAnchor.constraint(equalTo: topAnchor),
             GeeksImage.leftAnchor.constraint(equalTo: leftAnchor,
                                              constant: 103),
             GeeksImage.rightAnchor.constraint(equalTo: rightAnchor,
                                               constant: -103),
-            GeeksImage.heightAnchor.constraint(equalToConstant: 80),
+            GeeksImage.heightAnchor.constraint(equalToConstant: 150),
             
             entranceTitle.topAnchor.constraint(equalTo: GeeksImage.bottomAnchor,
-                                               constant: 60),
+                                               constant: 50),
             entranceTitle.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
             
             numberTextFeild.topAnchor.constraint(equalTo: entranceTitle.bottomAnchor,
@@ -117,14 +110,13 @@ class AutorizationView: UIView {
                                                  constant: 16),
             toComeInButton.rightAnchor.constraint(equalTo: rightAnchor,
                                                   constant: -16),
-            toComeInButton.heightAnchor.constraint(equalToConstant: 50)
+            toComeInButton.heightAnchor.constraint(equalToConstant: 50),
+            toComeInButton.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
     
     @objc
-    private func smsCodeService() {
+    private func loginButton() {
         delegate?.didLoginBtn(with: numberTextFeild.text ?? "")
     }
 }
-    
-

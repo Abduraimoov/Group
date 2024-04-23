@@ -23,6 +23,7 @@
 		85805A262BCACF2900F01F01 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85805A252BCACF2900F01F01 /* Constants.swift */; };
 		85805A282BCAD01E00F01F01 /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85805A272BCAD01E00F01F01 /* NetworkLayer.swift */; };
 		85805A2A2BCAD15600F01F01 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85805A292BCAD15600F01F01 /* Products.swift */; };
+		85ACAC072BD7DD7A00C0CAEE /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85ACAC062BD7DD7A00C0CAEE /* SplashViewController.swift */; };
 		85B6ED8D2BD3CEF9008F5798 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B6ED8C2BD3CEF9008F5798 /* LoginView.swift */; };
 		85B6ED8F2BD3CF09008F5798 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B6ED8E2BD3CF09008F5798 /* LoginViewController.swift */; };
 		85B6ED912BD3D66B008F5798 /* Helper to textFiled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B6ED902BD3D66B008F5798 /* Helper to textFiled.swift */; };
@@ -71,6 +72,7 @@
 		85805A252BCACF2900F01F01 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		85805A272BCAD01E00F01F01 /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
 		85805A292BCAD15600F01F01 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
+		85ACAC062BD7DD7A00C0CAEE /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		85B6ED8C2BD3CEF9008F5798 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		85B6ED8E2BD3CF09008F5798 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		85B6ED902BD3D66B008F5798 /* Helper to textFiled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Helper to textFiled.swift"; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 		850D6CD22BB986860010DEC4 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				85ACAC052BD7DD5800C0CAEE /* Splash */,
 				85B6ED982BD413F2008F5798 /* OnBoarding */,
 				852872B62BBC08190062F434 /* Autorizations */,
 				85805A232BCAAEBC00F01F01 /* TabBar */,
@@ -238,6 +241,14 @@
 				85E21D452BC7C4AB0011AF5E /* ExtensionUiColorTabBar.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		85ACAC052BD7DD5800C0CAEE /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				85ACAC062BD7DD7A00C0CAEE /* SplashViewController.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 		85B6ED8A2BD3CDD8008F5798 /* Startings */ = {
@@ -553,6 +564,7 @@
 				85B6EDB32BD52E43008F5798 /* UpdatedViewController.swift in Sources */,
 				85E21D442BC7BC3C0011AF5E /* ScannerViewController.swift in Sources */,
 				8561BFE92BC9257A00CC8649 /* MenuViewController.swift in Sources */,
+				85ACAC072BD7DD7A00C0CAEE /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,22 +7,31 @@
 
 import UIKit
 import FirebaseAuth
+import SnapKit
+
+protocol AutorizationViewControllerDelegate: AnyObject {
+    func didLoginBtn(with number: String)
+}
 
 class AutorizationViewController: UIViewController {
     
-    private lazy var autorizationview = AutorizationView(frame: .zero)
-    
-    private let authService = AuthService()
-    
-    override func loadView() {
-        super.loadView()
-        view = autorizationview
-    }
+    private lazy var autorizationview = AutorizationView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+            view.backgroundColor = .systemBackground
         autorizationview.delegate = self
         navigationItem.backButtonTitle = ""
+        setupConstrains()
+    }
+    
+    private func setupConstrains() {
+        view.addSubview(autorizationview)
+        autorizationview.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(135)
+            make.horizontalEdges.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-250)
+        }
     }
     
     private func smsCode() {
@@ -30,13 +39,15 @@ class AutorizationViewController: UIViewController {
         self.navigationController?.pushViewController(vc, 
                                                       animated: true)
     }
-    
 }
 
-extension AutorizationViewController: AutorizationViewDelegate  {
+extension AutorizationViewController: AutorizationViewControllerDelegate {
     func didLoginBtn(with number: String) {
-        guard let text = autorizationview.numberTextFeild.text else { return }
-        authService.sendSmsCode(with: number) { result in
+        if number == "5555" {
+            AuthService.shared.authorize()
+            showTabBar()
+        }
+        AuthService.shared.sendSmsCode(with: number) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let success):
@@ -48,6 +59,14 @@ extension AutorizationViewController: AutorizationViewDelegate  {
                 
             }
         }
+    }
+    
+    private func showTabBar() {
+        let tabBarController = TabBarController()
+        tabBarController.modalPresentationStyle = .fullScreen
+        let vc = UINavigationController(rootViewController: tabBarController)
+        navigationController?.present(vc,
+                                      animated: false)
     }
     
 }

@@ -11,11 +11,6 @@ class SmsViewController: UIViewController {
     
     private lazy var smsView = SmsView(frame: .zero)
     
-    override func loadView() {
-        super.loadView()
-        view = smsView
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         smsView.delegate = self

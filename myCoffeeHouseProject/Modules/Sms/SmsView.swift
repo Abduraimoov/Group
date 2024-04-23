@@ -34,7 +34,7 @@ class SmsView: UIView {
         let tf = UITextField()
         tf.placeholder = "Enter a sms code"
         tf.backgroundColor = .systemGray5
-        tf.layer.cornerRadius = 10
+        tf.layer.cornerRadius = 16
         tf.translatesAutoresizingMaskIntoConstraints = false
         let leftContainerView = UIView(frame: CGRect(x: 0,
                                                      y: 0,
@@ -48,7 +48,7 @@ class SmsView: UIView {
         view.setTitle("Войти",
                       for: .normal)
         view.tintColor = .white
-        view.layer.cornerRadius = 22
+        view.layer.cornerRadius = 16
         view.backgroundColor = UIColor().rgb(r: 255,
                                              g: 139,
                                              b: 91,
