@@ -19,7 +19,7 @@ class AutorizationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            view.backgroundColor = .systemBackground
+        view.backgroundColor = .systemBackground
         autorizationview.delegate = self
         navigationItem.backButtonTitle = ""
         setupConstrains()
@@ -36,7 +36,7 @@ class AutorizationViewController: UIViewController {
     
     private func smsCode() {
         let vc = SmsViewController()
-        self.navigationController?.pushViewController(vc, 
+        self.navigationController?.pushViewController(vc,
                                                       animated: true)
     }
 }
@@ -63,8 +63,8 @@ extension AutorizationViewController: AutorizationViewControllerDelegate {
     
     private func showTabBar() {
         let tabBarController = TabBarController()
-        tabBarController.modalPresentationStyle = .fullScreen
         let vc = UINavigationController(rootViewController: tabBarController)
+        vc.modalPresentationStyle = .fullScreen
         navigationController?.present(vc,
                                       animated: false)
     }

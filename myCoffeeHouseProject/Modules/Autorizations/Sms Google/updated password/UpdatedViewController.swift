@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 protocol UpdatedViewControllerDelegate: AnyObject {
-   func didContinueButton()
+    func didContinueButton()
 }
 
 class UpdatedViewController: UIViewController {

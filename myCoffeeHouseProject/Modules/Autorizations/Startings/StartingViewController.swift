@@ -7,45 +7,46 @@
 
 import UIKit
 
+protocol startingViewControllerDelegate: AnyObject {
+    func didRegisterButton()
+    func didLoginButton()
+}
+
 class StartingViewController: UIViewController {
     
-    private lazy var startingView = StartignView(frame: .zero)
-    
-
-    override func loadView() {
-        super.loadView()
-        view = startingView
-    }
+    private lazy var startingView = StartignView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
         startingView.delegate = self
-        screenTransition()
-        registerScreens()
         navigationItem.hidesBackButton = true
         navigationItem.backButtonTitle = ""
         self.navigationController?.navigationBar.tintColor = .black
-    }
-
-   private func screenTransition() {
-        startingView.screenTransitionTapped = {
-            let vc = LoginViewController()
-            self.navigationController?.pushViewController(vc,
-                                                          animated: true)
-        }
+        setupConstraints()
     }
     
-    private func registerScreens() {
-        startingView.registerScreen = {
-            let vc = RegisterViewController()
-            self.navigationController?.pushViewController(vc,
-                                                          animated: true)
+    private func setupConstraints() {
+        view.addSubview(startingView)
+        startingView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(85)
+            make.horizontalEdges.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-131)
         }
     }
-
 }
 
-extension StartingViewController: StartingViewDelegate {
+extension StartingViewController: startingViewControllerDelegate {
     
+    func didLoginButton() {
+        let vc = LoginViewController()
+        navigationController?.pushViewController(vc,
+                                                 animated: true)
+    }
+    
+    func didRegisterButton() {
+        let vc = RegisterViewController()
+        navigationController?.pushViewController(vc,
+                                                 animated: true)
+    }
 }
-

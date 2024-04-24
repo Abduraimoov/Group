@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class HomeCollectionViewCell: UICollectionViewCell {
     
@@ -13,7 +14,6 @@ class HomeCollectionViewCell: UICollectionViewCell {
         let view = UIImageView()
         view.layer.cornerRadius = 16
         view.clipsToBounds = true
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -22,69 +22,69 @@ class HomeCollectionViewCell: UICollectionViewCell {
         view.axis = .vertical
         view.alignment = .leading
         view.spacing = 1
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var naminglabels: UILabel = {
         let view = UILabel()
-        view.font = .systemFont(ofSize: 16,
-                                weight: .light)
+        view.font = .systemFont(
+            ofSize: 16,
+            weight: .light)
         view.tintColor = .black
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var drinksLabels: UILabel = {
         let view = UILabel()
-        view.font = .systemFont(ofSize: 12,
-                                weight: .light)
+        view.font = .systemFont(
+            ofSize: 12,
+            weight: .light)
         view.tintColor = .black
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var minusButton: UIButton = {
         let view = UIButton(type: .system)
         view.backgroundColor = .systemGray4
-        view.setTitle("-",
-                      for: .normal)
+        view.setTitle(
+            "-",
+            for: .normal)
         view.layer.cornerRadius = 14
         view.titleLabel?.font = .systemFont(ofSize: 25)
         view.tintColor = .black
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var counterLabel: UILabel = {
         let view = UILabel()
-        view.font = .systemFont(ofSize: 16,
-                                weight: .bold)
+        view.font = .systemFont(
+            ofSize: 16,
+            weight: .bold)
         view.text = "0"
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var plusButton: UIButton = {
         let view = UIButton(type: .system)
-        view.backgroundColor = UIColor().rgb(r: 255,
-                                             g: 139,
-                                             b: 91,
-                                             alpha: 1)
-        view.setTitle("+",
-                      for: .normal)
+        view.backgroundColor = UIColor().rgb(
+            r: 255,
+            g: 139,
+            b: 91,
+            alpha: 1)
+        view.setTitle(
+            "+",
+            for: .normal)
         view.layer.cornerRadius = 14
         view.titleLabel?.font = .systemFont(ofSize: 25)
         view.tintColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupAddTarget()
+        setupAdd()
         setupConstrains()
-        plusButton.addTarget(self, action: #selector(incrementCounter), for: .touchUpInside)
-        minusButton.addTarget(self, action: #selector(decrementCounter), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -102,7 +102,12 @@ class HomeCollectionViewCell: UICollectionViewCell {
         }.resume()
     }
     
-    private func setupConstrains() {
+    private func setupAddTarget() {
+        plusButton.addTarget(self, action: #selector(incrementCounter), for: .touchUpInside)
+        minusButton.addTarget(self, action: #selector(decrementCounter), for: .touchUpInside)
+    }
+    
+    private func setupAdd() {
         addSubview(leftImage)
         addSubview(stackLabels)
         stackLabels.addArrangedSubview(naminglabels)
@@ -110,38 +115,43 @@ class HomeCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(minusButton)
         contentView.addSubview(counterLabel)
         contentView.addSubview(plusButton)
-        NSLayoutConstraint.activate([
-            leftImage.centerYAnchor.constraint(equalTo: centerYAnchor),
-            leftImage.leftAnchor.constraint(equalTo: leftAnchor,
-                                            constant: 15),
-            leftImage.widthAnchor.constraint(equalToConstant: 89),
-            leftImage.heightAnchor.constraint(equalToConstant: 89),
-            
-            stackLabels.centerYAnchor.constraint(equalTo: centerYAnchor),
-            stackLabels.leftAnchor.constraint(equalTo: leftImage.leftAnchor,
-                                              constant: 100),
-            stackLabels.heightAnchor.constraint(equalToConstant: 63),
-            stackLabels.widthAnchor.constraint(equalToConstant: 113),
-            
-            minusButton.topAnchor.constraint(equalTo: topAnchor,
-                                             constant: 53),
-            minusButton.leftAnchor.constraint(equalTo: stackLabels.leftAnchor,
-                                              constant: 171),
-            minusButton.heightAnchor.constraint(equalToConstant: 28),
-            minusButton.widthAnchor.constraint(equalToConstant: 28),
-            
-            counterLabel.topAnchor.constraint(equalTo: topAnchor,
-                                              constant: 58),
-            counterLabel.rightAnchor.constraint(equalTo: rightAnchor,
-                                                constant: -58),
-            
-            plusButton.topAnchor.constraint(equalTo: topAnchor,
-                                            constant: 53),
-            plusButton.rightAnchor.constraint(equalTo: rightAnchor,
-                                              constant: -20),
-            plusButton.heightAnchor.constraint(equalToConstant: 28),
-            plusButton.widthAnchor.constraint(equalToConstant: 28)
-        ])
+    }
+    
+    private func setupConstrains() {
+        
+        leftImage.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().offset(15)
+            make.width.equalTo(89)
+            make.height.equalTo(89)
+        }
+        
+        stackLabels.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.left.equalTo(leftImage.snp.right).offset(15)
+            make.height.equalTo(63)
+            make.width.equalTo(113)
+        }
+        
+        minusButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(53)
+            make.left.equalTo(stackLabels.snp.right).offset(55)
+            make.height.equalTo(28)
+            make.width.equalTo(28)
+        }
+        
+        counterLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(58)
+            make.right.equalToSuperview().offset(-58)
+        }
+        
+        plusButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(53)
+            make.right.equalToSuperview().offset(-20)
+            make.height.equalTo(28)
+            make.width.equalTo(28)
+        }
+        
     }
     
     func setup(product: Product) {

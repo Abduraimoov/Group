@@ -27,18 +27,6 @@ final class AuthService {
             }
     }
     
-    func authorize() {
-        let currentDate = Date()
-        guard let oneMinLater = Calendar.current.date(
-            byAdding: .minute,
-            value: 1,
-            to: currentDate
-        ) else { return }
-        UserDefaults.standard.set(
-            oneMinLater,
-            forKey: "session")
-    }
-    
     func signIn(with verificationCode: String,  completion: @escaping (Result<AuthDataResult, Error>) -> Void) {
         let verificationID = UserDefaults.standard.string(forKey: "authVericationID") ?? ""
         let credetials = PhoneAuthProvider.provider().credential(
@@ -55,5 +43,34 @@ final class AuthService {
                 completion(.success(authResult))
             }
         }
+    }
+    
+    func signIn(
+           with email: String,
+           password: String,
+           completion: @escaping (Result<Void, Error>) -> Void
+       ) {
+           Auth.auth().signIn(withEmail: email, password: password) { authDataResult, error in
+               if authDataResult != nil {
+                   self.authorize()
+                   completion(.success(()))
+               }
+               if let error {
+                   completion(.failure(error))
+                   print(error.localizedDescription)
+               }
+           }
+       }
+    
+    func authorize() {
+        let currentDate = Date()
+        guard let oneMinLater = Calendar.current.date(
+            byAdding: .minute,
+            value: 1,
+            to: currentDate
+        ) else { return }
+        UserDefaults.standard.set(
+            oneMinLater,
+            forKey: "session")
     }
 }

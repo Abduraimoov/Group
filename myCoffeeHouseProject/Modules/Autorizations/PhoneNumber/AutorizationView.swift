@@ -6,13 +6,13 @@
 //
 
 import UIKit
+import SnapKit
 
 class AutorizationView: UIView {
     
     private lazy var GeeksImage: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "Image")
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -20,50 +20,47 @@ class AutorizationView: UIView {
         let view = UILabel()
         view.text = "Вход"
         view.tintColor = .black
-        view.font = .systemFont(ofSize: 34,
-                                weight: .bold)
-        view.translatesAutoresizingMaskIntoConstraints = false
+        view.font = .systemFont(
+            ofSize: 34,
+            weight: .bold)
         return view
     }()
     
-     lazy var numberTextFeild: UITextField = {
-        let tf = UITextField()
-        tf.placeholder = "999 999 999"
+    lazy var numberTextFeild: PaddedTextField = {
+        let tf = PaddedTextField()
+        tf.placeholder = "+996 999 999 999"
         tf.backgroundColor = .systemGray5
         tf.layer.cornerRadius = 16
-        tf.translatesAutoresizingMaskIntoConstraints = false
-        let leftContainerView = UIView(frame: CGRect(x: 0,
-                                                     y: 0,
-                                                     width: 35 + 8,
-                                                     height: 24))
+        let leftContainerView = UIView(frame: CGRect(
+            x: 0,
+            y: 0,
+            width: 35 + 8,
+            height: 24))
         let iconImageView = UIImageView(image: UIImage(systemName: "phone"))
         iconImageView.tintColor = .label
-        iconImageView.frame = CGRect(x: 8,
-                                     y: 2,
-                                     width: 20,
-                                     height: 20)
+        iconImageView.frame = CGRect(
+            x: 8,
+            y: 2,
+            width: 20,
+            height: 20)
         leftContainerView.addSubview(iconImageView)
-         tf.leftView = leftContainerView
-         tf.addTarget(self, action: #selector(loginButton),
-                      for: .valueChanged)
-         tf.leftViewMode = .always
-         return tf
+        tf.leftView = leftContainerView
+        tf.leftViewMode = .always
+        return tf
     }()
     
     private lazy var toComeInButton: UIButton = {
         let view = UIButton(type: .system)
-        view.setTitle("Войти",
-                      for: .normal)
+        view.setTitle(
+            "Войти",
+            for: .normal)
         view.tintColor = .white
         view.layer.cornerRadius = 16
-        view.backgroundColor = UIColor().rgb(r: 255,
-                                             g: 139,
-                                             b: 91,
-                                             alpha: 1)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.addTarget(self,
-                       action: #selector(loginButton),
-                       for: .touchUpInside)
+        view.backgroundColor = UIColor().rgb(
+            r: 255,
+            g: 139,
+            b: 91,
+            alpha: 1)
         return view
     }()
     
@@ -72,6 +69,8 @@ class AutorizationView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .systemBackground
+        setupAddTarget()
+        setupAdd()
         setupConstrains()
     }
     
@@ -79,40 +78,50 @@ class AutorizationView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupConstrains() {
+    private func setupAddTarget() {
+        numberTextFeild.addTarget(
+            self, action: #selector(loginButton),
+            for: .valueChanged)
+        toComeInButton.addTarget(
+            self,
+            action: #selector(loginButton),
+            for: .touchUpInside)
+    }
+    
+    private func setupAdd() {
         addSubview(GeeksImage)
         addSubview(entranceTitle)
         addSubview(numberTextFeild)
         addSubview(toComeInButton)
-        NSLayoutConstraint.activate([
-            GeeksImage.topAnchor.constraint(equalTo: topAnchor),
-            GeeksImage.leftAnchor.constraint(equalTo: leftAnchor,
-                                             constant: 103),
-            GeeksImage.rightAnchor.constraint(equalTo: rightAnchor,
-                                              constant: -103),
-            GeeksImage.heightAnchor.constraint(equalToConstant: 150),
-            
-            entranceTitle.topAnchor.constraint(equalTo: GeeksImage.bottomAnchor,
-                                               constant: 50),
-            entranceTitle.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
-            
-            numberTextFeild.topAnchor.constraint(equalTo: entranceTitle.bottomAnchor,
-                                                 constant: 32),
-            numberTextFeild.leftAnchor.constraint(equalTo: leftAnchor,
-                                                  constant: 16),
-            numberTextFeild.rightAnchor.constraint(equalTo: rightAnchor,
-                                                   constant: -16),
-            numberTextFeild.heightAnchor.constraint(equalToConstant: 50),
-            
-            toComeInButton.topAnchor.constraint(equalTo: numberTextFeild.bottomAnchor,
-                                                constant: 20),
-            toComeInButton.leftAnchor.constraint(equalTo: leftAnchor,
-                                                 constant: 16),
-            toComeInButton.rightAnchor.constraint(equalTo: rightAnchor,
-                                                  constant: -16),
-            toComeInButton.heightAnchor.constraint(equalToConstant: 50),
-            toComeInButton.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+    }
+    
+    private func setupConstrains() {
+        GeeksImage.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.left.equalToSuperview().offset(103)
+            make.right.equalToSuperview().offset(-103)
+            make.height.equalTo(150)
+        }
+        
+        entranceTitle.snp.makeConstraints { make in
+            make.top.equalTo(GeeksImage.snp.bottom).offset(50)
+            make.left.equalToSuperview().offset(16)
+        }
+        
+        numberTextFeild.snp.makeConstraints { make in
+            make.top.equalTo(entranceTitle.snp.bottom).offset(32)
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
+            make.height.equalTo(50)
+        }
+        
+        toComeInButton.snp.makeConstraints { make in
+            make.top.equalTo(numberTextFeild.snp.bottom).offset(20)
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
+            make.height.equalTo(50)
+            make.bottom.equalToSuperview()
+        }
     }
     
     @objc

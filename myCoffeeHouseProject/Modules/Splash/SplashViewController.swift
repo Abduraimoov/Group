@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SplashViewController: UIViewController {
 
@@ -23,17 +24,17 @@ class SplashViewController: UIViewController {
     }
     
     private func showPhoneNumber() {
-        let phoneViewController = AutorizationViewController()
-        phoneViewController.modalPresentationStyle = .fullScreen
+        let phoneViewController = StartingViewController()
         let vc = UINavigationController(rootViewController: phoneViewController)
+        vc.modalPresentationStyle = .fullScreen
         navigationController?.present(vc,
                                       animated: false)
     }
     
     private func showTabBar() {
         let tabBarController = TabBarController()
-        tabBarController.modalPresentationStyle = .fullScreen
         let vc = UINavigationController(rootViewController: tabBarController)
+        vc.modalPresentationStyle = .fullScreen
         navigationController?.present(vc,
                                       animated: false)
     }

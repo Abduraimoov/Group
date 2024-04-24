@@ -13,7 +13,6 @@ class LoginView: UIView {
     private let LogoIcon: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "SuperFood")
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -23,21 +22,24 @@ class LoginView: UIView {
         view.tintColor = .label
         view.layer.borderColor = UIColor.label.cgColor
         view.layer.borderWidth = 1
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private let passwordTextField: PaddedTextField = {
         let view = PaddedTextField()
         view.placeholder = "Password"
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.isSecureTextEntry = true
         view.layer.borderColor = UIColor.label.cgColor
         view.layer.borderWidth = 1
-        let rightView = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
-        rightView.setBackgroundImage(UIImage(systemName: "eye.slash"), for: .normal)
+        let rightView = UIButton(frame: CGRect(
+            x: 0,
+            y: 0,
+            width: 24,
+            height: 24))
+        rightView.setBackgroundImage(UIImage(
+            systemName: "eye.slash"),
+                                     for: .normal)
         rightView.tintColor = .label
-        rightView.addTarget(self, action: #selector(hideText), for: .touchUpInside)
         rightView.tag = 1
         view.rightView = rightView
         view.rightViewMode = .always
@@ -51,21 +53,17 @@ class LoginView: UIView {
                       for: .normal)
         view.tintColor = .black
         view.layer.cornerRadius = 16
-        view.backgroundColor = UIColor().rgb(r: 251,
-                                             g: 222,
-                                             b: 63,
-                                             alpha: 100)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.addTarget(self,
-                       action: #selector(loginButtonTapped),
-                       for: .touchUpInside)
+        view.backgroundColor = UIColor().rgb(
+            r: 251,
+            g: 222,
+            b: 63,
+            alpha: 100)
         return view
     }()
     
     private lazy var leftLine: UIView = {
         let view = UIView()
         view.backgroundColor = .label
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -75,56 +73,73 @@ class LoginView: UIView {
         view.tintColor = .label
         view.font = .systemFont(ofSize: 15,
                                 weight: .semibold)
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
+    
     private lazy var rightLine: UIView = {
         let view = UIView()
         view.backgroundColor = .label
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
+    
     
     private let forgetButton: UIButton = {
         let view = UIButton(type: .system)
-        view.setTitle("Forgot password?",
-                      for: .normal)
+        view.setTitle(
+            "Forgot password?",
+            for: .normal)
         view.tintColor = .label
-        view.addTarget(self,
-                       action: #selector(forgotButtonTapped),
-                       for: .touchUpInside)
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var googleButton: UIButton = {
         let view = UIButton(type: .custom)
-        view.setTitle("Login with Google", for: .normal)
-        view.setTitleColor(UIColor.label, for: .normal)
+        view.setTitle(
+            "Login with Google",
+            for: .normal)
+        view.setTitleColor(
+            UIColor.label,
+            for: .normal)
         view.layer.cornerRadius = 16
-        view.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        view.setImage(UIImage(named: "google"), for: .normal)
-        view.titleEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+        view.titleLabel?.font = UIFont.systemFont(
+            ofSize: 16,
+            weight: .medium)
+        view.setImage(UIImage(
+            named: "google"),
+                      for: .normal)
+        view.titleEdgeInsets = UIEdgeInsets(
+            top: 0,
+            left: 20,
+            bottom: 0,
+            right: 0)
         view.layer.borderColor = UIColor.label.cgColor
         view.layer.borderWidth = 1
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.contentHorizontalAlignment = .center
         return view
     }()
-
+    
     private lazy var facebookButton: UIButton = {
         let view = UIButton(type: .custom)
-        view.setTitle("Login with Facebook", for: .normal)
-        view.setTitleColor(UIColor.label, for: .normal)
+        view.setTitle(
+            "Login with Facebook",
+            for: .normal)
+        view.setTitleColor(
+            UIColor.label,
+            for: .normal)
         view.layer.cornerRadius = 16
-        view.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        view.setImage(UIImage(named: "facebook"), for: .normal)
-        view.titleEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+        view.titleLabel?.font = UIFont.systemFont(
+            ofSize: 16,
+            weight: .medium)
+        view.setImage(UIImage(
+            named: "facebook"),
+                      for: .normal)
+        view.titleEdgeInsets = UIEdgeInsets(
+            top: 0,
+            left: 20,
+            bottom: 0,
+            right: 0)
         view.layer.borderColor = UIColor.label.cgColor
         view.layer.borderWidth = 1
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.contentHorizontalAlignment = .center
         return view
     }()
@@ -134,12 +149,27 @@ class LoginView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .systemBackground
+        setupAddTarget()
         setupAdd()
         setupConstrains()
+        LoginButton.addTarget(self,
+                              action: #selector(checkTextFiled),
+                              for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupAddTarget() {
+        passwordTextField.addTarget(
+            self,
+            action: #selector(hideText),
+            for: .touchUpInside)
+        forgetButton.addTarget(
+            self,
+            action: #selector(forgotButtonTapped),
+            for: .touchUpInside)
     }
     
     private func setupAdd() {
@@ -154,7 +184,7 @@ class LoginView: UIView {
         addSubview(googleButton)
         addSubview(facebookButton)
     }
-
+    
     private func setupConstrains() {
         LogoIcon.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(69)
@@ -225,9 +255,9 @@ class LoginView: UIView {
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).offset(-147)
         }
     }
-
     
-    @objc 
+    
+    @objc
     private func hideText(_ sender: UIButton) {
         if sender.tag == 1 {
             passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
@@ -235,9 +265,11 @@ class LoginView: UIView {
     }
     
     @objc
-    private func loginButtonTapped() {
-        delegate?.didLoginButton()
-      }
+    private func checkTextFiled() {
+        delegate?.didEmail(
+            email: emailTextField.text ?? "",
+            password: passwordTextField.text ?? "")
+    }
     
     @objc
     private func forgotButtonTapped() {

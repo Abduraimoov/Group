@@ -11,6 +11,7 @@ import SnapKit
 protocol LoginViewControllerDelegate: AnyObject {
     func didLoginButton()
     func didForgotButton()
+    func didEmail(email: String, password: String)
 }
 
 class LoginViewController: UIViewController {
@@ -35,6 +36,21 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginViewControllerDelegate {
+    func didEmail(email: String, password: String) {
+        AuthService.shared.signIn(
+            with: email,
+            password: password) { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success():
+                        self.didLoginButton()
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+    }
+    
     func didForgotButton() {
         let vc = ForgotPasswordViewController()
         navigationController?.pushViewController(vc,
@@ -45,4 +61,6 @@ extension LoginViewController: LoginViewControllerDelegate {
         let vc = TabBarController()
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    
 }

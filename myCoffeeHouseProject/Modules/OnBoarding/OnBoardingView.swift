@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class OnBoardingView: UIViewController  {
     
@@ -17,7 +18,6 @@ class OnBoardingView: UIViewController  {
         view.register(OnBoardCell.self, forCellWithReuseIdentifier: OnBoardCell.reuseID)
         view.dataSource = self
         view.delegate = self
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.showsHorizontalScrollIndicator = false
         return view
     }()
@@ -28,7 +28,6 @@ class OnBoardingView: UIViewController  {
         view.numberOfPages = 4
         view.currentPageIndicatorTintColor = .black
         view.pageIndicatorTintColor = .gray
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -36,8 +35,6 @@ class OnBoardingView: UIViewController  {
         let view = UIButton(type: .system)
         view.setTitle("skip", for: .normal)
         view.setTitleColor(.red, for: .normal)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.addTarget(self, action: #selector(skipbuttonTapped), for: .touchUpInside)
         return view
     }()
     
@@ -50,8 +47,6 @@ class OnBoardingView: UIViewController  {
                                              b: 63,
                                              alpha: 100)
         view.layer.cornerRadius = 22
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
         return view
     }()
     
@@ -61,9 +56,12 @@ class OnBoardingView: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupConstrains()
-        setupButtons()
+        setupAddTarget()
+        setupAddConstrains()
+        setupAdd()
+        setupConstains()
         setupParamets()
+        setupConstraints()
         onBoardingCollectionView.reloadData()
         DispatchQueue.main.async {
             self.scrollToCurrentPage(animated: false)
@@ -78,53 +76,74 @@ class OnBoardingView: UIViewController  {
         onBoardingCollectionView.isPagingEnabled = true
     }
     
-    private func setupConstrains() {
+    private func setupAddTarget() {
+        skipButton.addTarget(
+            self,
+            action: #selector(skipbuttonTapped),
+            for: .touchUpInside)
+        nextButton.addTarget(self,
+                             action: #selector(nextButtonTapped),
+                             for: .touchUpInside)
+    }
+    
+    private func setupAddConstrains() {
         view.addSubview(onBoardingCollectionView)
         view.addSubview(uiPageControl)
-        NSLayoutConstraint.activate([
-            onBoardingCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
-            onBoardingCollectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
-            onBoardingCollectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0),
-            onBoardingCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
-            uiPageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -300),
-            uiPageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
     }
+    private func setupConstains() {
+        onBoardingCollectionView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        
+        uiPageControl.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-300)
+            make.centerX.equalToSuperview()
+        }
+    }
+    
     
     private func setupParamets() {
         StructBoarding = [
             structBoarding(image: "Image1",
-                            label: "Trending Foods",
-                            secondLabel: "Lorem ipsum dolor sit amet consectetur. Ut cras pellentesque diam mauris laoreet donec a eget aliquam."),
+                           label: "Trending Foods",
+                           secondLabel: "Lorem ipsum dolor sit amet consectetur. Ut cras pellentesque diam mauris laoreet donec a eget aliquam."),
             structBoarding(image: "Image2",
-                            label: "Fast Delivery",
-                            secondLabel: "Lorem ipsum dolor sit amet consectetur. Ut cras pellentesque diam mauris laoreet donec a eget aliquam."),
+                           label: "Fast Delivery",
+                           secondLabel: "Lorem ipsum dolor sit amet consectetur. Ut cras pellentesque diam mauris laoreet donec a eget aliquam."),
             structBoarding(image: "Image3",
-                            label: "Find Nearby Restaurants",
+                           label: "Find Nearby Restaurants",
                            secondLabel: "Lorem ipsum dolor sit amet consectetur. Ut cras pellentesque diam mauris laoreet donec a eget aliquam."),
             structBoarding(image: "Image4",
-                            label: "Easy Ordering",
-                            secondLabel: "Lorem ipsum dolor sit amet consectetur. Ut cras pellentesque diam mauris laoreet donec a eget aliquam.")
+                           label: "Easy Ordering",
+                           secondLabel: "Lorem ipsum dolor sit amet consectetur. Ut cras pellentesque diam mauris laoreet donec a eget aliquam.")
         ]
         onBoardingCollectionView.reloadData()
     }
     
     
-    private func setupButtons() {
+    private func setupAdd() {
         view.addSubview(skipButton)
         view.addSubview(nextButton)
-        NSLayoutConstraint.activate([
-            skipButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -133),
-            skipButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16),
-            skipButton.heightAnchor.constraint(equalToConstant: 42),
-            skipButton.widthAnchor.constraint(equalToConstant: 173),
-            
-            nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -133),
-            nextButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
-            nextButton.heightAnchor.constraint(equalToConstant: 42),
-            nextButton.widthAnchor.constraint(equalToConstant: 173)
-        ])
+    }
+    
+    private func setupConstraints() {
+        skipButton.snp.makeConstraints { make in
+            make.bottom.equalTo(view.snp.bottom).offset(-133)
+            make.left.equalTo(view.snp.left).offset(16)
+            make.height.equalTo(42)
+            make.width.equalTo(173)
+        }
+        
+        nextButton.snp.makeConstraints { make in
+            make.bottom.equalTo(view.snp.bottom).offset(-133)
+            make.right.equalTo(view.snp.right).offset(-16)
+            make.height.equalTo(42)
+            make.width.equalTo(173)
+        }
+        
     }
     
     @objc private func nextButtonTapped() {

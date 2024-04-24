@@ -14,31 +14,36 @@ class ResetView: UIView {
         let view = UILabel()
         view.text = "Reset your password"
         view.tintColor = .label
-        view.font = .systemFont(ofSize: 24,
-                                weight: .semibold)
-        view.translatesAutoresizingMaskIntoConstraints = false
+        view.font = .systemFont(
+            ofSize: 24,
+            weight: .semibold)
         return view
     }()
     
     private let deckriptionLabel: UILabel = {
         let view = UILabel()
         view.text = "Enter your password below"
-        view.font = .systemFont(ofSize: 13,
-                                weight: .regular)
+        view.font = .systemFont(
+            ofSize: 13,
+            weight: .regular)
         view.tintColor = .label
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private let passwordTextField: PaddedTextField = {
         let view = PaddedTextField()
         view.placeholder = "Password"
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.isSecureTextEntry = true
         view.layer.borderColor = UIColor.label.cgColor
         view.layer.borderWidth = 1
-        let rightView = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
-        rightView.setBackgroundImage(UIImage(systemName: "eye.slash"), for: .normal)
+        let rightView = UIButton(frame: CGRect(
+            x: 0,
+            y: 0,
+            width: 24,
+            height: 24))
+        rightView.setBackgroundImage(UIImage(
+            systemName: "eye.slash"),
+                                     for: .normal)
         rightView.tintColor = .label
         rightView.tag = 1
         view.rightView = rightView
@@ -50,12 +55,17 @@ class ResetView: UIView {
     private let confirmTextField: PaddedTextField = {
         let view = PaddedTextField()
         view.placeholder = "confirm password"
-        view.translatesAutoresizingMaskIntoConstraints = false
         view.isSecureTextEntry = true
         view.layer.borderColor = UIColor.label.cgColor
         view.layer.borderWidth = 1
-        let rightView = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
-        rightView.setBackgroundImage(UIImage(systemName: "eye.slash"), for: .normal)
+        let rightView = UIButton(frame: CGRect(
+            x: 0,
+            y: 0,
+            width: 24,
+            height: 24))
+        rightView.setBackgroundImage(UIImage(
+            systemName: "eye.slash"),
+                                     for: .normal)
         rightView.tintColor = .label
         rightView.tag = 1
         view.rightView = rightView
@@ -69,30 +79,33 @@ class ResetView: UIView {
         view.setTitle("Reset password",
                       for: .normal)
         view.tintColor = .black
-        view.backgroundColor = UIColor().rgb(r: 251,
-                                             g: 222,
-                                             b: 63,
-                                             alpha: 100)
+        view.backgroundColor = UIColor().rgb(
+            r: 251,
+            g: 222,
+            b: 63,
+            alpha: 100)
         view.layer.cornerRadius = 16
-        view.addTarget(self,
-                       action: #selector(transilation),
-                       for: .touchUpInside)
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     weak var delegate: ResetViewControllerDelegate?
     
-    var screenTransilation: (()-> Void)?
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupAddTarget()
         setupAddSubviews()
         setupConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupAddTarget() {
+        ResetPasswordButton.addTarget(
+            self,
+            action: #selector(transilation),
+            for: .touchUpInside)
     }
     
     private func setupAddSubviews() {

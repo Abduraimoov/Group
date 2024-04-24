@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class OnBoardCell: UICollectionViewCell {
     
@@ -13,14 +14,12 @@ class OnBoardCell: UICollectionViewCell {
     
     let myImage: UIImageView = {
         let view = UIImageView()
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     let myLabel: UILabel = {
         let view = UILabel()
         view.font = .systemFont(ofSize: 18, weight: .bold)
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -28,30 +27,41 @@ class OnBoardCell: UICollectionViewCell {
         let view = UILabel()
         view.font = .systemFont(ofSize: 14, weight: .light)
         view.numberOfLines = 0
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
-        
+        setupAdd()
+        setupConstraints()
+    }
+    
+    private func setupAdd() {
         addSubview(secondLabel)
         addSubview(myLabel)
         addSubview(myImage)
-        NSLayoutConstraint.activate([
-            secondLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -370),
-            secondLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 40),
-            secondLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -40),
-            
-            myLabel.bottomAnchor.constraint(equalTo: secondLabel.bottomAnchor, constant: -60),
-            myLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            
-            myImage.bottomAnchor.constraint(equalTo: myLabel.bottomAnchor, constant: -52),
-            myImage.leftAnchor.constraint(equalTo: leftAnchor, constant: 40),
-            myImage.rightAnchor.constraint(equalTo: rightAnchor, constant: -40),
-            myImage.heightAnchor.constraint(equalToConstant: 250)
-        ])
+    }
+    
+    private func setupConstraints() {
+        secondLabel.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-370)
+            make.left.equalToSuperview().offset(40)
+            make.right.equalToSuperview().offset(-40)
+        }
+        
+        myLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(secondLabel.snp.bottom).offset(-60)
+            make.centerX.equalToSuperview()
+        }
+        
+        myImage.snp.makeConstraints { make in
+            make.bottom.equalTo(myLabel.snp.bottom).offset(-52)
+            make.left.equalToSuperview().offset(40)
+            make.right.equalToSuperview().offset(-40)
+            make.height.equalTo(250)
+        }
+        
     }
     
     required init?(coder: NSCoder) {

@@ -13,45 +13,42 @@ class UpdatedView: UIView {
     private let emailIcon: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "Updateed")
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private let emaillabel: UILabel = {
         let view = UILabel()
         view.text = "Password updated"
-        view.font = .systemFont(ofSize: 24,
-                                weight: .semibold)
-        view.translatesAutoresizingMaskIntoConstraints = false
+        view.font = .systemFont(
+            ofSize: 24,
+            weight: .semibold)
         return view
     }()
     
     private let deckriptionlabel: UILabel = {
         let view = UILabel()
         view.text = "Congratulation your password has been updated"
-        view.font = .systemFont(ofSize: 13,
-                                weight: .regular)
+        view.font = .systemFont(
+            ofSize: 13,
+            weight: .regular)
         view.numberOfLines = 2
         view.textAlignment = .center
         view.tintColor = .label
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private let ContinueButton: UIButton = {
         let view = UIButton(type: .system)
-        view.setTitle("Continue",
-                      for: .normal)
+        view.setTitle(
+            "Continue",
+            for: .normal)
         view.tintColor = .black
-        view.backgroundColor = UIColor().rgb(r: 251,
-                                             g: 222,
-                                             b: 63,
-                                             alpha: 100)
+        view.backgroundColor = UIColor().rgb(
+            r: 251,
+            g: 222,
+            b: 63,
+            alpha: 100)
         view.layer.cornerRadius = 26
-        view.addTarget(self,
-                       action: #selector(transilation),
-                       for: .touchUpInside)
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -59,12 +56,20 @@ class UpdatedView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupAddTarget()
         setupAddSubview()
         setupConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupAddTarget() {
+        ContinueButton.addTarget(
+            self,
+            action: #selector(transilation),
+            for: .touchUpInside)
     }
     
     private func setupAddSubview() {

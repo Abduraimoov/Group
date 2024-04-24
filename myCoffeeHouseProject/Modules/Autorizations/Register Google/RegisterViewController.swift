@@ -34,6 +34,7 @@ class RegisterViewController: UIViewController {
 }
 
 extension RegisterViewController: RegisterViewControllerDelegate {
+    
     func didSingupbutton() {
         let vc = TabBarController()
         navigationController?.pushViewController(vc,
