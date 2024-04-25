@@ -2,10 +2,11 @@
 //  TopCollectionViewCell.swift
 //  myCoffeeHouseProject
 //
-//  Created by Nurtilek on 4/5/24.
+//  Created by Nurtilek on 4/11/24.
 //
 
 import UIKit
+import SnapKit
 
 class TopCollectionViewCell: UICollectionViewCell {
     
@@ -13,7 +14,6 @@ class TopCollectionViewCell: UICollectionViewCell {
         let view = UILabel()
         view.tintColor = .systemGray3
         view.font = .systemFont(ofSize: 16.5)
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -28,14 +28,13 @@ class TopCollectionViewCell: UICollectionViewCell {
     
     private func setupConstrains() {
         addSubview(listlabels)
-        NSLayoutConstraint.activate([
-            listlabels.topAnchor.constraint(equalTo: topAnchor,
-                                            constant: 5),
-        listlabels.centerXAnchor.constraint(equalTo: centerXAnchor)
-        ])
+        listlabels.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(5)
+            make.centerX.equalToSuperview()
+        }
     }
     
-    func configure(list: labels) {
-        listlabels.text = list.label
+    func configure(list: Category) {
+        listlabels.text = list.title
     }
 }
