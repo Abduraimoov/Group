@@ -65,8 +65,8 @@ final class AuthService {
     func authorize() {
         let currentDate = Date()
         guard let oneMinLater = Calendar.current.date(
-            byAdding: .minute,
-            value: 1,
+            byAdding: .second,
+            value: 10,
             to: currentDate
         ) else { return }
         UserDefaults.standard.set(
