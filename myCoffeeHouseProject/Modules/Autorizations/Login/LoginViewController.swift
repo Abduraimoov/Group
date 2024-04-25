@@ -32,10 +32,10 @@ class LoginViewController: UIViewController {
             make.edges.equalToSuperview()
         }
     }
-    
 }
 
 extension LoginViewController: LoginViewControllerDelegate {
+    
     func didEmail(email: String, password: String) {
         AuthService.shared.signIn(
             with: email,
