@@ -31,7 +31,7 @@ class StartingViewController: UIViewController {
         startingView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(85)
             make.horizontalEdges.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-131)
+            make.bottom.equalToSuperview().offset(-45)
         }
     }
 }

@@ -68,7 +68,7 @@ class StartignView: UIView {
         view.font = .systemFont(
             ofSize: 13,
             weight: .regular)
-        view.numberOfLines = 2
+        view.numberOfLines = 0
         view.textAlignment = .center
         return view
     }()
@@ -144,9 +144,9 @@ class StartignView: UIView {
         
         bottomLabel.snp.makeConstraints { make in
             make.top.equalTo(LoginButton.snp.bottom).offset(48)
-            make.left.equalToSuperview().offset(42)
-            make.right.equalToSuperview().offset(-42)
-            make.bottom.equalToSuperview().offset(-55)
+            make.horizontalEdges.equalToSuperview().inset(42)
+            make.width.equalTo(309)
+            make.bottom.equalToSuperview()
         }
         
     }
