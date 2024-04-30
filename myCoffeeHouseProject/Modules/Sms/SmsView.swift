@@ -8,9 +8,13 @@
 import UIKit
 import SnapKit
 
+protocol SmsViewDelegate: AnyObject {
+    func verify()
+}
+
 class SmsView: UIView {
     
-    lazy var coffeeImage: UIImageView = {
+   private lazy var coffeeImage: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "Image")
         return view
@@ -26,18 +30,14 @@ class SmsView: UIView {
         return view
     }()
     
-    private lazy var numberTextFeild: PaddedTextField = {
-        let tf = PaddedTextField()
-        tf.placeholder = "Enter a sms code"
-        tf.backgroundColor = .systemGray5
-        tf.layer.cornerRadius = 16
-        let leftContainerView = UIView(frame: CGRect(
-            x: 0,
-            y: 0,
-            width: 35 + 8,
-            height: 24))
-        return tf
+    private let fieldStack: UIStackView = {
+        let view = UIStackView()
+        view.spacing = 5
+        view.distribution = .fillEqually
+        return view
     }()
+    
+    var verifyFields = [SmsModel]()
     
     private lazy var nextButton: UIButton = {
         let view = UIButton(type: .system)
@@ -54,19 +54,56 @@ class SmsView: UIView {
         return view
     }()
     
+    weak var verifyDelegate: SmsViewDelegate?
     
     weak var delegate: SmsViewControllerDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .systemBackground
-        setupAddTardet()
         setupAdd()
         setupConstrains()
+        setupAddTardet()
+        verifyTextFieldConfigiration()
+        verifyFields[0].becomeFirstResponder()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+        
+    }
+    
+    private func setupAdd() {
+        addSubview(coffeeImage)
+        addSubview(smsTitle)
+        addSubview(fieldStack)
+        addSubview(nextButton)
+    }
+    
+    private func setupConstrains() {
+        coffeeImage.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.horizontalEdges.equalToSuperview().inset(102)
+            make.height.equalTo(150)
+        }
+        
+        smsTitle.snp.makeConstraints { make in
+            make.top.equalTo(coffeeImage.snp.bottom).offset(30)
+            make.left.equalToSuperview().offset(16)
+        }
+        
+        fieldStack.snp.makeConstraints { make in
+            make.top.equalTo(smsTitle.snp.bottom).offset(20)
+            make.horizontalEdges.equalToSuperview().inset(16)
+            make.height.equalTo(55)
+        }
+        
+        nextButton.snp.makeConstraints { make in
+            make.top.equalTo(fieldStack.snp.bottom).offset(20)
+            make.horizontalEdges.equalToSuperview().inset(16)
+            make.height.equalTo(50)
+            make.bottom.equalToSuperview()
+        }
     }
     
     private func setupAddTardet() {
@@ -76,45 +113,45 @@ class SmsView: UIView {
             for: .touchUpInside)
     }
     
-    private func setupAdd() {
-        addSubview(coffeeImage)
-        addSubview(smsTitle)
-        addSubview(nextButton)
-        addSubview(numberTextFeild)
+    private func verifyTextFieldConfigiration() {
+        
+        for number in 0...5 {
+            let verifytextField = SmsModel()
+            verifytextField.tag = number
+            verifytextField.modelDelegate = self
+            verifyFields.append(verifytextField)
+            fieldStack.addArrangedSubview(verifytextField)
+        }
     }
     
-    private func setupConstrains() {
-        coffeeImage.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.left.equalToSuperview().offset(102)
-            make.right.equalToSuperview().offset(-102)
-            make.height.equalTo(150)
+    func getFieldCode() -> String {
+        var fieldsCode = ""
+        verifyFields.forEach {
+            fieldsCode.append($0.text ?? "")
         }
-        
-        smsTitle.snp.makeConstraints { make in
-            make.top.equalTo(coffeeImage.snp.bottom).offset(30)
-            make.left.equalToSuperview().offset(16)
-        }
-        
-        numberTextFeild.snp.makeConstraints { make in
-            make.top.equalTo(smsTitle.snp.bottom).offset(25)
-            make.left.equalToSuperview().offset(16)
-            make.right.equalToSuperview().offset(-16)
-            make.height.equalTo(50)
-        }
-        
-        nextButton.snp.makeConstraints { make in
-            make.top.equalTo(numberTextFeild.snp.bottom).offset(20)
-            make.left.equalToSuperview().offset(16)
-            make.right.equalToSuperview().offset(-16)
-            make.height.equalTo(50)
-            make.bottom.equalToSuperview()
-        }
-        
+        return fieldsCode
     }
     
     @objc private func nextTapped() {
         delegate?.didLoginButton()
     }
+}
+
+extension SmsView: smsModelDelegate {
+    func activeNextField(tag: Int) {
+        if tag != verifyFields.count - 1 {
+            verifyFields[tag + 1].becomeFirstResponder()
+        } else {
+            verifyDelegate?.verify()
+        }
+    }
+    
+    func activePreviosField(tag: Int) {
+        if tag != 0 {
+            verifyFields[tag - 1].text = ""
+            verifyFields[tag - 1].becomeFirstResponder()
+        }
+    }
+    
     
 }

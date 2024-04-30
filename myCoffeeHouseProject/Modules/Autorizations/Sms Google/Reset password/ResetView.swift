@@ -32,7 +32,38 @@ class ResetView: UIView {
     
     private let passwordTextField: PaddedTextField = {
         let view = PaddedTextField()
-        view.placeholder = "Password"
+        view.isSecureTextEntry = true
+        view.layer.borderColor = UIColor.label.cgColor
+        view.layer.borderWidth = 1
+        let rightView = UIButton(frame: CGRect(
+            x: 0,
+            y: 0,
+            width: 24,
+            height: 24))
+        rightView.setBackgroundImage(UIImage(
+            systemName: "eye.slash"),
+                                     for: .normal)
+        rightView.tintColor = .black
+        rightView.tag = 1
+        view.rightView = rightView
+        view.rightViewMode = .always
+        view.tag = 1
+        return view
+    }()
+    
+    private let passwordlabel: UILabel = {
+        let view = UILabel()
+        view.tintColor = .systemGray5
+        view.text = " Password "
+        view.font = .systemFont(
+            ofSize: 16,
+            weight: .regular)
+        view.backgroundColor = .white
+        return view
+    }()
+    
+    private let confirmTextField: PaddedTextField = {
+        let view = PaddedTextField()
         view.isSecureTextEntry = true
         view.layer.borderColor = UIColor.label.cgColor
         view.layer.borderWidth = 1
@@ -52,25 +83,14 @@ class ResetView: UIView {
         return view
     }()
     
-    private let confirmTextField: PaddedTextField = {
-        let view = PaddedTextField()
-        view.placeholder = "confirm password"
-        view.isSecureTextEntry = true
-        view.layer.borderColor = UIColor.label.cgColor
-        view.layer.borderWidth = 1
-        let rightView = UIButton(frame: CGRect(
-            x: 0,
-            y: 0,
-            width: 24,
-            height: 24))
-        rightView.setBackgroundImage(UIImage(
-            systemName: "eye.slash"),
-                                     for: .normal)
-        rightView.tintColor = .label
-        rightView.tag = 1
-        view.rightView = rightView
-        view.rightViewMode = .always
-        view.tag = 1
+    private let confirmlabel: UILabel = {
+        let view = UILabel()
+        view.tintColor = .systemGray5
+        view.text = " confirm password "
+        view.font = .systemFont(
+            ofSize: 16,
+            weight: .regular)
+        view.backgroundColor = .white
         return view
     }()
     
@@ -95,6 +115,7 @@ class ResetView: UIView {
         setupAddTarget()
         setupAddSubviews()
         setupConstraints()
+        setupDelegates()
     }
     
     required init?(coder: NSCoder) {
@@ -112,7 +133,9 @@ class ResetView: UIView {
         addSubview(resetLabel)
         addSubview(deckriptionLabel)
         addSubview(passwordTextField)
+        addSubview(passwordlabel)
         addSubview(confirmTextField)
+        addSubview(confirmlabel)
         addSubview(ResetPasswordButton)
     }
     
@@ -134,11 +157,21 @@ class ResetView: UIView {
             make.height.equalTo(50)
         }
         
+        passwordlabel.snp.makeConstraints { make in
+            make.left.equalTo(passwordTextField).offset(15)
+            make.centerY.equalTo(passwordTextField)
+        }
+        
         confirmTextField.snp.makeConstraints { make in
             make.top.equalTo(passwordTextField.snp.bottom).offset(25)
             make.left.equalToSuperview().offset(26)
             make.right.equalToSuperview().offset(-26)
             make.height.equalTo(50)
+        }
+        
+        confirmlabel.snp.makeConstraints { make in
+            make.left.equalTo(confirmTextField).offset(15)
+            make.centerY.equalTo(confirmTextField)
         }
         
         ResetPasswordButton.snp.makeConstraints { make in
@@ -152,5 +185,42 @@ class ResetView: UIView {
     
     @objc private func transilation() {
         delegate?.didResetButton()
+    }
+    
+    private func setupDelegates() {
+        passwordTextField.delegate = self
+        confirmTextField.delegate = self
+    }
+}
+
+extension ResetView: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        animateLabel(for: textField)
+    }
+    
+    private func animateLabel(for textField: UITextField) {
+        UIView.animate(withDuration: 0.1) {
+            var label: UILabel?
+            var textFieldFrame: CGRect
+            var labelOrigin: CGPoint
+            
+            switch textField {
+            case self.passwordTextField:
+                label = self.passwordlabel
+            case self.confirmTextField:
+                label = self.confirmlabel
+            default:
+                break
+            }
+            
+            if let label = label {
+                textFieldFrame = textField.frame
+                labelOrigin = CGPoint(x: textFieldFrame.origin.x + 15,
+                                      y: textFieldFrame.minY - label.frame.height / 2)
+                label.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+                label.frame.origin = labelOrigin
+            }
+        }
     }
 }

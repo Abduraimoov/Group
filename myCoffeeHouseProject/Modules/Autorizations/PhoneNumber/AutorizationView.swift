@@ -26,11 +26,10 @@ class AutorizationView: UIView {
         return view
     }()
     
-    lazy var numberTextFeild: PaddedTextField = {
+   private lazy var numberTextFeild: PaddedTextField = {
         let tf = PaddedTextField()
-        tf.placeholder = "+996 999 999 999"
-        tf.backgroundColor = .systemGray5
-        tf.layer.cornerRadius = 16
+       tf.layer.borderColor = UIColor.label.cgColor
+       tf.layer.borderWidth = 1
         let leftContainerView = UIView(frame: CGRect(
             x: 0,
             y: 0,
@@ -47,6 +46,17 @@ class AutorizationView: UIView {
         tf.leftView = leftContainerView
         tf.leftViewMode = .always
         return tf
+    }()
+    
+    private let numberLabel: UILabel = {
+        let view = UILabel()
+        view.tintColor = .systemGray5
+        view.text = " +996 999 999 999 "
+        view.font = .systemFont(
+            ofSize: 16,
+            weight: .regular)
+        view.backgroundColor = .white
+        return view
     }()
     
     private lazy var toComeInButton: UIButton = {
@@ -86,12 +96,14 @@ class AutorizationView: UIView {
             self,
             action: #selector(loginButton),
             for: .touchUpInside)
+        numberTextFeild.delegate = self
     }
     
     private func setupAdd() {
         addSubview(GeeksImage)
         addSubview(entranceTitle)
         addSubview(numberTextFeild)
+        addSubview(numberLabel)
         addSubview(toComeInButton)
     }
     
@@ -115,6 +127,11 @@ class AutorizationView: UIView {
             make.height.equalTo(50)
         }
         
+        numberLabel.snp.makeConstraints { make in
+            make.left.equalTo(numberTextFeild).offset(30)
+            make.centerY.equalTo(numberTextFeild)
+        }
+        
         toComeInButton.snp.makeConstraints { make in
             make.top.equalTo(numberTextFeild.snp.bottom).offset(20)
             make.left.equalToSuperview().offset(16)
@@ -128,4 +145,15 @@ class AutorizationView: UIView {
     private func loginButton() {
         delegate?.didLoginBtn(with: numberTextFeild.text ?? "")
     }
+}
+
+extension AutorizationView: UITextFieldDelegate {
+    
+        func textFieldDidBeginEditing(_ textField: UITextField) {
+            UIView.animate(withDuration: 0.1) {
+                self.numberLabel.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+                self.numberLabel.frame.origin = CGPoint(x: self.numberTextFeild.frame.origin.x + 15,
+                                                       y: self.numberTextFeild.frame.minY - self.numberLabel.frame.height / 2)
+            }
+       }
 }

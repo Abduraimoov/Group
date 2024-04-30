@@ -12,11 +12,7 @@ class SplashViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       let currentTime = Date()
-        if let sessionDate = UserDefaults.standard.object(
-            forKey: "session"
-        ) as? Date,
-           sessionDate >= currentTime {
+        if AuthService.shared.isUserAuthentificated() {
             showTabBar()
         } else {
             showPhoneNumber()

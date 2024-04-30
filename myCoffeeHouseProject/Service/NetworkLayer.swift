@@ -9,6 +9,8 @@ import Foundation
 
 struct NetworkLayer {
     
+    private let authService = AuthService.shared
+    
     private let decoder = JSONDecoder()
     
     private let encoder = JSONEncoder()

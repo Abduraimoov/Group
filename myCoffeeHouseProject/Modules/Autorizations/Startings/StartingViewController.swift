@@ -49,6 +49,4 @@ extension StartingViewController: startingViewControllerDelegate {
         navigationController?.pushViewController(vc,
                                                  animated: true)
     }
-    
-    
 }

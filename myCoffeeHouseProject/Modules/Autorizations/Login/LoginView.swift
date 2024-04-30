@@ -18,16 +18,24 @@ class LoginView: UIView {
     
     private lazy var emailTextField: PaddedTextField = {
         let view = PaddedTextField()
-        view.placeholder = "Emial"
-        view.tintColor = .label
         view.layer.borderColor = UIColor.label.cgColor
         view.layer.borderWidth = 1
         return view
     }()
     
+    private let emailLabel: UILabel = {
+        let view = UILabel()
+        view.tintColor = .systemGray5
+        view.text = " Email "
+        view.font = .systemFont(
+            ofSize: 16,
+            weight: .regular)
+        view.backgroundColor = .white
+        return view
+    }()
+    
     private let passwordTextField: PaddedTextField = {
         let view = PaddedTextField()
-        view.placeholder = "Password"
         view.isSecureTextEntry = true
         view.layer.borderColor = UIColor.label.cgColor
         view.layer.borderWidth = 1
@@ -39,11 +47,22 @@ class LoginView: UIView {
         rightView.setBackgroundImage(UIImage(
             systemName: "eye.slash"),
                                      for: .normal)
-        rightView.tintColor = .label
         rightView.tag = 1
         view.rightView = rightView
         view.rightViewMode = .always
+        view.tintColor = .black
         view.tag = 1
+        return view
+    }()
+    
+    private let passwordLabel: UILabel = {
+        let view = UILabel()
+        view.tintColor = .systemGray5
+        view.text = " Password "
+        view.font = .systemFont(
+            ofSize: 16,
+            weight: .regular)
+        view.backgroundColor = .white
         return view
     }()
     
@@ -152,9 +171,7 @@ class LoginView: UIView {
         setupAddTarget()
         setupAdd()
         setupConstrains()
-        LoginButton.addTarget(self,
-                              action: #selector(checkTextFiled),
-                              for: .touchUpInside)
+        setupDelegates()
     }
     
     required init?(coder: NSCoder) {
@@ -170,12 +187,17 @@ class LoginView: UIView {
             self,
             action: #selector(forgotButtonTapped),
             for: .touchUpInside)
+        LoginButton.addTarget(self,
+                              action: #selector(checkTextFiled),
+                              for: .touchUpInside)
     }
     
     private func setupAdd() {
         addSubview(LogoIcon)
         addSubview(emailTextField)
+        addSubview(emailLabel)
         addSubview(passwordTextField)
+        addSubview(passwordLabel)
         addSubview(forgetButton)
         addSubview(LoginButton)
         addSubview(leftLine)
@@ -200,11 +222,21 @@ class LoginView: UIView {
             make.height.equalTo(50)
         }
         
+        emailLabel.snp.makeConstraints { make in
+            make.left.equalTo(emailTextField).offset(15)
+            make.centerY.equalTo(emailTextField)
+        }
+        
         passwordTextField.snp.makeConstraints { make in
             make.top.equalTo(emailTextField.snp.bottom).offset(28)
             make.left.equalToSuperview().offset(26)
             make.right.equalToSuperview().offset(-26)
             make.height.equalTo(50)
+        }
+        
+        passwordLabel.snp.makeConstraints { make in
+            make.left.equalTo(passwordTextField).offset(15)
+            make.centerY.equalTo(passwordTextField)
         }
         
         forgetButton.snp.makeConstraints { make in
@@ -256,6 +288,11 @@ class LoginView: UIView {
         }
     }
     
+    private func setupDelegates() {
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+    }
+    
     
     @objc
     private func hideText(_ sender: UIButton) {
@@ -274,5 +311,37 @@ class LoginView: UIView {
     @objc
     private func forgotButtonTapped() {
         delegate?.didForgotButton()
+    }
+}
+
+extension LoginView: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        animateLabel(for: textField)
+    }
+    
+    private func animateLabel(for textField: UITextField) {
+        UIView.animate(withDuration: 0.1) {
+            var label: UILabel?
+            var textFieldFrame: CGRect
+            var labelOrigin: CGPoint
+            
+            switch textField {
+            case self.emailTextField:
+                label = self.emailLabel
+            case self.passwordTextField:
+                label = self.passwordLabel
+            default:
+                break
+            }
+            
+            if let label = label {
+                textFieldFrame = textField.frame
+                labelOrigin = CGPoint(x: textFieldFrame.origin.x + 15,
+                                      y: textFieldFrame.minY - label.frame.height / 2)
+                label.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+                label.frame.origin = labelOrigin
+            }
+        }
     }
 }
