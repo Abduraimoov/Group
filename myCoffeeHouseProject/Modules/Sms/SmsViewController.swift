@@ -14,8 +14,7 @@ protocol SmsViewControllerDelegate: AnyObject {
 class SmsViewController: UIViewController {
     
     private lazy var smsView = SmsView(frame: .zero)
-    
-    private let accesCode = "123456"
+    private let authService = AuthService.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,21 +34,18 @@ class SmsViewController: UIViewController {
     }
 }
 
-extension SmsViewController: SmsViewDelegate {
-    func verify() {
-        
-    }
-}
-
 extension SmsViewController: SmsViewControllerDelegate {
     func didLoginButton() {
         let fieldsCode = smsView.getFieldCode()
-       if fieldsCode == accesCode {
-            let vc = TabBarController()
-            navigationController?.pushViewController(vc,
-                                                     animated: true)
-       } else {
-           showAlert()
-       }
+        authService.signIn(with: fieldsCode) { result in
+            switch result {
+            case .success(let success):
+                let vc = TabBarController()
+                self.navigationController?.pushViewController(vc,
+                                                                     animated: true)
+            case .failure(let error):
+                self.showAlert()
+            }
+        }
     }
 }

@@ -66,11 +66,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     private lazy var plusButton: UIButton = {
         let view = UIButton(type: .system)
-        view.backgroundColor = UIColor().rgb(
-            r: 255,
-            g: 139,
-            b: 91,
-            alpha: 1)
+        view.backgroundColor = UIColor().rgb(r: 255, g: 139, b: 91, alpha: 1)
         view.setTitle(
             "+",
             for: .normal)
@@ -82,9 +78,9 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupAddTarget()
         setupAdd()
         setupConstrains()
+        setupAddTarget()
     }
     
     required init?(coder: NSCoder) {

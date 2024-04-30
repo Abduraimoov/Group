@@ -25,7 +25,7 @@ class RegisterView: UIView {
     
     private let emailLabel: UILabel = {
         let view = UILabel()
-        view.tintColor = .systemGray5
+        view.tintColor = .label
         view.text = " Email "
         view.font = .systemFont(
             ofSize: 16,
@@ -86,6 +86,9 @@ class RegisterView: UIView {
                                      for: .normal)
         rightView.tintColor = .label
         rightView.tag = 0
+        rightView.addTarget(self,
+                                    action: #selector(hideText),
+                                    for: .touchUpInside)
         view.rightView = rightView
         view.rightViewMode = .always
         view.tag = 1
@@ -113,11 +116,14 @@ class RegisterView: UIView {
             y: 0,
             width: 24,
             height: 24))
-        rightView.setBackgroundImage(UIImage(
+        rightView.setImage(UIImage(
             systemName: "eye.slash"),
-                                     for: .normal)
+            for: .normal)
         rightView.tintColor = .label
         rightView.tag = 1
+        rightView.addTarget(self,
+                                   action: #selector(hideText),
+                                   for: .touchUpInside)
         view.rightView = rightView
         view.rightViewMode = .always
         view.tag = 1
@@ -195,26 +201,21 @@ class RegisterView: UIView {
         return view
     }()
     
-    private let facebookButton: UIButton = {
-        let view = UIButton(type: .custom)
-        view.setTitle(
-            "Login with Facebook",
-            for: .normal)
-        view.setTitleColor(
-            UIColor.label,
-            for: .normal)
-        view.layer.cornerRadius = 16
-        view.titleLabel?.font = UIFont.systemFont(
-            ofSize: 16,
-            weight: .medium)
-        view.setImage(UIImage(
-            named: "facebook"),
+    @objc private let phoneNumberButton: UIButton = {
+        let view = UIButton()
+        view.setTitle("Login with phone number",
                       for: .normal)
-        view.titleEdgeInsets = UIEdgeInsets(
-            top: 0,
-            left: 20,
-            bottom: 0,
-            right: 0)
+        view.setTitleColor(UIColor.label, 
+                           for: .normal)
+        view.layer.cornerRadius = 16
+        view.titleLabel?.font = UIFont.systemFont(ofSize: 16,
+                                                  weight: .medium)
+        view.setImage(UIImage(systemName: "phone"), for: .normal)
+        view.tintColor = .label
+        view.titleEdgeInsets = UIEdgeInsets(top: 0,
+                                            left: 20,
+                                            bottom: 0,
+                                            right: 0)
         view.layer.borderColor = UIColor.label.cgColor
         view.layer.borderWidth = 1
         view.contentHorizontalAlignment = .center
@@ -236,18 +237,12 @@ class RegisterView: UIView {
     }
     
     private func setupAddTarget() {
-        passwordTextField.addTarget(
-            self,
-            action: #selector(hideText),
-            for: .touchUpInside)
-        confirmTextField.addTarget(
-            self,
-            action: #selector(hideText),
-            for: .touchUpInside)
-        SingupButton.addTarget(
-            self,
-            action: #selector(SingupTapped)
-            , for: .touchUpInside)
+        SingupButton.addTarget(self,
+                               action: #selector(SingupTapped)
+                               , for: .touchUpInside)
+        phoneNumberButton.addTarget(self,
+                                    action: #selector(phoneButtonTapped),
+                                    for: .touchUpInside)
     }
     
     private func setupAdd() {
@@ -267,7 +262,7 @@ class RegisterView: UIView {
         addSubview(OrLabel)
         addSubview(rightLine)
         addSubview(googleButton)
-        addSubview(facebookButton)
+        addSubview(phoneNumberButton)
     }
     
     private func setupConstraints() {
@@ -371,7 +366,7 @@ class RegisterView: UIView {
             make.height.equalTo(50)
         }
         
-        facebookButton.snp.makeConstraints { make in
+        phoneNumberButton.snp.makeConstraints { make in
             make.top.equalTo(googleButton.snp.bottom).offset(21)
             make.left.equalToSuperview().offset(26)
             make.right.equalToSuperview().offset(-26)
@@ -393,6 +388,7 @@ class RegisterView: UIView {
         
         switch sender.tag {
         case 0:
+            print("iiii")
             passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
         case 1:
             confirmTextField.isSecureTextEntry = !confirmTextField.isSecureTextEntry
@@ -404,6 +400,11 @@ class RegisterView: UIView {
     @objc
     private func SingupTapped() {
         delegate?.didSingupbutton()
+    }
+    
+    @objc
+    private func phoneButtonTapped() {
+        delegate?.didphoneNumber()
     }
 }
 

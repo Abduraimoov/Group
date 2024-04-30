@@ -13,47 +13,60 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         generateTabBar()
         setTabBarAppearance()
-        setupNavigationItem()
-        navigationItem.hidesBackButton = true
     }
     
-    private func setupNavigationItem() {
-        navigationItem.title = "Меню"
-        let rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(systemName: "bell"),
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    private func generateVC(viewController: UIViewController, title: String, image: UIImage?, rightButtonSystemImageName: String) -> UIViewController {
+        let navController = UINavigationController(rootViewController: viewController)
+        viewController.navigationItem.title = title
+        viewController.tabBarItem.image = image
+        let rightButton = UIBarButtonItem(
+            image: UIImage(systemName: rightButtonSystemImageName),
             style: .plain,
             target: self,
-            action: .none)
-        rightBarButtonItem.tintColor = .black
-        navigationItem.rightBarButtonItem = rightBarButtonItem
+            action: .none
+        )
+        rightButton.tintColor = .black
+        viewController.navigationItem.rightBarButtonItem = rightButton
+        return navController
     }
-    
-    private func generateVC(
-        viewController: UIViewController,
-        image: UIImage?) -> UIViewController {
-            let navController = UINavigationController(
-                rootViewController: viewController)
-            viewController.tabBarItem.image = image
-            return viewController
-        }
     
     private func generateTabBar() {
         viewControllers = [
             generateVC(
                 viewController: HomeViewController(),
-                image: UIImage(systemName: "house")),
+                title: "Главная",
+                image: UIImage(systemName: "house"),
+                rightButtonSystemImageName: "bell.fill"
+            ),
             generateVC(
                 viewController: StorageViewController(),
-                image: UIImage(systemName: "cart.badge.questionmark.rtl")),
+                title: "Хранилище",
+                image: UIImage(systemName: "cart.badge.questionmark.rtl"),
+                rightButtonSystemImageName: "envelope.fill"
+            ),
             generateVC(
                 viewController: ScannerViewController(),
-                image: UIImage(systemName: "qrcode.viewfinder")),
+                title: "Сканер",
+                image: UIImage(systemName: "qrcode.viewfinder"),
+                rightButtonSystemImageName: "gear"
+            ),
             generateVC(
                 viewController: CompassViewController(),
-                image: UIImage(systemName: "safari")),
+                title: "Компас",
+                image: UIImage(systemName: "safari"),
+                rightButtonSystemImageName: "star.fill"
+            ),
             generateVC(
                 viewController: MenuViewController(),
-                image: UIImage(systemName: "person"))
+                title: "Меню",
+                image: UIImage(systemName: "person"),
+                rightButtonSystemImageName: "person.crop.circle"
+            )
         ]
     }
     

@@ -18,6 +18,9 @@
 		852872BA2BBC12260062F434 /* AutorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852872B92BBC12260062F434 /* AutorizationViewController.swift */; };
 		8530B7A02BDF7FDE00AF638A /* SmsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8530B79F2BDF7FDE00AF638A /* SmsModel.swift */; };
 		8530B7A22BDFA87500AF638A /* UIViewController + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8530B7A12BDFA87500AF638A /* UIViewController + extension.swift */; };
+		8530B7A62BE0DA3200AF638A /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8530B7A52BE0DA3200AF638A /* DetailsView.swift */; };
+		8530B7A82BE0DA8E00AF638A /* DetailslViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8530B7A72BE0DA8E00AF638A /* DetailslViewController.swift */; };
+		8530B7AA2BE0E81300AF638A /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8530B7A92BE0E81300AF638A /* ImageDownloader.swift */; };
 		8561BFE92BC9257A00CC8649 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8561BFE82BC9257A00CC8649 /* MenuViewController.swift */; };
 		857C18C12BD25A120044FB65 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857C18C02BD25A120044FB65 /* AuthService.swift */; };
 		857C18C32BD272A80044FB65 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 857C18C22BD272A80044FB65 /* GoogleService-Info.plist */; };
@@ -48,7 +51,6 @@
 		85E21D3B2BC7B9B70011AF5E /* StorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D3A2BC7B9B70011AF5E /* StorageViewController.swift */; };
 		85E21D3E2BC7B9FB0011AF5E /* CompassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D3D2BC7B9FB0011AF5E /* CompassViewController.swift */; };
 		85E21D442BC7BC3C0011AF5E /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D432BC7BC3C0011AF5E /* ScannerViewController.swift */; };
-		85E21D462BC7C4AB0011AF5E /* ExtensionUiColorTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D452BC7C4AB0011AF5E /* ExtensionUiColorTabBar.swift */; };
 		85E21D632BC832410011AF5E /* SmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D622BC832410011AF5E /* SmsViewController.swift */; };
 		85E21D652BC838660011AF5E /* SmsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E21D642BC838660011AF5E /* SmsView.swift */; };
 		A98811A2A93B57B75D1DD955 /* Pods_myCoffeeHouseProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C68731C255AF8C48E55BEB37 /* Pods_myCoffeeHouseProject.framework */; };
@@ -69,6 +71,9 @@
 		852872B92BBC12260062F434 /* AutorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizationViewController.swift; sourceTree = "<group>"; };
 		8530B79F2BDF7FDE00AF638A /* SmsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmsModel.swift; sourceTree = "<group>"; };
 		8530B7A12BDFA87500AF638A /* UIViewController + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + extension.swift"; sourceTree = "<group>"; };
+		8530B7A52BE0DA3200AF638A /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		8530B7A72BE0DA8E00AF638A /* DetailslViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailslViewController.swift; sourceTree = "<group>"; };
+		8530B7A92BE0E81300AF638A /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageDownloader.swift; path = Sms/ImageDownloader.swift; sourceTree = "<group>"; };
 		8561BFE82BC9257A00CC8649 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		857C18C02BD25A120044FB65 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		857C18C22BD272A80044FB65 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -99,7 +104,6 @@
 		85E21D3A2BC7B9B70011AF5E /* StorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageViewController.swift; sourceTree = "<group>"; };
 		85E21D3D2BC7B9FB0011AF5E /* CompassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompassViewController.swift; sourceTree = "<group>"; };
 		85E21D432BC7BC3C0011AF5E /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
-		85E21D452BC7C4AB0011AF5E /* ExtensionUiColorTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUiColorTabBar.swift; sourceTree = "<group>"; };
 		85E21D622BC832410011AF5E /* SmsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmsViewController.swift; sourceTree = "<group>"; };
 		85E21D642BC838660011AF5E /* SmsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmsView.swift; sourceTree = "<group>"; };
 		C68731C255AF8C48E55BEB37 /* Pods_myCoffeeHouseProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_myCoffeeHouseProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,13 +177,14 @@
 				85B6ED982BD413F2008F5798 /* OnBoarding */,
 				852872B62BBC08190062F434 /* Autorizations */,
 				85805A232BCAAEBC00F01F01 /* TabBar */,
+				852872BB2BBC18870062F434 /* Home */,
+				8530B7A42BE0DA1300AF638A /* Details */,
+				85E21D392BC7B9710011AF5E /* Storage */,
 				85E21D612BC8322B0011AF5E /* Sms */,
 				85E21D4B2BC7CE000011AF5E /* DTO */,
 				85E21D422BC7BC250011AF5E /* Scanner */,
 				85E21D3F2BC7BA870011AF5E /* Menu */,
 				85E21D3C2BC7B9ED0011AF5E /* Compass */,
-				85E21D392BC7B9710011AF5E /* Storage */,
-				852872BB2BBC18870062F434 /* Home */,
 				85B6ED922BD3D673008F5798 /* Helpers */,
 			);
 			path = Modules;
@@ -210,9 +215,9 @@
 		852872BB2BBC18870062F434 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				85ACAC082BDA6CDF00C0CAEE /* HomeViewController.swift */,
 				85E21D302BC7B8360011AF5E /* HomeCollectionViewCell.swift */,
 				85E21D342BC7B8E60011AF5E /* TopCollectionViewCell.swift */,
-				85ACAC082BDA6CDF00C0CAEE /* HomeViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -223,6 +228,15 @@
 				8530B7A12BDFA87500AF638A /* UIViewController + extension.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		8530B7A42BE0DA1300AF638A /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				8530B7A52BE0DA3200AF638A /* DetailsView.swift */,
+				8530B7A72BE0DA8E00AF638A /* DetailslViewController.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 		857C18BF2BD259FE0044FB65 /* Service */ = {
@@ -247,7 +261,6 @@
 			isa = PBXGroup;
 			children = (
 				85E21D372BC7B91B0011AF5E /* TabBarController.swift */,
-				85E21D452BC7C4AB0011AF5E /* ExtensionUiColorTabBar.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -281,6 +294,7 @@
 		85B6ED922BD3D673008F5798 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				8530B7A92BE0E81300AF638A /* ImageDownloader.swift */,
 				85B6ED902BD3D66B008F5798 /* Helper to textFiled.swift */,
 			);
 			name = Helpers;
@@ -537,11 +551,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				85B6EDAC2BD523A8008F5798 /* ResetView.swift in Sources */,
-				85E21D462BC7C4AB0011AF5E /* ExtensionUiColorTabBar.swift in Sources */,
 				85B6EDB12BD52E21008F5798 /* UpdatedView.swift in Sources */,
 				857C18C12BD25A120044FB65 /* AuthService.swift in Sources */,
 				85B6EDA42BD4FC6B008F5798 /* ForgotPasswordViewController.swift in Sources */,
 				85B6ED912BD3D66B008F5798 /* Helper to textFiled.swift in Sources */,
+				8530B7AA2BE0E81300AF638A /* ImageDownloader.swift in Sources */,
 				85805A262BCACF2900F01F01 /* Constants.swift in Sources */,
 				850D6CD42BB986D90010DEC4 /* StartingView.swift in Sources */,
 				85B6EDAE2BD523B2008F5798 /* ResetViewController.swift in Sources */,
@@ -563,8 +577,10 @@
 				85B6EDA22BD4FC4D008F5798 /* ForgotPasswordView.swift in Sources */,
 				85B6EDA72BD502DB008F5798 /* CheckEmailView.swift in Sources */,
 				85E21D312BC7B8360011AF5E /* HomeCollectionViewCell.swift in Sources */,
+				8530B7A82BE0DA8E00AF638A /* DetailslViewController.swift in Sources */,
 				850D6CBB2BB985B90010DEC4 /* SceneDelegate.swift in Sources */,
 				85E21D652BC838660011AF5E /* SmsView.swift in Sources */,
+				8530B7A62BE0DA3200AF638A /* DetailsView.swift in Sources */,
 				85B6ED9A2BD41425008F5798 /* OnBoardingModel.swift in Sources */,
 				85E21D352BC7B8E60011AF5E /* TopCollectionViewCell.swift in Sources */,
 				85B6ED972BD406BD008F5798 /* RegisterViewController.swift in Sources */,
