@@ -85,6 +85,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        navigationItem.backButtonTitle = ""
+        navigationController?.navigationBar.tintColor = .black
         setupAdd()
         setupConstrains()
         createProduct()
@@ -128,6 +130,7 @@ class HomeViewController: UIViewController {
         verticalCollectionView.dataSource = self
         horyzontalCollectionView.dataSource = self
         horyzontalCollectionView.delegate = self
+        verticalCollectionView.delegate = self
     }
     
     private func setupConstrains() {
@@ -156,28 +159,35 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView,
-                        didSelectItemAt indexPath: IndexPath) {
-        if collectionView == horyzontalCollectionView {
-            if let selectedIndexPath,
-               let cell = collectionView.cellForItem(at: selectedIndexPath) as? TopCollectionViewCell {
-                cell.backgroundColor = .clear
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath) {
+            if collectionView == horyzontalCollectionView {
+                if let selectedIndexPath,
+                   let cell = collectionView.cellForItem(at: selectedIndexPath) as? TopCollectionViewCell {
+                    cell.backgroundColor = .clear
+                }
+                
+                
+                if let cell = collectionView.cellForItem(at: indexPath) as? TopCollectionViewCell {
+                    cell.backgroundColor = UIColor().rgb(r: 251, g: 222, b: 63, alpha: 100)
+                    cell.layer.cornerRadius = 15
+                    selectedIndexPath = indexPath
+                    let category = categories[indexPath.row]
+                    selectedCategory = category
+                }
             }
-            
-            
-            if let cell = collectionView.cellForItem(at: indexPath) as? TopCollectionViewCell {
-                cell.backgroundColor = UIColor().rgb(
-                    r: 251,
-                    g: 222,
-                    b: 63,
-                    alpha: 100)
-                cell.layer.cornerRadius = 15
-                selectedIndexPath = indexPath
-                let category = categories[indexPath.row]
-                selectedCategory = category
+            if collectionView == verticalCollectionView {
+                if indexPath.row < allProducts.count {
+                    print("1")
+                    let selectedProduct = allProducts[indexPath.row]
+                    let vc = DetailslViewController()
+                    
+                    vc.idMeal = selectedProduct.idMeal
+                    navigationController?.pushViewController(vc, animated: true)
+                }
             }
         }
-    }
 }
 
 extension HomeViewController: UICollectionViewDataSource {
@@ -208,11 +218,7 @@ extension HomeViewController: UICollectionViewDataSource {
             let categoryProduct = categories[indexPath.row]
             cell.configure(list: categoryProduct)
             if indexPath == selectedIndexPath {
-                cell.backgroundColor = UIColor().rgb(
-                    r: 251,
-                    g: 222,
-                    b: 63,
-                    alpha: 100)
+                cell.backgroundColor = UIColor().rgb(r: 251, g: 222, b: 63, alpha: 100)
                 cell.layer.cornerRadius = 15
             } else {
                 cell.backgroundColor = .clear

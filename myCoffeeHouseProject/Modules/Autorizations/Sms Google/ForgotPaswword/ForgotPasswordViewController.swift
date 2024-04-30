@@ -18,11 +18,11 @@ class ForgotPasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
         navigationItem.backButtonTitle = ""
         navigationController?.navigationBar.tintColor = .black
         setupConstraints()
         forgotView.delegate = self
-        view.backgroundColor = .systemBackground
     }
     
     private func setupConstraints() {

@@ -73,10 +73,12 @@ class CheckEmailView: UIView {
             "Continue",
             for: .normal)
         view.tintColor = .black
-        view.backgroundColor = UIColor().rgb(r: 251,
-                                             g: 222,
-                                             b: 63,
-                                             alpha: 100)
+        view.backgroundColor = UIColor().rgb(
+            r: 251,
+            g: 222,
+            b: 63,
+            alpha: 100
+        )
         view.layer.cornerRadius = 16
         return view
     }()

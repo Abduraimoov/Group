@@ -9,6 +9,7 @@ import UIKit
 
 protocol RegisterViewControllerDelegate: AnyObject {
     func didSingupbutton()
+    func didphoneNumber()
 }
 
 class RegisterViewController: UIViewController {
@@ -34,6 +35,12 @@ class RegisterViewController: UIViewController {
 }
 
 extension RegisterViewController: RegisterViewControllerDelegate {
+    
+    func didphoneNumber() {
+        let vc = AutorizationViewController()
+        navigationController?.pushViewController(vc,
+                                                 animated: true)
+    }
     
     func didSingupbutton() {
         let vc = TabBarController()

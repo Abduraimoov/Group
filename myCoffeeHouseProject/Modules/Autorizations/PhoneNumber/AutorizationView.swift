@@ -8,6 +8,10 @@
 import UIKit
 import SnapKit
 
+protocol AutorizationViewDelegate: AnyObject {
+    func smsCode(with phoneNumberTFText: String)
+}
+
 class AutorizationView: UIView {
     
     private lazy var GeeksImage: UIImageView = {
@@ -26,10 +30,10 @@ class AutorizationView: UIView {
         return view
     }()
     
-   private lazy var numberTextFeild: PaddedTextField = {
+    private lazy var numberTextFeild: PaddedTextField = {
         let tf = PaddedTextField()
-       tf.layer.borderColor = UIColor.label.cgColor
-       tf.layer.borderWidth = 1
+        tf.layer.borderColor = UIColor.label.cgColor
+        tf.layer.borderWidth = 1
         let leftContainerView = UIView(frame: CGRect(
             x: 0,
             y: 0,
@@ -74,7 +78,7 @@ class AutorizationView: UIView {
         return view
     }()
     
-    weak var delegate: AutorizationViewControllerDelegate?
+    weak var delegate: AutorizationViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -89,12 +93,9 @@ class AutorizationView: UIView {
     }
     
     private func setupAddTarget() {
-        numberTextFeild.addTarget(
-            self, action: #selector(loginButton),
-            for: .valueChanged)
         toComeInButton.addTarget(
             self,
-            action: #selector(loginButton),
+            action: #selector(logginButtonTapped),
             for: .touchUpInside)
         numberTextFeild.delegate = self
     }
@@ -142,18 +143,18 @@ class AutorizationView: UIView {
     }
     
     @objc
-    private func loginButton() {
-        delegate?.didLoginBtn(with: numberTextFeild.text ?? "")
+    private func logginButtonTapped(){
+        delegate?.smsCode(with: numberTextFeild.text ?? "" )
     }
 }
 
 extension AutorizationView: UITextFieldDelegate {
     
-        func textFieldDidBeginEditing(_ textField: UITextField) {
-            UIView.animate(withDuration: 0.1) {
-                self.numberLabel.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
-                self.numberLabel.frame.origin = CGPoint(x: self.numberTextFeild.frame.origin.x + 15,
-                                                       y: self.numberTextFeild.frame.minY - self.numberLabel.frame.height / 2)
-            }
-       }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.1) {
+            self.numberLabel.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            self.numberLabel.frame.origin = CGPoint(x: self.numberTextFeild.frame.origin.x + 15,
+                                                    y: self.numberTextFeild.frame.minY - self.numberLabel.frame.height / 2)
+        }
+    }
 }

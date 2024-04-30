@@ -38,7 +38,13 @@ final class AuthService {
             }
     }
     
-    func signIn(with verificationCode: String,  completion: @escaping (Result<AuthDataResult, Error>) -> Void) {
+    func signIn(
+        with verificationCode: String,
+        completion: @escaping (
+            Result<
+            AuthDataResult,
+            Error>) -> Void
+    ) {
         let verificationID = UserDefaults.standard.string(forKey: "authVericationID") ?? ""
         let credetials = PhoneAuthProvider.provider().credential(
             withVerificationID: verificationID,

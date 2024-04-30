@@ -8,10 +8,6 @@
 import UIKit
 import SnapKit
 
-protocol SmsViewDelegate: AnyObject {
-    func verify()
-}
-
 class SmsView: UIView {
     
    private lazy var coffeeImage: UIImageView = {
@@ -53,8 +49,6 @@ class SmsView: UIView {
             alpha: 1)
         return view
     }()
-    
-    weak var verifyDelegate: SmsViewDelegate?
     
     weak var delegate: SmsViewControllerDelegate?
     
@@ -142,7 +136,7 @@ extension SmsView: smsModelDelegate {
         if tag != verifyFields.count - 1 {
             verifyFields[tag + 1].becomeFirstResponder()
         } else {
-            verifyDelegate?.verify()
+
         }
     }
     
@@ -152,6 +146,4 @@ extension SmsView: smsModelDelegate {
             verifyFields[tag - 1].becomeFirstResponder()
         }
     }
-    
-    
 }

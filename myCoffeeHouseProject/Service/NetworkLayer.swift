@@ -65,5 +65,39 @@ struct NetworkLayer {
         }.resume()
     }
     
+    func fetchMealDetails(
+        by idMeal: String,
+        completion: @escaping (
+            Result<
+            Meal,
+            Error>) -> Void
+    ) {
+           let url = Constants.baseURL.appendingPathComponent("lookup.php")
+           var components = URLComponents(url: url, resolvingAgainstBaseURL: true)
+           components?.queryItems = [.init(name: "i", value: idMeal)]
+           guard let url = components?.url else { return }
+           let reguest = URLRequest(url: url)
+           URLSession.shared.dataTask(with: reguest) { data, _, error in
+               if let error = error {
+                   completion(.failure(error))
+                   return
+               }
+               
+               guard let data = data else {
+                   completion(.failure(NSError(domain: "dataNilError", code: -1001, userInfo: nil)))
+                   return
+               }
+               
+               do {
+                   let mealDetails = try JSONDecoder().decode(Meals.self, from: data)
+                   if let firstMeal = mealDetails.meals.first {
+                       completion(.success(firstMeal))
+                   } else {
+                       completion(.failure(NSError(domain: "noDataError", code: -1002, userInfo: nil)))
+                   }
+               } catch {
+                   completion(.failure(error))
+               }
+           }.resume()
+       }
 }
-

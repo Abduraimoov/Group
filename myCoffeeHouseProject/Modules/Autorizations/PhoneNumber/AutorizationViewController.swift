@@ -9,13 +9,10 @@ import UIKit
 import FirebaseAuth
 import SnapKit
 
-protocol AutorizationViewControllerDelegate: AnyObject {
-    func didLoginBtn(with number: String)
-}
-
 class AutorizationViewController: UIViewController {
     
-    private lazy var autorizationview = AutorizationView()
+    private let autorizationview = AutorizationView()
+    private let authService = AuthService.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,32 +38,21 @@ class AutorizationViewController: UIViewController {
     }
 }
 
-extension AutorizationViewController: AutorizationViewControllerDelegate {
-    func didLoginBtn(with number: String) {
-        if number == "5555" {
-            AuthService.shared.authorize()
-            showTabBar()
-        }
-        AuthService.shared.sendSmsCode(with: number) { result in
+extension AutorizationViewController: AutorizationViewDelegate {
+    
+    func smsCode(with phoneNumberTFText: String) {
+        
+        authService.sendSmsCode(with: phoneNumberTFText) { result in
             DispatchQueue.main.async {
                 switch result {
-                case .success(let success):
-                    self.smsCode()
+                case .success:
+                    let vc = SmsViewController()
+                    self.navigationController?.pushViewController(vc, animated: true)
                 case .failure(let error):
-                    print(error.localizedDescription)
-                    
+                    print("Failed to send SMS: \(error.localizedDescription)")
                 }
-                
             }
         }
-    }
-    
-    private func showTabBar() {
-        let tabBarController = TabBarController()
-        let vc = UINavigationController(rootViewController: tabBarController)
-        vc.modalPresentationStyle = .fullScreen
-        navigationController?.present(vc,
-                                      animated: false)
     }
     
 }
