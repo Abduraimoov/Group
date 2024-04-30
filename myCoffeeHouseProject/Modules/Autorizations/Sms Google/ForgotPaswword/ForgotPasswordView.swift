@@ -32,10 +32,19 @@ class ForgotPasswordView: UIView {
     
     private let emailTextField: PaddedTextField = {
         let view = PaddedTextField()
-        view.placeholder = "Emial"
-        view.tintColor = .label
         view.layer.borderColor = UIColor.label.cgColor
         view.layer.borderWidth = 1
+        return view
+    }()
+    
+    private let emailLabel: UILabel = {
+        let view = UILabel()
+        view.tintColor = .systemGray5
+        view.text = " Email "
+        view.font = .systemFont(
+            ofSize: 16,
+            weight: .regular)
+        view.backgroundColor = .white
         return view
     }()
     
@@ -69,7 +78,6 @@ class ForgotPasswordView: UIView {
             weight: .semibold)
         return view
     }()
-    
     
     private lazy var sumbitButton: UIButton = {
         let view = UIButton(type: .system)
@@ -108,12 +116,14 @@ class ForgotPasswordView: UIView {
             self,
             action: #selector(ScreenTapped),
             for: .touchUpInside)
+        emailTextField.delegate = self
     }
     
     private func setupAddSubview() {
         addSubview(passwordLabel)
         addSubview(deckriptionLabel)
         addSubview(emailTextField)
+        addSubview(emailLabel)
         addSubview(stackLabels)
         stackLabels.addArrangedSubview(rememberlabel)
         stackLabels.addArrangedSubview(loginButton)
@@ -138,6 +148,11 @@ class ForgotPasswordView: UIView {
             make.height.equalTo(50)
         }
         
+        emailLabel.snp.makeConstraints { make in
+            make.left.equalTo(emailTextField).offset(15)
+            make.centerY.equalTo(emailTextField)
+        }
+        
         stackLabels.snp.makeConstraints { make in
             make.top.equalTo(emailTextField.snp.bottom).offset(26)
             make.left.equalToSuperview().offset(76)
@@ -160,5 +175,16 @@ class ForgotPasswordView: UIView {
     
     @objc private func loginScreen() {
         delegate?.didLoginButton()
+    }
+}
+
+extension ForgotPasswordView: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.1) {
+            self.emailLabel.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            self.emailLabel.frame.origin = CGPoint(x: self.emailTextField.frame.origin.x + 15,
+                                                   y: self.emailTextField.frame.minY - self.emailLabel.frame.height / 2)
+        }
     }
 }

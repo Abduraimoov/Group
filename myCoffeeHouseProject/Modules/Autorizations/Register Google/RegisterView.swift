@@ -36,25 +36,43 @@ class RegisterView: UIView {
     
     private let nameTextField: PaddedTextField = {
         let view = PaddedTextField()
-        view.placeholder = "Name"
         view.tintColor = .label
         view.layer.borderColor = UIColor.label.cgColor
         view.layer.borderWidth = 1
+        return view
+    }()
+    
+    private let nameLabel: UILabel = {
+        let view = UILabel()
+        view.tintColor = .systemGray5
+        view.text = " Name "
+        view.font = .systemFont(
+            ofSize: 16,
+            weight: .regular)
+        view.backgroundColor = .white
         return view
     }()
     
     private let numberTextField: PaddedTextField = {
         let view = PaddedTextField()
-        view.placeholder = "Number"
-        view.tintColor = .label
         view.layer.borderColor = UIColor.label.cgColor
         view.layer.borderWidth = 1
         return view
     }()
     
+    private let numberLabel: UILabel = {
+        let view = UILabel()
+        view.tintColor = .systemGray5
+        view.text = " Number "
+        view.font = .systemFont(
+            ofSize: 16,
+            weight: .regular)
+        view.backgroundColor = .white
+        return view
+    }()
+    
     private let passwordTextField: PaddedTextField = {
         let view = PaddedTextField()
-        view.placeholder = "Password"
         view.isSecureTextEntry = true
         view.layer.borderColor = UIColor.label.cgColor
         view.layer.borderWidth = 1
@@ -74,9 +92,19 @@ class RegisterView: UIView {
         return view
     }()
     
+    private let passwordLabel: UILabel = {
+        let view = UILabel()
+        view.tintColor = .systemGray5
+        view.text = " Password "
+        view.font = .systemFont(
+            ofSize: 16,
+            weight: .regular)
+        view.backgroundColor = .white
+        return view
+    }()
+    
     private let confirmTextField: PaddedTextField = {
         let view = PaddedTextField()
-        view.placeholder = "confirm password"
         view.isSecureTextEntry = true
         view.layer.borderColor = UIColor.label.cgColor
         view.layer.borderWidth = 1
@@ -93,6 +121,17 @@ class RegisterView: UIView {
         view.rightView = rightView
         view.rightViewMode = .always
         view.tag = 1
+        return view
+    }()
+    
+    private let confirmLabel: UILabel = {
+        let view = UILabel()
+        view.tintColor = .systemGray5
+        view.text = " Confirm password "
+        view.font = .systemFont(
+            ofSize: 16,
+            weight: .regular)
+        view.backgroundColor = .white
         return view
     }()
     
@@ -186,10 +225,10 @@ class RegisterView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupAddTarget()
         setupAdd()
         setupConstraints()
-        emailTextField.delegate = self
+        setupDelegates()
+        setupAddTarget()
     }
     
     required init?(coder: NSCoder) {
@@ -216,9 +255,13 @@ class RegisterView: UIView {
         addSubview(emailTextField)
         addSubview(emailLabel)
         addSubview(nameTextField)
+        addSubview(nameLabel)
         addSubview(numberTextField)
+        addSubview(numberLabel)
         addSubview(passwordTextField)
+        addSubview(passwordLabel)
         addSubview(confirmTextField)
+        addSubview(confirmLabel)
         addSubview(SingupButton)
         addSubview(leftLine)
         addSubview(OrLabel)
@@ -254,11 +297,21 @@ class RegisterView: UIView {
             make.height.equalTo(50)
         }
         
+        nameLabel.snp.makeConstraints { make in
+            make.left.equalTo(nameTextField).offset(15)
+            make.centerY.equalTo(nameTextField)
+        }
+        
         numberTextField.snp.makeConstraints { make in
             make.top.equalTo(nameTextField.snp.bottom).offset(12)
             make.left.equalToSuperview().offset(26)
             make.right.equalToSuperview().offset(-26)
             make.height.equalTo(50)
+        }
+        
+        numberLabel.snp.makeConstraints { make in
+            make.left.equalTo(numberTextField).offset(15)
+            make.centerY.equalTo(numberTextField)
         }
         
         passwordTextField.snp.makeConstraints { make in
@@ -268,11 +321,21 @@ class RegisterView: UIView {
             make.height.equalTo(50)
         }
         
+        passwordLabel.snp.makeConstraints { make in
+            make.left.equalTo(passwordTextField).offset(15)
+            make.centerY.equalTo(passwordTextField)
+        }
+        
         confirmTextField.snp.makeConstraints { make in
             make.top.equalTo(passwordTextField.snp.bottom).offset(12)
             make.left.equalToSuperview().offset(26)
             make.right.equalToSuperview().offset(-26)
             make.height.equalTo(50)
+        }
+        
+        confirmLabel.snp.makeConstraints { make in
+            make.left.equalTo(confirmTextField).offset(15)
+            make.centerY.equalTo(confirmTextField)
         }
         
         SingupButton.snp.makeConstraints { make in
@@ -317,6 +380,14 @@ class RegisterView: UIView {
         }
     }
     
+    private func setupDelegates() {
+        emailTextField.delegate = self
+        nameTextField.delegate = self
+        numberTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmTextField.delegate = self
+    }
+    
     
     @objc func hideText(_ sender: UIButton) {
         
@@ -337,12 +408,39 @@ class RegisterView: UIView {
 }
 
 extension RegisterView: UITextFieldDelegate {
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        UIView.animate(withDuration: 0.1) {
-            self.emailLabel.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
-            self.emailLabel.frame.origin = CGPoint(x: self.emailTextField.frame.origin.x + 15,
-                                                   y: self.emailTextField.frame.minY - self.emailLabel.frame.height / 2)
-        }
+        animateLabel(for: textField)
     }
     
+    private func animateLabel(for textField: UITextField) {
+        UIView.animate(withDuration: 0.1) {
+            var label: UILabel?
+            var textFieldFrame: CGRect
+            var labelOrigin: CGPoint
+            
+            switch textField {
+            case self.emailTextField:
+                label = self.emailLabel
+            case self.nameTextField:
+                label = self.nameLabel
+            case self.numberTextField:
+                label = self.numberLabel
+            case self.passwordTextField:
+                label = self.passwordLabel
+            case self.confirmTextField:
+                label = self.confirmLabel
+            default:
+                break
+            }
+            
+            if let label = label {
+                textFieldFrame = textField.frame
+                labelOrigin = CGPoint(x: textFieldFrame.origin.x + 15,
+                                      y: textFieldFrame.minY - label.frame.height / 2)
+                label.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+                label.frame.origin = labelOrigin
+            }
+        }
+    }
 }

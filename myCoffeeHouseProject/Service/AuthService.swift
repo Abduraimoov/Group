@@ -12,6 +12,17 @@ final class AuthService {
     
     static let shared = AuthService()
     
+    // нужно прочитать 2 темы
+    // authorization || authentification
+    func isUserAuthentificated() -> Bool {
+        let currentTime = Date()
+        if let sessionDate = UserDefaults.standard.object(forKey: "session") as? Date {
+            
+           return sessionDate >= currentTime
+        }
+        return false
+    }
+    
     private init() {}
     
     func sendSmsCode(with phoneNumber: String, completion: @escaping (Result<Void, Error>) -> Void) {

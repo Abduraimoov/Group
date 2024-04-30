@@ -70,6 +70,7 @@ class HomeViewController: UIViewController {
     private let netWorkLayer = NetworkLayer()
     
     private var selectedCategory: Category? {
+        
         didSet {
             fetchProduct(by: selectedCategory!)
         }

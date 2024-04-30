@@ -16,6 +16,8 @@
 		850D6CD42BB986D90010DEC4 /* StartingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850D6CD32BB986D90010DEC4 /* StartingView.swift */; };
 		852872B82BBC09DD0062F434 /* AutorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852872B72BBC09DD0062F434 /* AutorizationView.swift */; };
 		852872BA2BBC12260062F434 /* AutorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852872B92BBC12260062F434 /* AutorizationViewController.swift */; };
+		8530B7A02BDF7FDE00AF638A /* SmsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8530B79F2BDF7FDE00AF638A /* SmsModel.swift */; };
+		8530B7A22BDFA87500AF638A /* UIViewController + extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8530B7A12BDFA87500AF638A /* UIViewController + extension.swift */; };
 		8561BFE92BC9257A00CC8649 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8561BFE82BC9257A00CC8649 /* MenuViewController.swift */; };
 		857C18C12BD25A120044FB65 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857C18C02BD25A120044FB65 /* AuthService.swift */; };
 		857C18C32BD272A80044FB65 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 857C18C22BD272A80044FB65 /* GoogleService-Info.plist */; };
@@ -65,6 +67,8 @@
 		850D6CD32BB986D90010DEC4 /* StartingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingView.swift; sourceTree = "<group>"; };
 		852872B72BBC09DD0062F434 /* AutorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizationView.swift; sourceTree = "<group>"; };
 		852872B92BBC12260062F434 /* AutorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutorizationViewController.swift; sourceTree = "<group>"; };
+		8530B79F2BDF7FDE00AF638A /* SmsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmsModel.swift; sourceTree = "<group>"; };
+		8530B7A12BDFA87500AF638A /* UIViewController + extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + extension.swift"; sourceTree = "<group>"; };
 		8561BFE82BC9257A00CC8649 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		857C18C02BD25A120044FB65 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		857C18C22BD272A80044FB65 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -211,6 +215,14 @@
 				85ACAC082BDA6CDF00C0CAEE /* HomeViewController.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		8530B7A32BDFA95300AF638A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8530B7A12BDFA87500AF638A /* UIViewController + extension.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		857C18BF2BD259FE0044FB65 /* Service */ = {
@@ -386,6 +398,8 @@
 			children = (
 				85E21D622BC832410011AF5E /* SmsViewController.swift */,
 				85E21D642BC838660011AF5E /* SmsView.swift */,
+				8530B79F2BDF7FDE00AF638A /* SmsModel.swift */,
+				8530B7A32BDFA95300AF638A /* Helpers */,
 			);
 			path = Sms;
 			sourceTree = "<group>";
@@ -542,6 +556,7 @@
 				85E21D632BC832410011AF5E /* SmsViewController.swift in Sources */,
 				852872B82BBC09DD0062F434 /* AutorizationView.swift in Sources */,
 				85805A282BCAD01E00F01F01 /* NetworkLayer.swift in Sources */,
+				8530B7A22BDFA87500AF638A /* UIViewController + extension.swift in Sources */,
 				85B6ED8F2BD3CF09008F5798 /* LoginViewController.swift in Sources */,
 				852872BA2BBC12260062F434 /* AutorizationViewController.swift in Sources */,
 				850D6CB92BB985B90010DEC4 /* AppDelegate.swift in Sources */,
@@ -555,6 +570,7 @@
 				85B6ED972BD406BD008F5798 /* RegisterViewController.swift in Sources */,
 				850D6CD02BB986200010DEC4 /* Extension + uicolor.swift in Sources */,
 				85B6ED9E2BD414BC008F5798 /* OnBoardingView.swift in Sources */,
+				8530B7A02BDF7FDE00AF638A /* SmsModel.swift in Sources */,
 				85805A2A2BCAD15600F01F01 /* Products.swift in Sources */,
 				85B6ED9C2BD4143F008F5798 /* OnBoardCell.swift in Sources */,
 				85B6EDB32BD52E43008F5798 /* UpdatedViewController.swift in Sources */,
